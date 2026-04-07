@@ -228,7 +228,7 @@ const CASE_STUDY_DETAIL = {
       sections: [
         {
           heading: "The Situation",
-          body: "NielsenIQ had a component library. What it didn't have was anyone who believed a design system mattered. Components existed in Figma and a shared code repository, but they functioned more like a parts bin than a system. Hardcoded hex values lived in SCSS files, color styles in Figma were tied to individual components rather than organized by intent, and there was no shared design language connecting what a designer meant by "primary surface background" and what an engineer typed into code. Every product team translated on their own, and every translation introduced drift.",
+          body: "NielsenIQ had a component library. What it didn't have was anyone who believed a design system mattered. Components existed in Figma and a shared code repository, but they functioned more like a parts bin than a system. Hardcoded hex values lived in SCSS files, color styles in Figma were tied to individual components rather than organized by intent, and there was no shared design language connecting what a designer meant by primary surface background and what an engineer typed into code. Every product team translated on their own, and every translation introduced drift.",
         },
         {
           heading: "What I Did",

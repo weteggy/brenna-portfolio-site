@@ -2313,8 +2313,8 @@ function PhotoCarouselWithBio() {
     <section
       style={{
         display: "grid",
-        gridTemplateColumns: "1fr 1fr",
-        gap: 24,
+        gridTemplateColumns: "1fr 2fr",
+        gap: 32,
         marginBottom: 60,
         alignItems: "start",
       }}
@@ -2434,13 +2434,13 @@ function PhotoCarouselWithBio() {
             fontSize: 15,
             color: "rgba(255,255,255,0.9)",
             lineHeight: 1.75,
-            margin: 0,
+            margin: "0 0 16px 0",
           }}
         >
           I'm also, for better or worse, intensely organized. I enjoy seeing the
           result of building something that's both beautiful and systemically sound.
           That pull between the handmade and the highly structured is what drew me
-          to design in teh first place. 
+          to design in teh first place.
         </p>
         <p
           style={{
@@ -2451,10 +2451,10 @@ function PhotoCarouselWithBio() {
           }}
         >
           The work that's pulling me in lately is what happens when you build a
-          system that's meant to be consumed by both AI and humans alike. What 
-          does design quality get defined when the users are reading both structure 
-          and aesthetics? The implications are still unfolding and I find them 
-          endlessly fascinating to explore. 
+          system that's meant to be consumed by both AI and humans alike. What
+          does design quality get defined when the users are reading both structure
+          and aesthetics? The implications are still unfolding and I find them
+          endlessly fascinating to explore.
         </p>
       </div>
     </section>
@@ -2516,7 +2516,7 @@ function AboutPage({ onBack }) {
       >
         <div
           style={{
-            maxWidth: 800,
+            maxWidth: 1100,
             margin: "0 auto",
             display: "flex",
             justifyContent: "space-between",
@@ -2544,7 +2544,7 @@ function AboutPage({ onBack }) {
         </div>
       </header>
 
-      <main style={{ maxWidth: 800, margin: "0 auto", padding: "60px 24px" }}>
+      <main style={{ maxWidth: 1100, margin: "0 auto", padding: "60px 24px" }}>
         {/* Hero Section */}
         <section style={{ textAlign: "center", marginBottom: 60 }}>
           <h1

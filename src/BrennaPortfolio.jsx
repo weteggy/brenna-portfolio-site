@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from "react";
+import { Analytics } from "@vercel/analytics/react";
 
 // ─── Color palette (warm & approachable) ───
 const C = {
@@ -2814,6 +2815,7 @@ export default function BrennaPortfolio() {
       <style>{`*, *::before, *::after { cursor: none !important; }`}</style>
       <CustomCursor dotColor={cursorDotColor} />
       {page}
+      <Analytics />
     </div>
   );
 }

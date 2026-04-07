@@ -51,10 +51,10 @@ const STEPS = [
     question: "Where would you like to start?",
     subtitle: "Each tells a different part of the story.",
     suggestions: [
-      { label: "Diagnose", desc: "How I revived a design system stalled for four years", value: "diagnose" },
-      { label: "Strategize", desc: "How I navigated to the CPO when the org couldn't prioritize", value: "strategize" },
-      { label: "Build", desc: "40+ deliverables in 14 weeks with AI-assisted development", value: "build" },
-      { label: "Design", desc: "Eight years of visual craft across five organizations", value: "design" },
+      { label: "Diagnose", desc: "See how I uncovered an org-wide problem", value: "diagnose" },
+      { label: "Strategize", desc: "See how I got my argument straight to the CPO", value: "strategize" },
+      { label: "Build", desc: "See how I build with AI", value: "build" },
+      { label: "Design", desc: "See my design skills in action", value: "design" },
     ],
   },
 ];
@@ -88,7 +88,7 @@ function getCustomizedContent(responses) {
 
   // ── Headline adapts to audience + priority ──
   const headline = isEvaluator && wantsCraft
-    ? "From Ballet Posters to Enterprise Platforms — Eight Years of Design Craft"
+    ? "From Embroidery to Enterprise Design — Ten Years of Craft"
     : isEvaluator && wantsStrategy
     ? "A Design Leader Who Builds What She Advocates For"
     : isEvaluator
@@ -101,7 +101,7 @@ function getCustomizedContent(responses) {
     ? "From Ballet Posters to Enterprise Platforms — Eight Years of Design Craft"
     : wantsAI
     ? "40+ Deliverables in 14 Weeks — What AI-Assisted Design Leadership Looks Like"
-    : "Building the Design Language a $6B Company Didn't Know It Was Missing";
+    : "Building the Design Language a $3B Company Didn't Know It Was Missing";
 
   // ── Focus line adapts to priority ──
   const focus = wantsCraft
@@ -159,37 +159,34 @@ const PROJECTS = {
     description:
       "NielsenIQ's design system had been stalled for four years. While still a UX designer, I diagnosed why — connecting user complaints, rising convergence costs, and missing infrastructure into a single argument leadership hadn't heard before. I built the token architecture nobody knew was missing and got design system work into PI planning for the first time.",
     tags: ["Systemic Diagnosis", "Token Architecture", "Stakeholder Influence", "Change Management"],
-    stats: { value: "4 yrs", label: "stalled → revived" },
     leadershipAngle:
       "Earned the lead title by doing the job before I had it. Built credibility through one-on-one stakeholder conversations, never once pitching 'design tokens' to leadership — I led with their problems.",
     craftAngle:
-      "Built a three-tier token architecture (primitive → semantic → component) covering color, typography, spacing, elevation, radius, and motion — the first shared design language across the portfolio.",
+      "Built a tiered token architecture (primitive → semantic) covering color, typography, spacing, elevation, radius, and motion — the first shared design language across the portfolio.",
     outcomesAngle:
-      "First design system work in PI planning in 4 years. UX Designer → Global Design System Lead in 5 months. Six token categories shipped. CPO pipeline established.",
+      "First design system work prioritized in PI planning since the rebrand 4 years ago. UX Designer → Global Design System Lead in 5 months. Six token categories shipped. CPO pipeline established.",
   },
   strategize: {
     series: "Part 2 of 3 — From Stalled to Strategic",
     title: "When the Org Couldn't Prioritize, I Built a New Path",
     description:
-      "When the org's planning structure couldn't prioritize design system work, I designed an alternative: a cross-team collaboration model where multiple product teams contribute capacity to shared infrastructure. I connected the AI-readiness gap to the design system and navigated the argument to the CPO's office — securing the first dedicated engineering resources the system had ever received.",
+      "When the org's planning structure couldn't prioritize design system work, I designed an alternative: a cross-team collaboration model where multiple product teams contribute capacity to shared infrastructure. I connected the AI-readiness gap to the design system and navigated the argument to the CPO's office — securing dedicated engineering resources for the system.",
     tags: ["Executive Communication", "Organizational Design", "AI Strategy", "Resource Planning"],
-    stats: { value: "1st", label: "CPO meeting on DS" },
     leadershipAngle:
       "Navigated a four-month campaign from PI planning frustration to CPO sponsorship. Adapted the message for each audience: AI-readiness for executives, spec-driven architecture for engineering, design language for the design org.",
     craftAngle:
       "Designed the spec-driven architecture (spec.json + CLAUDE.md) that produces correct implementations across Angular, React, Vue, and Lit from the same source of truth. OKLCH-based color system with algorithmic primitives and semantic token layer.",
     outcomesAngle:
-      "First CPO meeting on the design system. First dedicated engineering resources. V2 project greenlit. Nine cross-functional contributors assembled, none reporting to me.",
+      "First CPO meeting on the design system. Dedicated engineering resources. V2 project greenlit. Six cross-functional contributors assembled.",
   },
   build: {
     series: "Part 3 of 3 — From Stalled to Strategic",
     title: "40+ Deliverables in 14 Weeks — Built With AI",
     description:
-      "I assembled a cross-functional team of nine — none reporting to me — and delivered 40+ production-ready components, tokens, themes, and patterns across three parallel workstreams in 14 weeks using AI-assisted development at 2–3x velocity. I also personally built the framework-agnostic proof-of-concepts that validated our spec-driven architecture.",
+      "I assembled a cross-functional team of six am currently delivering 40+ production-ready components, tokens, themes, and patterns across three parallel workstreams in 14 weeks using AI-assisted development at 2–3x velocity. I also personally built the framework-agnostic proof-of-concepts that validated our spec-driven architecture.",
     tags: ["AI-Assisted Dev", "Cross-Functional Leadership", "Production Delivery", "Data Visualization"],
-    stats: { value: "40+", label: "deliverables in 14 wks" },
     leadershipAngle:
-      "Led a 9-person team through influence, not authority. Built operational infrastructure from scratch — standups, boards, QA checklists, decision logs. Protected the credibility of AI-assisted development with a human review protocol.",
+      "Led a 6-person team through influence, not authority. Built operational infrastructure from scratch — standups, boards, QA checklists, decision logs. Protected the credibility of AI-assisted development with a human review protocol.",
     craftAngle:
       "Extended the design system into data visualization: OKLCH-based categorical, sequential, and diverging palettes with ag-Grid and Highcharts theming. Every component designed with intention — every state, variant, spacing decision, and accessibility annotation.",
     outcomesAngle:
@@ -199,13 +196,12 @@ const PROJECTS = {
     series: "Companion Piece",
     title: "But Can She Design?",
     description:
-      "The first three chapters prove I can diagnose, strategize, and build at enterprise scale — this one proves I've been designing the whole time. A visual companion spanning five organizations and eight years: brand systems as a one-person creative department, healthcare learning design, editorial design for institutional audiences, and the component craft inside an enterprise design system.",
+      "My broader portfolio proves I can diagnose, strategize, and build at enterprise scale — this part proves I've been designing the whole time. A visual companion spanning five organizations and ten years: brand systems as a one-person creative department, healthcare learning design, editorial design for institutional audiences, and the component craft inside an enterprise design system.",
     tags: ["Visual Design", "Brand Systems", "Editorial Design", "Component Craft"],
-    stats: { value: "8 yrs", label: "across 5 orgs" },
     leadershipAngle:
       "End-to-end brand ownership at Madison Ballet — print, web, social, video as a one-person creative department. The relationship between strategic leadership and design craft: systems thinking shows up at every scale.",
     craftAngle:
-      "Madison Ballet workshop series across print and social. Pathway Health learning design where clarity is a clinical requirement. SWIB editorial design making dense institutional content worth reading. Enterprise component craft and a notifications flow designed end to end.",
+      "Madison Ballet workshop series across print, web, and social. Pathway Health learning design where clarity is a clinical requirement. SWIB editorial design making dense institutional content worth reading. Enterprise component craft and a notifications flow designed end to end.",
     outcomesAngle:
       "Five organizations, eight disciplines: visual design, brand systems, editorial, digital learning, video, interaction design, component design, textile art. The breadth that shows up in how I approach systems work.",
   },
@@ -218,13 +214,13 @@ const PROJECTS = {
 const CASE_STUDY_DETAIL = {
   diagnose: {
     role: "UX Designer → Global Design System Lead",
-    timeline: "July – December 2025",
+    timeline: "January – December 2025",
     org: "NielsenIQ",
-    lite: {
+    overview: {
       summary:
-        "NielsenIQ's design system had been stalled for four years. While still a UX designer, I diagnosed why — connecting user complaints, rising convergence costs, and missing infrastructure into a single argument leadership hadn't heard before. I built the token architecture nobody knew was missing, got design system work into PI planning for the first time, and earned the lead title by doing the job before I had it.",
+        "NielsenIQ's design system had been stalled for four years. While still a UX designer, I diagnosed why — connecting user complaints, rising convergence costs, and missing infrastructure into a single argument leadership hadn't heard before. I built the token architecture nobody knew was missing, got design system work prioritized in PI planning for the first time since our rebrand 4 years prior, and earned the lead title by doing the job before I had it.",
     },
-    standard: {
+    learn: {
       sections: [
         {
           heading: "The Situation",
@@ -232,17 +228,18 @@ const CASE_STUDY_DETAIL = {
         },
         {
           heading: "What I Did",
-          body: "I started doing diagnostic work in July 2025 — five months before I had the design system lead title. Rather than leading with presentations, I began having direct one-on-one conversations with the product leaders who controlled prioritization. I never pitched 'design tokens' to leadership. I led with their problems: users unhappy with inconsistency, convergence costs ballooning without shared infrastructure, teams duplicating effort. In parallel, I built a three-tier token architecture covering color, typography, spacing, elevation, radius, and motion.",
+          body: "I started doing diagnostic work in January 2025 — almost a year before I had the design system lead title. Rather than leading with presentations, I began having direct one-on-one conversations with the product leaders who controlled prioritization. I never pitched 'design tokens' to leadership. I led with their problems: users unhappy with inconsistency, convergence costs ballooning without shared infrastructure, teams duplicating effort. In parallel, I built a tiered token architecture covering color, typography, spacing, elevation, radius, and motion.",
         },
         {
           heading: "What Changed",
-          body: "I got the design system into PI planning for the first time in the org's history. The VP of Product and UX recommended me for the design system lead role when the outgoing lead's contract ended. In December 2025, I officially got the title. By that point, I had already moved the work further in five months than it had moved in the previous three and a half years.",
+          body: "I got the design system prioritized in our quarterly PI planning for the first time since our company rebrand 4 years prior. The UX Director recommended me for the design system lead role when the outgoing lead's contract ended. In November 2025, I officially got the title. By that point, I had already moved the work further in less than a year than it had moved in the previous three and a half years.",
         },
       ],
       artifact: {
-        title: "Token System Architecture",
+        title: "Project Board",
         description:
-          "The complete three-tier variable structure in Figma: primitive, semantic, and component tokens across color, typography, spacing, elevation, radius, and motion. Every token is defined with variables, documented with usage guidance, and structured for code export.",
+          "The Roadmap I built from scratch to track the design system's work for the first time, with milestones and goals mapped to the PI schedule.",
+        image: <img src="/public/FoundationsRoadmap.png" alt="Foundations project roadmap" />,
       },
     },
     deep: {
@@ -253,28 +250,31 @@ const CASE_STUDY_DETAIL = {
         },
         {
           label: "Stakeholder Strategy",
-          body: "I didn't wait for the title. Starting in July 2025, I began having direct conversations with the product leaders who controlled prioritization. This was deliberate sequencing. Proposing a multi-month foundational project to an organization that had failed to deliver one for four years required a different kind of credibility than a good project brief. I needed people to have already seen me do the work before I asked them to prioritize it.",
+          body: "I didn't wait for the title. Starting early 2025, I began having direct conversations with the product leaders who controlled prioritization. This was deliberate sequencing. Proposing a multi-month foundational project to an organization that had failed to deliver one for four years required a different kind of credibility than a good project brief. I needed people to have already seen me do the work before I asked them to prioritize it.",
         },
         {
           label: "Token Architecture Decisions",
-          body: "I introduced a three-tier architecture where primitive tokens define the raw palette, semantic tokens define intent, and component tokens map semantic values to specific UI elements. For color, I chose an algorithmic primitive scale rather than hand-picked shades, because sub-brand theming works by overriding primitive values and having the entire semantic layer recalculate. Typography is organized by role rather than size. Spacing uses a 4px base unit with semantic application tokens.",
+          body: "I introduced a tiered architecture where primitive tokens define the raw palette and semantic tokens define intent. For color, we moved from an overly complex style library with hundreds of values to an easily scalable two part system, because the multi-product portfolio made theming a structural requirement. Typography is organized by role rather than size. Spacing uses a 4px base unit with semantic application tokens.",
         },
       ],
       artifacts: [
         {
-          title: "Token System Architecture",
+          title: "Design System Usability Survey",
           description:
-            "The complete three-tier variable structure in Figma: primitive, semantic, and component tokens across six categories.",
+            "The survey and readout that was run internally to validate the diagnosis with both users and stakeholders — connecting user complaints to a lack of shared infrastructure and a missing design language.",
+          image: <img src="/public/SUS.png" alt="System usability survey readout" />,
         },
         {
           title: "Project Board",
           description:
-            "The Jira structure I built from scratch to track the design system's work for the first time, with epics mapped to milestones and sprint cadence.",
+            "The Roadmap I built from scratch to track the design system's work for the first time, with milestones and goals mapped to the PI schedule.",
+          image: <img src="/public/FoundationsRoadmap.png" alt="Foundations project roadmap" />,
         },
         {
           title: "Before & After",
           description:
-            "Side-by-side comparisons showing hardcoded hex values and flat Figma color styles versus the three-tier token system in action.",
+            "Side-by-side comparisons showing the previous color style system in Figma versus the simplified semantic token system in action.",
+          image: <img src="/public/LegacyvsNewTokens.png" alt="Before and after of the color token system in Figma" />,
         },
       ],
     },
@@ -283,15 +283,15 @@ const CASE_STUDY_DETAIL = {
     role: "Global Design System Lead",
     timeline: "December 2025 – March 2026",
     org: "NielsenIQ",
-    lite: {
+    overview: {
       summary:
         "The org's planning structure couldn't prioritize the design system — one product controlled build capacity for every product. Instead of making a better case within a broken structure, I designed around it: I partnered with a different product team, designed a spec-driven architecture that generates components across four frameworks from a single source of truth, connected the design system to the company's AI-readiness gap, and navigated the argument to the CPO.",
     },
-    standard: {
+    learn: {
       sections: [
         {
-          heading: "Where Part 1 Left Off",
-          body: "Having a seat at the planning table revealed a harder truth: the organizational structure made it nearly impossible for the design system to get the capacity it needed. The CUIC team — the engineering group responsible for shared components — reports into Discover, the flagship product. When Discover needs bug fixes, the design system waits. During PI2 planning, tokens got pushed to September 2026, six months past the original target.",
+          heading: "The Situation",
+          body: "Having a seat at the planning table revealed a harder truth: the organizational structure made it nearly impossible for the design system to get the capacity it needed. The CUIC team — the engineering group responsible for shared components — reports into the flagship product. When the flagship needs bug fixes, the design system waits. During PI2 planning, tokens got pushed to September 2026, six months past the original target.",
         },
         {
           heading: "The Parallel Path",
@@ -299,13 +299,14 @@ const CASE_STUDY_DETAIL = {
         },
         {
           heading: "Getting the CPO Meeting",
-          body: "In four years, the CPO had never had direct visibility into the design system. I started with the VP of Product and UX, connecting two things she was already worried about: AI-readiness and the design system's inability to support it. By the time I got into the CPO's office, the framing wasn't entirely new to him. He gave explicit approval for V2 with dedicated engineering resources — a first for the design system.",
+          body: "In four years, the CPO had never had direct visibility into the design system. I started with the VP of Product and UX, connecting two things she was already worried about: AI-readiness and the design system's inability to support it. By the time I got into the CPO's office, the framing wasn't entirely new to him. He gave explicit approval for V2 with dedicated engineering resources.",
         },
       ],
       artifact: {
         title: "CPO Presentation",
         description:
           "The strategic narrative built for the executive meeting: the AI-readiness gap, side-by-side comparisons of AI output with structured versus unstructured design systems, and a specific ask for dedicated resources.",
+        video: <video src="/public/CPOppt.mp4" controls width="100%" />,
       },
     },
     deep: {
@@ -327,17 +328,14 @@ const CASE_STUDY_DETAIL = {
         {
           title: "CPO Presentation",
           description:
-            "The strategic argument that unlocked executive sponsorship — connecting the AI-readiness gap to design system infrastructure.",
+            "The strategic narrative built for the executive meeting: the AI-readiness gap, side-by-side comparisons of AI output with structured versus unstructured design systems, and a specific ask for dedicated resources.",
+          video: <video src="/public/CPOppt.mp4" controls width="100%" />,
         },
         {
           title: "V2 Project Plan",
           description:
             "Three parallel swimlanes across four phases and seven sprints, with sprint-by-sprint deliverables and entry/exit criteria.",
-        },
-        {
-          title: "PI Planning Risk Assessment",
-          description:
-            "The risk assessment documenting the capacity decision, revised timeline, and concrete downstream impact on every product team.",
+          image: <img src="/public/V2ProjectPlan.png" alt="V2 project timeline" />,
         },
       ],
     },
@@ -346,11 +344,11 @@ const CASE_STUDY_DETAIL = {
     role: "Global Design System Lead",
     timeline: "January 2026 – Present",
     org: "NielsenIQ",
-    lite: {
+    overview: {
       summary:
-        "I personally built the framework-agnostic proof-of-concepts — the same components generated in Angular, React, Vue, and Lit from structured spec.json files — then led a 9-person cross-functional team to deliver 40+ production-ready components, tokens, themes, and patterns across three parallel workstreams in 14 weeks using AI-assisted development at 2–3x velocity.",
+        "I personally built the framework-agnostic proof-of-concepts — the same components generated in Angular, React, Vue, and Lit from structured spec.json files, and am now leading a 6-person cross-functional team to deliver 40+ production-ready components, tokens, themes, and patterns across three parallel workstreams in 14 weeks using AI-assisted development at 2–3x velocity.",
     },
-    standard: {
+    learn: {
       sections: [
         {
           heading: "The Research That Shaped Everything",
@@ -362,13 +360,15 @@ const CASE_STUDY_DETAIL = {
         },
         {
           heading: "The Co-Build",
-          body: "I assembled a cross-functional team of nine — none reporting to me — across three parallel swimlanes. The results: 40+ production-ready deliverables, an OKLCH color system generating semantic tokens and dark mode support algorithmically, sub-brand theming validated in production, and two developers producing at 2–3x normal velocity. The three-swimlane timeline would have been impossible at traditional development speed.",
+          body: "I assembled a cross-functional team of six across three parallel swimlanes. The expected results: 40+ production-ready deliverables, an OKLCH color system generating semantic tokens and dark mode support algorithmically, sub-brand theming validated in production, and two developers producing at 2–3x normal velocity. The three-swimlane timeline would be impossible at traditional development speed.",
         },
       ],
       artifact: {
-        title: "Framework-Agnostic POC",
+        title: "Vibe-Coded Project Hub",
         description:
-          "Five components × four frameworks generated from the same spec.json files — Button, Input, Card, Badge, and Data Table Row in Angular, React, Vue, and Lit.",
+          "The project management interface I built to onboard stakeholders.",
+        image: <img src="/public/v2website.png" alt="V2 project website" />,
+        url: "https://v2-project-blue.vercel.app/#"
       },
     },
     deep: {
@@ -379,28 +379,20 @@ const CASE_STUDY_DETAIL = {
         },
         {
           label: "Leading the Co-Build",
-          body: "I assembled and ran a cross-functional team of nine with radically different allocations and skill sets — none of whom reported to me. Getting each person's commitment required separate conversations with their managers. I built the operational infrastructure from scratch: weekly standups, bi-weekly stakeholder updates, monthly demos, a Jira board with thirteen epics, communication templates, a decision log, component QA checklists, an AI code review protocol, and a contribution process.",
+          body: "I assembled and am running a cross-functional team of six with radically different allocations and skill sets. Getting each person's commitment required separate conversations with their managers. I built the operational infrastructure from scratch: weekly standups, bi-weekly stakeholder updates, monthly demos, a Jira board with epics, communication templates, a decision log, component QA checklists, an AI code review protocol, and a contribution process.",
         },
         {
           label: "AI Development Workflow",
-          body: "Every AI-generated PR required human code review with a 24-hour SLA, and AI-assisted PRs were flagged so reviewers knew to check edge cases harder. This wasn't just quality assurance — it was protecting the credibility of the approach. If V2 shipped with quality problems traceable to AI-generated code, the thesis would be undermined, and with it the case for continued investment.",
+          body: "Every AI-generated PR requires human code review with a 24-hour SLA, and AI-assisted PRs that are to be flagged so reviewers know to check edge cases harder. This isn't just quality assurance — it's protecting the credibility of the approach. If V2 shipped with quality problems traceable to AI-generated code, the thesis would be undermined, and with it the case for continued investment.",
         },
       ],
       artifacts: [
         {
-          title: "Framework-Agnostic POC",
-          description:
-            "Five components generated across four frameworks from structured specifications.",
-        },
-        {
-          title: "Data Visualization POC",
-          description:
-            "Interactive demo consuming actual token values — ag-Grid tables with conditional formatting and Highcharts charts using OKLCH categorical palettes.",
-        },
-        {
           title: "Vibe-Coded Project Hub",
           description:
-            "The project management interface I built to coordinate the three-swimlane build across nine contributors.",
+            "The project management interface I built to onboard stakeholders.",
+          image: <img src="/public/v2website.png" alt="V2 project website" />,
+          url: "https://v2-project-blue.vercel.app/#"
         },
       ],
     },
@@ -409,36 +401,31 @@ const CASE_STUDY_DETAIL = {
     role: "Designer → Design System Lead",
     timeline: "2018 – 2026",
     org: "5 organizations",
-    lite: {
+    overview: {
       summary:
-        "The first three chapters prove I can diagnose, strategize, and build at enterprise scale — this one proves I've been designing the whole time. A visual companion spanning five organizations and eight years: brand systems built as a one-person creative department, healthcare learning design where clarity is a clinical requirement, editorial design for institutional audiences, and component craft inside an enterprise design system.",
+        "My broader portfolio proves I can diagnose, strategize, and build at enterprise scale — this proves I've been designing the whole time. A visual companion spanning five organizations and ten years: brand systems built as a one-person creative department, healthcare learning design where clarity is a clinical requirement, editorial design for institutional audiences, and component craft inside an enterprise design system.",
     },
-    standard: {
+    learn: {
       sections: [
         {
           heading: "The Case for Craft",
-          body: "The rest of my portfolio tells the story of what I did at enterprise scale. That work is strategic, organizational, and technical. But design leadership starts with design, and this piece is the evidence that the person building the infrastructure has been practicing the craft across every role she's held.",
+          body: "The rest of my portfolio tells the story of what I did at enterprise scale. That work is strategic, organizational, and technical. But design leadership starts with design, and this piece is the evidence that the person building the infrastructure has been practicing the craft across every role I've held.",
         },
         {
           heading: "Across Five Organizations",
-          body: "At Madison Ballet, I was the entire creative department — designing the full visual campaign for a workshop series across print, web, and social. At Pathway Health, I designed learning modules where incorrect comprehension has real consequences. At the State of Wisconsin Investment Board, I designed newsletters making dense institutional content legible and worth reading. At NielsenIQ, every token maps to a real design decision inside a real component.",
+          body: "At Madison Ballet, I was the entire creative department — designing the full visual campaign for workshop series' across print, web, and social. At Pathway Health, I designed learning modules where incorrect comprehension has real consequences. At the State of Wisconsin Investment Board, I designed newsletters making dense institutional content legible and worth reading. At NielsenIQ, every token maps to a real design decision inside a real component.",
         },
         {
           heading: "Where It Started",
           body: "My embroidery practice is where the systems instinct lives most visually. Every stitch is a decision about color, direction, density, and texture, and every decision affects the ones around it. A thread pulled too tight distorts the fabric. That's also how a design system works, how a brand works, how a team works. The strategy is how I lead. The craft is why I'm qualified to.",
         },
       ],
-      artifact: {
-        title: "Madison Ballet Workshop Series",
-        description:
-          "End-to-end brand ownership — a flexible visual system across print, web, and social that accommodated different workshops without losing brand recognition.",
-      },
     },
     deep: {
       modules: [
         {
           label: "Madison Ballet — Workshop Series",
-          body: "I wore every creative hat — graphic designer, marketing specialist, web designer. When the company launched a recurring workshop series, I designed the full visual campaign across print, web, and social, building a flexible system that could accommodate different instructors and dance styles without losing brand recognition. No creative director, minimal brand guidelines, near-zero budget. I was the brand.",
+          body: "I wore every creative hat — graphic designer, marketing specialist, web designer. When the company launched a recurring workshop series, I designed the full visual campaign across print, web, and social, building a flexible system that could accommodate different instructors and dance styles without losing brand recognition. No creative director, minimal brand guidelines, near-zero budget. I was the entire design, brand, and marketing departments.",
         },
         {
           label: "Pathway Health — LMS & Video",
@@ -446,24 +433,44 @@ const CASE_STUDY_DETAIL = {
         },
         {
           label: "NielsenIQ — Component & Interaction Design",
-          body: "Inside the design system is actual design work. Every token maps to a real design decision — spacing isn't arbitrary, it's a 4px system with semantic application tokens; color isn't decorative, it's a three-tier semantic hierarchy. I also designed a notifications flow accounting for multiple notification types, read and unread states, bulk actions, empty states, and progressive disclosure.",
+          body: "Inside the design system is actual design work. Every token maps to a real design decision — spacing isn't arbitrary, it's a 4px system with semantic application tokens; color isn't decorative, it's a three-tier semantic hierarchy. I designed a notifications flow accounting for multiple notification types, read and unread states, bulk actions, empty states, and progressive disclosure.",
         },
       ],
       artifacts: [
         {
           title: "Madison Ballet Campaign",
           description:
-            "Multi-surface brand system across print, web, and social for a recurring workshop series.",
+            "Multi-event sub-brand system across social for varied workshop series.",
+          image: <img src="/public/workshopposter.jpeg" alt="Madison Ballet Workshop Poster" />,
+          image: <img src="/public/workshopagenda.png" alt="Madison Ballet Workshop Agenda" />,
+          image: <img src="/public/workshopteacher.png" alt="Madison Ballet Workshop Teacher page" />,
         },
         {
           title: "Pathway Health Learning Modules",
           description:
             "LMS design and video content for clinical and administrative healthcare audiences.",
+          url: "https://youtube.com/playlist?list=PL7OaUzWROfdNz0AK0goedR9G3TdpDe9Dy&si=nSgIx_kSB0XNeHA3",
         },
         {
           title: "NielsenIQ Notifications Flow",
           description:
             "End-to-end interaction design for the flagship product's notification system.",
+          description: "password: NIQ",
+          url: "https://www.figma.com/proto/xPkpGgEZG2LjeG97zs63w7/Notifications-Alerts-Panel?node-id=517-196193&viewport=154%2C150%2C0.03&t=OQvpMUMZkoblo3HO-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=517%3A204500&show-proto-sidebar=1&page-id=1%3A10",
+        },
+        { 
+          title: "SWIB Newsletter Design", 
+          description: "Institutional newsletter design for an investment firm audience.",
+          pdf: <a href="/artifacts/E&INewsletter.pdf" target="_blank">View Newsletter</a>
+        },
+        {
+          title: "Embroidered Clothing", 
+          description: "Custom made clothing created via hand embroidery.", 
+          image: <img src="/public/stargazer.png" alt="A custom shirt for a BFA art show" />,
+          image: <img src="/public/sarbear.png" alt="A bear sweatshirt" />,
+          image: <img src="/public/witchy.png" alt="A witchy trio on a sweatshirt" />,
+          image: <img src="/public/shakespeare.png" alt="A shakespearean sweatshirt" />,
+          image: <img src="/public/cranes.png" alt="A crane composition on a jacket" />,
         },
       ],
     },
@@ -475,8 +482,8 @@ const CASE_STUDY_DETAIL = {
 // ═══════════════════════════════════════════
 
 const DEPTH_OPTIONS = [
-  { key: "lite", label: "Lite" },
-  { key: "standard", label: "Standard" },
+  { key: "overview", label: "Overview" },
+  { key: "learn", label: "Learn More" },
   { key: "deep", label: "Deep Dive" },
 ];
 
@@ -564,7 +571,7 @@ function ArtifactCard({ artifact }) {
 }
 
 function CaseStudyPage({ slug, emphasize, onBack }) {
-  const [depth, setDepth] = useState("lite");
+  const [depth, setDepth] = useState("overview");
   const [visible, setVisible] = useState(false);
   const project = PROJECTS[slug];
   const detail = CASE_STUDY_DETAIL[slug];
@@ -594,7 +601,7 @@ function CaseStudyPage({ slug, emphasize, onBack }) {
         opacity: visible ? 1 : 0,
         transition: "opacity 0.5s ease",
         fontFamily:
-          '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+          '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
       }}
     >
       {/* Header */}
@@ -732,8 +739,8 @@ function CaseStudyPage({ slug, emphasize, onBack }) {
         </div>
 
         <div style={{ borderTop: `1px solid ${C.border}`, paddingTop: 40 }}>
-          {/* ─── LITE ─── */}
-          {depth === "lite" && (
+          {/* ─── OVERVIEW ─── */}
+          {depth === "overview" && (
             <div>
               <p
                 style={{
@@ -743,7 +750,7 @@ function CaseStudyPage({ slug, emphasize, onBack }) {
                   margin: 0,
                 }}
               >
-                {detail.lite.summary}
+                {detail.overview.summary}
               </p>
               <div
                 style={{
@@ -756,16 +763,16 @@ function CaseStudyPage({ slug, emphasize, onBack }) {
                 }}
               >
                 <p style={{ fontSize: 14, color: C.textMid, margin: "0 0 12px 0" }}>
-                  Want more detail? Switch to Standard or Deep Dive above.
+                  Want more detail? Switch to Learn More or Deep Dive above.
                 </p>
               </div>
             </div>
           )}
 
-          {/* ─── STANDARD ─── */}
-          {depth === "standard" && (
+          {/* ─── LEARN MORE ─── */}
+          {depth === "learn" && (
             <div>
-              {detail.standard.sections.map((section) => (
+              {detail.learn.sections.map((section) => (
                 <div key={section.heading} style={{ marginBottom: 32 }}>
                   <h2
                     style={{
@@ -789,7 +796,7 @@ function CaseStudyPage({ slug, emphasize, onBack }) {
                   </p>
                 </div>
               ))}
-              {detail.standard.artifact && (
+              {detail.learn.artifact && (
                 <div style={{ marginTop: 40 }}>
                   <h3
                     style={{
@@ -803,7 +810,7 @@ function CaseStudyPage({ slug, emphasize, onBack }) {
                   >
                     Artifact
                   </h3>
-                  <ArtifactCard artifact={detail.standard.artifact} />
+                  <ArtifactCard artifact={detail.learn.artifact} />
                 </div>
               )}
             </div>
@@ -812,7 +819,7 @@ function CaseStudyPage({ slug, emphasize, onBack }) {
           {/* ─── DEEP DIVE ─── */}
           {depth === "deep" && (
             <div>
-              {detail.standard.sections.map((section) => (
+              {detail.learn.sections.map((section) => (
                 <div key={section.heading} style={{ marginBottom: 32 }}>
                   <h2
                     style={{
@@ -1003,7 +1010,7 @@ function LandingPage({ onStart }) {
         justifyContent: "center",
         padding: 24,
         fontFamily:
-          '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+          '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
         position: "relative",
         overflow: "hidden",
       }}
@@ -1075,7 +1082,7 @@ function LandingPage({ onStart }) {
             }}
           >
             <img
-              src="photo-placeholder.jpg"
+              src="headshot.jpeg"
               alt="Brenna Stevens"
               style={{
                 width: "100%",
@@ -1949,7 +1956,7 @@ function PortfolioPage({ responses, onStartOver, onOpenCaseStudy, onOpenAbout })
         opacity: visible ? 1 : 0,
         transition: "opacity 0.5s ease",
         fontFamily:
-          '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+          '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
       }}
     >
       {/* Header */}
@@ -2346,10 +2353,15 @@ function PortfolioPage({ responses, onStartOver, onOpenCaseStudy, onOpenAbout })
 function PhotoCarouselWithBio() {
   const [activePhoto, setActivePhoto] = useState(0);
   const photos = [
-    { label: "Photo 1", caption: "Add your favorite photo" },
-    { label: "Photo 2", caption: "At work or play" },
-    { label: "Photo 3", caption: "Something personal" },
-    { label: "Photo 4", caption: "A creative moment" },
+    { src: "/IMG_0009.jpeg", caption: "Gringotts vault" },
+    { src: "/IMG_3163.jpeg", caption: "Reading with the cat" },
+    { src: "/IMG_7452.jpeg", caption: "Record shopping" },
+    { src: "/IMG_1207.jpeg", caption: "Summer day" },
+    { src: "/IMG_8411.jpeg", caption: "Girls night out" },
+    { src: "/IMG_5841.jpeg", caption: "Ice skating" },
+    { src: "/IMG_8567.jpeg", caption: "Candlelit dinner guest" },
+    { src: "/stargazer.jpeg", caption: "NYC vibes" },
+    { src: "/witchy.jpeg", caption: "Concert night" },
   ];
 
   // Auto-advance carousel
@@ -2388,23 +2400,18 @@ function PhotoCarouselWithBio() {
             position: "relative",
           }}
         >
-          <span
+          <img
+            src={photos[activePhoto].src}
+            alt={photos[activePhoto].caption}
             style={{
-              color: "rgba(255,255,255,0.5)",
-              fontSize: 14,
-              fontWeight: 500,
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              position: "absolute",
+              top: 0,
+              left: 0,
             }}
-          >
-            {photos[activePhoto].label}
-          </span>
-          <span
-            style={{
-              color: "rgba(255,255,255,0.35)",
-              fontSize: 12,
-            }}
-          >
-            {photos[activePhoto].caption}
-          </span>
+          />
         </div>
 
         {/* Carousel Dots */}
@@ -2543,7 +2550,7 @@ function AboutPage({ onBack }) {
         opacity: visible ? 1 : 0,
         transition: "opacity 0.5s ease",
         fontFamily:
-          '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+          '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
       }}
     >
       {/* Header */}

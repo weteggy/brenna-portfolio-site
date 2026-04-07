@@ -232,7 +232,7 @@ const CASE_STUDY_DETAIL = {
         },
         {
           heading: "What I Did",
-          body: "I started doing diagnostic work in July 2025 — five months before I had the design system lead title. Rather than leading with presentations, I began having direct one-on-one conversations with the product leaders who controlled prioritization. I never pitched "design tokens" to leadership. I led with their problems: users unhappy with inconsistency, convergence costs ballooning without shared infrastructure, teams duplicating effort. In parallel, I built a three-tier token architecture covering color, typography, spacing, elevation, radius, and motion.",
+          body: "I started doing diagnostic work in July 2025 — five months before I had the design system lead title. Rather than leading with presentations, I began having direct one-on-one conversations with the product leaders who controlled prioritization. I never pitched 'design tokens' to leadership. I led with their problems: users unhappy with inconsistency, convergence costs ballooning without shared infrastructure, teams duplicating effort. In parallel, I built a three-tier token architecture covering color, typography, spacing, elevation, radius, and motion.",
         },
         {
           heading: "What Changed",
@@ -295,7 +295,7 @@ const CASE_STUDY_DETAIL = {
         },
         {
           heading: "The Parallel Path",
-          body: "I designed a parallel path: rather than fighting for capacity within CUIC's constrained roadmap, I proposed a spec-driven component architecture generating implementations across Angular, React, Vue, and Lit from a single source of truth. I validated the approach with five proof-of-concept components across all four frameworks before committing the full team. I brought CUIC's tech lead in as an architecture advisor, changing the conversation from "they're building something separate" to "they're building on shared architectural decisions."",
+          body: "I designed a parallel path: rather than fighting for capacity within CUIC's constrained roadmap, I proposed a spec-driven component architecture generating implementations across Angular, React, Vue, and Lit from a single source of truth. I validated the approach with five proof-of-concept components across all four frameworks before committing the full team. I brought CUIC's tech lead in as an architecture advisor, changing the conversation from 'they're building something separate' to 'they're building on shared architectural decisions.'",
         },
         {
           heading: "Getting the CPO Meeting",

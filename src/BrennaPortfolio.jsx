@@ -619,10 +619,20 @@ function ArtifactCard({ artifact }) {
   const [open, setOpen] = useState(false);
   const hasMedia = artifact.image || artifact.images || artifact.video || artifact.url || artifact.pdf;
 
+  const isLinkOnly = artifact.url && !artifact.image && !artifact.images && !artifact.video;
+
+  const handleClick = () => {
+    if (isLinkOnly) {
+      window.open(artifact.url, "_blank", "noopener,noreferrer");
+    } else if (hasMedia) {
+      setOpen(true);
+    }
+  };
+
   return (
     <>
       <div
-        onClick={() => hasMedia && setOpen(true)}
+        onClick={handleClick}
         style={{
           background: C.bg,
           border: `1px solid ${C.border}`,
@@ -650,7 +660,7 @@ function ArtifactCard({ artifact }) {
         </div>
         {hasMedia && (
           <div style={{ fontSize: 12, color: C.accent, marginTop: 8, fontWeight: 500 }}>
-            Click to view {"→"}
+            {isLinkOnly ? "Open link" : "Click to view"} {"→"}
           </div>
         )}
       </div>
@@ -1336,7 +1346,7 @@ function HowItWorksModal({ onClose }) {
             narrative.
           </p>
           <p style={{ margin: "0 0 16px 0" }}>
-            This mirrors how a well-built design system works: structured
+            This mirrors how a well-built design or brand system works: structured
             components, semantic metadata, composed differently depending on
             context. The portfolio is a small-scale proof of that idea.
           </p>

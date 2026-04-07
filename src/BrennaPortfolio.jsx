@@ -441,9 +441,11 @@ const CASE_STUDY_DETAIL = {
           title: "Madison Ballet Campaign",
           description:
             "Multi-event sub-brand system across social for varied workshop series.",
-          image: <img src="/public/workshopposter.jpeg" alt="Madison Ballet Workshop Poster" />,
-          image: <img src="/public/workshopagenda.png" alt="Madison Ballet Workshop Agenda" />,
-          image: <img src="/public/workshopteacher.png" alt="Madison Ballet Workshop Teacher page" />,
+          images: [
+            <img src="/public/workshopposter.jpeg" alt="Madison Ballet Workshop Poster" />,
+            <img src="/public/workshopagenda.png" alt="Madison Ballet Workshop Agenda" />,
+            <img src="/public/workshopteacher.png" alt="Madison Ballet Workshop Teacher page" />,
+          ],
         },
         {
           title: "Pathway Health Learning Modules",
@@ -455,7 +457,7 @@ const CASE_STUDY_DETAIL = {
           title: "NielsenIQ Notifications Flow",
           description:
             "End-to-end interaction design for the flagship product's notification system.",
-          description: "password: NIQ",
+          note: "password: NIQ",
           url: "https://www.figma.com/proto/xPkpGgEZG2LjeG97zs63w7/Notifications-Alerts-Panel?node-id=517-196193&viewport=154%2C150%2C0.03&t=OQvpMUMZkoblo3HO-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=517%3A204500&show-proto-sidebar=1&page-id=1%3A10",
         },
         { 
@@ -466,11 +468,13 @@ const CASE_STUDY_DETAIL = {
         {
           title: "Embroidered Clothing", 
           description: "Custom made clothing created via hand embroidery.", 
-          image: <img src="/public/stargazer.png" alt="A custom shirt for a BFA art show" />,
-          image: <img src="/public/sarbear.png" alt="A bear sweatshirt" />,
-          image: <img src="/public/witchy.png" alt="A witchy trio on a sweatshirt" />,
-          image: <img src="/public/shakespeare.png" alt="A shakespearean sweatshirt" />,
-          image: <img src="/public/cranes.png" alt="A crane composition on a jacket" />,
+          images: [
+            <img src="/public/stargazer.png" alt="A custom shirt for a BFA art show" />,
+            <img src="/public/sarbear.png" alt="A bear sweatshirt" />,
+            <img src="/public/witchy.png" alt="A witchy trio on a sweatshirt" />,
+            <img src="/public/shakespeare.png" alt="A shakespearean sweatshirt" />,
+            <img src="/public/cranes.png" alt="A crane composition on a jacket" />,
+          ],
         },
       ],
     },
@@ -539,33 +543,55 @@ function ArtifactCard({ artifact }) {
         borderRadius: 12,
         padding: 20,
         display: "flex",
+        flexDirection: "column",
         gap: 16,
-        alignItems: "flex-start",
       }}
     >
-      <div
-        style={{
-          width: 40,
-          height: 40,
-          borderRadius: 10,
-          background: C.coralSoft,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          fontSize: 18,
-          flexShrink: 0,
-        }}
-      >
-        {"\u{1F4CE}"}
-      </div>
-      <div>
-        <div style={{ fontSize: 15, fontWeight: 600, color: C.text, marginBottom: 4 }}>
-          {artifact.title}
+      <div style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
+        <div
+          style={{
+            width: 40,
+            height: 40,
+            borderRadius: 10,
+            background: C.coralSoft,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            fontSize: 18,
+            flexShrink: 0,
+          }}
+        >
+          {"\u{1F4CE}"}
         </div>
-        <div style={{ fontSize: 13, color: C.textMid, lineHeight: 1.5 }}>
-          {artifact.description}
+        <div>
+          <div style={{ fontSize: 15, fontWeight: 600, color: C.text, marginBottom: 4 }}>
+            {artifact.title}
+          </div>
+          <div style={{ fontSize: 13, color: C.textMid, lineHeight: 1.5 }}>
+            {artifact.description}
+          </div>
+          {artifact.note && (
+            <div style={{ fontSize: 12, color: C.textMid, marginTop: 4, fontStyle: "italic" }}>
+              {artifact.note}
+            </div>
+          )}
+          {artifact.url && (
+            <a href={artifact.url} target="_blank" rel="noopener noreferrer" style={{ fontSize: 13, color: C.coral, marginTop: 6, display: "inline-block" }}>
+              View project
+            </a>
+          )}
+          {artifact.pdf && <div style={{ marginTop: 6 }}>{artifact.pdf}</div>}
         </div>
       </div>
+      {artifact.video && <div style={{ borderRadius: 8, overflow: "hidden" }}>{artifact.video}</div>}
+      {artifact.image && <div style={{ borderRadius: 8, overflow: "hidden" }}>{artifact.image}</div>}
+      {artifact.images && (
+        <div style={{ display: "grid", gridTemplateColumns: `repeat(${Math.min(artifact.images.length, 3)}, 1fr)`, gap: 8 }}>
+          {artifact.images.map((img, i) => (
+            <div key={i} style={{ borderRadius: 8, overflow: "hidden" }}>{img}</div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

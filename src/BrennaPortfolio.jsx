@@ -243,7 +243,7 @@ const CASE_STUDY_DETAIL = {
         title: "Project Board",
         description:
           "The Roadmap I built from scratch to track the design system's work for the first time, with milestones and goals mapped to the PI schedule.",
-        image: <img src="/public/FoundationsRoadmap.png" alt="Foundations project roadmap" />,
+        image: <img src="/FoundationsRoadmap.png" alt="Foundations project roadmap" />,
       },
     },
     deep: {
@@ -266,19 +266,19 @@ const CASE_STUDY_DETAIL = {
           title: "Design System Usability Survey",
           description:
             "The survey and readout that was run internally to validate the diagnosis with both users and stakeholders — connecting user complaints to a lack of shared infrastructure and a missing design language.",
-          image: <img src="/public/SUS.png" alt="System usability survey readout" />,
+          image: <img src="/SUS.png" alt="System usability survey readout" />,
         },
         {
           title: "Project Board",
           description:
             "The Roadmap I built from scratch to track the design system's work for the first time, with milestones and goals mapped to the PI schedule.",
-          image: <img src="/public/FoundationsRoadmap.png" alt="Foundations project roadmap" />,
+          image: <img src="/FoundationsRoadmap.png" alt="Foundations project roadmap" />,
         },
         {
           title: "Before & After",
           description:
             "Side-by-side comparisons showing the previous color style system in Figma versus the simplified semantic token system in action.",
-          image: <img src="/public/LegacyvsNewTokens.png" alt="Before and after of the color token system in Figma" />,
+          image: <img src="/Legacy vs New Tokens.png" alt="Before and after of the color token system in Figma" />,
         },
       ],
     },
@@ -310,7 +310,7 @@ const CASE_STUDY_DETAIL = {
         title: "CPO Presentation",
         description:
           "The strategic narrative built for the executive meeting: the AI-readiness gap, side-by-side comparisons of AI output with structured versus unstructured design systems, and a specific ask for dedicated resources.",
-        video: <video src="/public/CPOppt.mp4" controls width="100%" />,
+        video: <video src="/CPO ppt.mp4" controls width="100%" />,
       },
     },
     deep: {
@@ -333,13 +333,13 @@ const CASE_STUDY_DETAIL = {
           title: "CPO Presentation",
           description:
             "The strategic narrative built for the executive meeting: the AI-readiness gap, side-by-side comparisons of AI output with structured versus unstructured design systems, and a specific ask for dedicated resources.",
-          video: <video src="/public/CPOppt.mp4" controls width="100%" />,
+          video: <video src="/CPO ppt.mp4" controls width="100%" />,
         },
         {
           title: "V2 Project Plan",
           description:
             "Three parallel swimlanes across four phases and seven sprints, with sprint-by-sprint deliverables and entry/exit criteria.",
-          image: <img src="/public/V2ProjectPlan.png" alt="V2 project timeline" />,
+          image: <img src="/V2 Project Plan.png" alt="V2 project timeline" />,
         },
       ],
     },
@@ -371,7 +371,7 @@ const CASE_STUDY_DETAIL = {
         title: "Vibe-Coded Project Hub",
         description:
           "The project management interface I built to onboard stakeholders.",
-        image: <img src="/public/v2website.png" alt="V2 project website" />,
+        image: <img src="/v2website.png" alt="V2 project website" />,
         url: "https://v2-project-blue.vercel.app/#"
       },
     },
@@ -395,7 +395,7 @@ const CASE_STUDY_DETAIL = {
           title: "Vibe-Coded Project Hub",
           description:
             "The project management interface I built to onboard stakeholders.",
-          image: <img src="/public/v2website.png" alt="V2 project website" />,
+          image: <img src="/v2website.png" alt="V2 project website" />,
           url: "https://v2-project-blue.vercel.app/#"
         },
       ],
@@ -446,9 +446,9 @@ const CASE_STUDY_DETAIL = {
           description:
             "Multi-event sub-brand system across social for varied workshop series.",
           images: [
-            <img src="/public/workshopposter.jpeg" alt="Madison Ballet Workshop Poster" />,
-            <img src="/public/workshopagenda.png" alt="Madison Ballet Workshop Agenda" />,
-            <img src="/public/workshopteacher.png" alt="Madison Ballet Workshop Teacher page" />,
+            <img src="/workshopposter.jpg" alt="Madison Ballet Workshop Poster" />,
+            <img src="/workshopagenda.jpg" alt="Madison Ballet Workshop Agenda" />,
+            <img src="/workshopteacher.jpg" alt="Madison Ballet Workshop Teacher page" />,
           ],
         },
         {
@@ -467,17 +467,17 @@ const CASE_STUDY_DETAIL = {
         { 
           title: "SWIB Newsletter Design", 
           description: "Institutional newsletter design for an investment firm audience.",
-          pdf: <a href="/artifacts/E&INewsletter.pdf" target="_blank">View Newsletter</a>
+          pdf: <a href="/E&I Newsletter.pdf" target="_blank" rel="noopener noreferrer">View Newsletter</a>
         },
         {
           title: "Embroidered Clothing", 
           description: "Custom made clothing created via hand embroidery.", 
           images: [
-            <img src="/public/stargazer.png" alt="A custom shirt for a BFA art show" />,
-            <img src="/public/sarbear.png" alt="A bear sweatshirt" />,
-            <img src="/public/witchy.png" alt="A witchy trio on a sweatshirt" />,
-            <img src="/public/shakespeare.png" alt="A shakespearean sweatshirt" />,
-            <img src="/public/cranes.png" alt="A crane composition on a jacket" />,
+            <img src="/stargazer.jpeg" alt="A custom shirt for a BFA art show" />,
+            <img src="/sarbear.png" alt="A bear sweatshirt" />,
+            <img src="/witchy.jpeg" alt="A witchy trio on a sweatshirt" />,
+            <img src="/shakespeare.jpeg" alt="A shakespearean sweatshirt" />,
+            <img src="/cranes.jpeg" alt="A crane composition on a jacket" />,
           ],
         },
       ],
@@ -2297,8 +2297,8 @@ function PhotoCarouselWithBio() {
     { src: "/IMG_8411.jpeg", caption: "Girls night out" },
     { src: "/IMG_5841.jpeg", caption: "Ice skating" },
     { src: "/IMG_8567.jpeg", caption: "Candlelit dinner guest" },
-    { src: "/stargazer.jpeg", caption: "NYC vibes" },
-    { src: "/witchy.jpeg", caption: "Concert night" },
+    { src: "/IMG_0072.jpeg", caption: "NYC vibes" },
+    { src: "/IMG_0048.jpeg", caption: "Concert night" },
   ];
 
   // Auto-advance carousel

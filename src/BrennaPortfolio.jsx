@@ -2142,7 +2142,7 @@ function PortfolioPage({ responses, onStartOver, onOpenCaseStudy, onOpenAbout })
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+              gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
               gap: 20,
             }}
           >
@@ -2185,7 +2185,8 @@ function PortfolioPage({ responses, onStartOver, onOpenCaseStudy, onOpenAbout })
                   borderRadius: 12,
                   padding: 20,
                   border: `1px solid ${C.border}`,
-                  minHeight: 180,
+                  overflow: "hidden",
+                  wordBreak: "break-word",
                 }}
               >
                 <span className="material-icons-outlined" style={{ fontSize: 28, marginBottom: 8, display: "block", color: C.accent }}>{cap.icon}</span>
@@ -2504,10 +2505,10 @@ function PhotoCarouselWithBio() {
             margin: "0 0 16px 0",
           }}
         >
-          My background spans digital media design, multimedia communications,
-          film, and language {"—"} a breadth that shows up in how I approach
-          systems work: through narrative, visual thinking, and the ability to
-          translate across disciplines.
+          I'm Brenna, a Chicago-based designer currently leading the global design 
+          system at NielsenIQ. I've spendt my whole life making things by hand, from
+          embroidery to crochet to digital design, and that practice has shaped how
+          I approach design more than anything on my resume.
         </p>
         <p
           style={{
@@ -2517,13 +2518,11 @@ function PhotoCarouselWithBio() {
             margin: "0 0 16px 0",
           }}
         >
-          At NielsenIQ, I inherited a design system that had been stalled for
-          four years. I diagnosed the structural reasons it hadn{"'"}t moved,
-          built a token architecture that introduced a new design language across
-          the org, and framed the system{"'"}s value in terms the CPO acted
-          on. I assembled a cross-functional team of nine and delivered 40+
-          production-ready components in a single quarter using AI-assisted
-          development.
+          Craft teaches you something that's hard to learn any other way: the
+          quality of the work lives in the details people don't consciously notice.
+          The willingness to rip someting out and redo it rather than letting a 
+          small imprecision compound - and knowing when to let it blend into the 
+          bigger picture - is the instinct that shows up in everything I build.
         </p>
         <p
           style={{
@@ -2533,10 +2532,24 @@ function PhotoCarouselWithBio() {
             margin: 0,
           }}
         >
-          I think the next era of design systems is about building for two
-          audiences simultaneously: human developers and AI tools. The leaders
-          who understand that intersection will define how products get built.
-          That{"'"}s the work I{"'"}m doing.
+          I'm also, for better or worse, intensely organized. I enjoy seeing the
+          result of building something that's both beautiful and systemically sound.
+          That pull between the handmade and the highly structured is what drew me
+          to design in teh first place. 
+        </p>
+        <p
+          style={{
+            fontSize: 15,
+            color: "rgba(255,255,255,0.9)",
+            lineHeight: 1.75,
+            margin: 0,
+          }}
+        >
+          The work that's pulling me in lately is what happens when you build a
+          system that's meant to be consumed by both AI and humans alike. What 
+          does design quality get defined when the users are reading both structure 
+          and aesthetics? The implications are still unfolding and I find them 
+          endlessly fascinating to explore. 
         </p>
       </div>
     </section>
@@ -2655,8 +2668,8 @@ function AboutPage({ onBack }) {
               lineHeight: 1.6,
             }}
           >
-            Design systems leader, visual thinker, and the person who built a
-            design language from scratch for a $6B company.
+            Design leader, embroiderer, and the kind of person who finds
+            deep calm in a well-organized system.
           </p>
 
           {/* Link Buttons */}
@@ -2669,7 +2682,7 @@ function AboutPage({ onBack }) {
             }}
           >
             <a
-              href="mailto:brenna.stevens@nielseniq.com"
+              href="mailto:brennastevens10@gmail.com"
               style={linkButtonStyle}
               onMouseEnter={(e) => {
                 e.currentTarget.style.background = "rgba(255,255,255,0.3)";
@@ -2683,7 +2696,7 @@ function AboutPage({ onBack }) {
               Email
             </a>
             <a
-              href="https://linkedin.com/in/brennastevens"
+              href="https://www.linkedin.com/in/brenna-stevens-066039123/"
               target="_blank"
               rel="noopener noreferrer"
               style={linkButtonStyle}
@@ -2699,7 +2712,9 @@ function AboutPage({ onBack }) {
               LinkedIn
             </a>
             <a
-              href="#resume"
+              href="/public/BrennaStevensResume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               style={linkButtonStyle}
               onMouseEnter={(e) => {
                 e.currentTarget.style.background = "rgba(255,255,255,0.3)";

@@ -460,24 +460,24 @@ const CASE_STUDY_DETAIL = {
         {
           title: "NielsenIQ Notifications Flow",
           description:
-            "End-to-end interaction design for the flagship product's notification system.",
+            "End-to-end interaction design for the flagship product's notification system. Password: NIQ",
           note: "password: NIQ",
           url: "https://www.figma.com/proto/xPkpGgEZG2LjeG97zs63w7/Notifications-Alerts-Panel?node-id=517-196193&viewport=154%2C150%2C0.03&t=OQvpMUMZkoblo3HO-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=517%3A204500&show-proto-sidebar=1&page-id=1%3A10",
         },
         { 
-          title: "SWIB Newsletter Design", 
+          title: "SWIB Newsletter Design",
           description: "Institutional newsletter design for an investment firm audience.",
-          pdf: <a href="/E&I Newsletter.pdf" target="_blank" rel="noopener noreferrer">View Newsletter</a>
+          url: "/E&I Newsletter.pdf"
         },
         {
           title: "Embroidered Clothing", 
           description: "Custom made clothing created via hand embroidery.", 
           images: [
+            <img src="/cranes.jpeg" alt="A crane composition on a jacket" />,
+            <img src="/witchy.jpeg" alt="A witchy trio on a sweatshirt" />,
             <img src="/stargazer.jpeg" alt="A custom shirt for a BFA art show" />,
             <img src="/sarbear.png" alt="A bear sweatshirt" />,
-            <img src="/witchy.jpeg" alt="A witchy trio on a sweatshirt" />,
             <img src="/shakespeare.jpeg" alt="A shakespearean sweatshirt" />,
-            <img src="/cranes.jpeg" alt="A crane composition on a jacket" />,
           ],
         },
       ],
@@ -2297,8 +2297,8 @@ function PhotoCarouselWithBio() {
     { src: "/IMG_8411.jpeg", caption: "Girls night out" },
     { src: "/IMG_5841.jpeg", caption: "Ice skating" },
     { src: "/IMG_8567.jpeg", caption: "Candlelit dinner guest" },
-    { src: "/IMG_0072.jpeg", caption: "NYC vibes" },
-    { src: "/IMG_0048.jpeg", caption: "Concert night" },
+    { src: "/IMG_0072.JPG", caption: "NYC vibes" },
+    { src: "/IMG_0048.JPG", caption: "Concert night" },
   ];
 
   // Auto-advance carousel

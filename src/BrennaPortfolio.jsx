@@ -1185,7 +1185,7 @@ function LandingPage({ onStart }) {
                 transition: "all 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s",
               }}
             >
-              Design Systems &middot; Brand &middot; Visual Design &middot; AI
+              Brand Systems &middot; Design Leadership &middot; Visual Strategy &middot; AI
             </p>
 
             {/* CTA Button */}

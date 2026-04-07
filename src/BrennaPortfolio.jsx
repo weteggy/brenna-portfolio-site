@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useRef } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 
 // ─── Color palette (warm & approachable) ───
 const C = {
@@ -37,24 +37,13 @@ const STEPS = [
   },
   {
     id: "priority",
-    question: "What matters most to you when evaluating for this role?",
+    question: "What matters most to you when exploring my portfolio?",
     subtitle: null,
     suggestions: [
       { label: "Strategic vision & executive influence" },
       { label: "Design craft & brand thinking" },
       { label: "Cross-functional leadership & delivery" },
       { label: "Technical innovation & AI fluency" },
-    ],
-  },
-  {
-    id: "casestudy",
-    question: "Where would you like to start?",
-    subtitle: "Each tells a different part of the story.",
-    suggestions: [
-      { label: "Diagnose", desc: "See how I uncovered an org-wide problem", value: "diagnose" },
-      { label: "Strategize", desc: "See how I got my argument straight to the CPO", value: "strategize" },
-      { label: "Build", desc: "See how I build with AI", value: "build" },
-      { label: "Design", desc: "See my design skills in action", value: "design" },
     ],
   },
 ];
@@ -66,7 +55,6 @@ const STEPS = [
 function getCustomizedContent(responses) {
   const audience = (responses[0]?.answer || "").toLowerCase();
   const priority = (responses[1]?.answer || "").toLowerCase();
-  const caseStudy = (responses[2]?.answer || "").toLowerCase();
 
   // ── Audience signals ──
   const isHiringManager = audience.includes("hiring");
@@ -81,10 +69,6 @@ function getCustomizedContent(responses) {
   const wantsCraft = priority.includes("craft") || priority.includes("brand");
   const wantsLeadership = priority.includes("cross-functional") || priority.includes("leadership") || priority.includes("delivery");
   const wantsAI = priority.includes("ai") || priority.includes("innovation");
-
-  // ── Selected case study ──
-  const caseMap = { diagnose: "diagnose", strategize: "strategize", build: "build", design: "design" };
-  const selected = Object.keys(caseMap).find((k) => caseStudy.includes(k)) || "diagnose";
 
   // ── Headline adapts to audience + priority ──
   const headline = isEvaluator && wantsCraft
@@ -123,8 +107,8 @@ function getCustomizedContent(responses) {
     ? "outcomes"
     : "leadership";
 
-  // ── Project order: selected case first, rest ordered by relevance ──
-  const defaultOrder = wantsCraft
+  // ── Project order based on priority ──
+  const projectOrder = wantsCraft
     ? ["design", "diagnose", "build", "strategize"]
     : wantsStrategy
     ? ["strategize", "diagnose", "build", "design"]
@@ -134,7 +118,27 @@ function getCustomizedContent(responses) {
     ? ["build", "strategize", "diagnose", "design"]
     : ["diagnose", "strategize", "build", "design"];
 
-  const projectOrder = [selected, ...defaultOrder.filter((p) => p !== selected)];
+  // ── Curated capabilities (3 most relevant) ──
+  const allCapabilities = [
+    { icon: "palette", title: "Design Language & Brand", desc: "Three-tier token architecture, OKLCH color systems, design language development, multi-product theming, visual identity" },
+    { icon: "groups", title: "Leadership & Influence", desc: "Cross-functional team leadership (9 contributors, 0 direct reports), executive communication, stakeholder navigation, adaptive messaging" },
+    { icon: "widgets", title: "Design Systems", desc: "Component libraries, governance, multi-product support, spec-driven architecture, framework-agnostic design" },
+    { icon: "smart_toy", title: "AI + Design", desc: "AI-assisted development workflows, machine-readable documentation, spec-driven generation across 4 frameworks" },
+    { icon: "bar_chart", title: "Data Visualization", desc: "OKLCH-based chart palettes, ag-Grid + Highcharts theming, categorical/sequential/diverging color systems" },
+    { icon: "brush", title: "Visual Design Craft", desc: "Brand systems, editorial design, digital learning, print, web, social, video, interaction design, component craft" },
+  ];
+
+  const capabilityOrder = wantsCraft
+    ? [5, 0, 4] // Visual Design Craft, Design Language, Data Viz
+    : wantsStrategy
+    ? [1, 0, 2] // Leadership, Design Language, Design Systems
+    : wantsAI
+    ? [3, 2, 0] // AI + Design, Design Systems, Design Language
+    : wantsLeadership
+    ? [1, 2, 3] // Leadership, Design Systems, AI + Design
+    : [2, 0, 1]; // Design Systems, Design Language, Leadership
+
+  const capabilities = capabilityOrder.map((i) => allCapabilities[i]);
 
   // ── CTA heading adapts to audience ──
   const ctaHeading = isEvaluator
@@ -145,7 +149,7 @@ function getCustomizedContent(responses) {
     ? "Let's Connect"
     : "Let's Connect";
 
-  return { headline, focus, emphasize, projectOrder, ctaHeading };
+  return { headline, focus, emphasize, projectOrder, ctaHeading, capabilities };
 }
 
 // ═══════════════════════════════════════════
@@ -487,7 +491,6 @@ const CASE_STUDY_DETAIL = {
 
 const DEPTH_OPTIONS = [
   { key: "overview", label: "Overview" },
-  { key: "learn", label: "Learn More" },
   { key: "deep", label: "Deep Dive" },
 ];
 
@@ -534,65 +537,128 @@ function SegmentToggle({ value, onChange }) {
 // ─── CASE STUDY PAGE ─────────────────────
 // ═══════════════════════════════════════════
 
-function ArtifactCard({ artifact }) {
+function ArtifactModal({ artifact, onClose }) {
+  const hasMedia = artifact.image || artifact.images || artifact.video || artifact.url || artifact.pdf;
+  if (!hasMedia) return null;
+
   return (
     <div
       style={{
-        background: C.bg,
-        border: `1px solid ${C.border}`,
-        borderRadius: 12,
-        padding: 20,
+        position: "fixed",
+        inset: 0,
+        background: "rgba(0,0,0,0.6)",
         display: "flex",
-        flexDirection: "column",
-        gap: 16,
+        alignItems: "center",
+        justifyContent: "center",
+        zIndex: 200,
+        padding: 24,
       }}
+      onClick={onClose}
     >
-      <div style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
-        <div
-          style={{
-            width: 40,
-            height: 40,
-            borderRadius: 10,
-            background: C.coralSoft,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            fontSize: 18,
-            flexShrink: 0,
-          }}
-        >
-          {"\u{1F4CE}"}
+      <div
+        onClick={(e) => e.stopPropagation()}
+        style={{
+          background: C.card,
+          borderRadius: 16,
+          padding: 24,
+          maxWidth: 720,
+          width: "100%",
+          maxHeight: "85vh",
+          overflow: "auto",
+          boxShadow: "0 20px 60px rgba(0,0,0,0.25)",
+        }}
+      >
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16 }}>
+          <div style={{ fontSize: 17, fontWeight: 700, color: C.text }}>{artifact.title}</div>
+          <button
+            onClick={onClose}
+            style={{
+              background: "none",
+              border: "none",
+              fontSize: 22,
+              color: C.textLight,
+              cursor: "pointer",
+              padding: 4,
+            }}
+          >
+            {"×"}
+          </button>
         </div>
-        <div>
-          <div style={{ fontSize: 15, fontWeight: 600, color: C.text, marginBottom: 4 }}>
-            {artifact.title}
-          </div>
-          <div style={{ fontSize: 13, color: C.textMid, lineHeight: 1.5 }}>
-            {artifact.description}
-          </div>
+        <div style={{ fontSize: 14, color: C.textMid, lineHeight: 1.5, marginBottom: 16 }}>
+          {artifact.description}
           {artifact.note && (
-            <div style={{ fontSize: 12, color: C.textMid, marginTop: 4, fontStyle: "italic" }}>
-              {artifact.note}
-            </div>
+            <span style={{ fontStyle: "italic", marginLeft: 6 }}>({artifact.note})</span>
           )}
-          {artifact.url && (
-            <a href={artifact.url} target="_blank" rel="noopener noreferrer" style={{ fontSize: 13, color: C.coral, marginTop: 6, display: "inline-block" }}>
-              View project
-            </a>
-          )}
-          {artifact.pdf && <div style={{ marginTop: 6 }}>{artifact.pdf}</div>}
         </div>
+        {artifact.video && (
+          <div style={{ borderRadius: 8, overflow: "hidden", marginBottom: 12 }}>{artifact.video}</div>
+        )}
+        {artifact.image && (
+          <div style={{ borderRadius: 8, overflow: "hidden", marginBottom: 12 }}>
+            {React.cloneElement(artifact.image, { style: { width: "100%", height: "auto", display: "block" } })}
+          </div>
+        )}
+        {artifact.images && (
+          <div style={{ display: "grid", gridTemplateColumns: `repeat(${Math.min(artifact.images.length, 3)}, 1fr)`, gap: 8, marginBottom: 12 }}>
+            {artifact.images.map((img, i) => (
+              <div key={i} style={{ borderRadius: 8, overflow: "hidden" }}>
+                {React.cloneElement(img, { style: { width: "100%", height: "auto", display: "block" } })}
+              </div>
+            ))}
+          </div>
+        )}
+        {artifact.url && (
+          <a href={artifact.url} target="_blank" rel="noopener noreferrer" style={{ fontSize: 14, color: C.coral, fontWeight: 500 }}>
+            Open in new tab {"→"}
+          </a>
+        )}
+        {artifact.pdf && <div style={{ marginTop: 8 }}>{artifact.pdf}</div>}
       </div>
-      {artifact.video && <div style={{ borderRadius: 8, overflow: "hidden" }}>{artifact.video}</div>}
-      {artifact.image && <div style={{ borderRadius: 8, overflow: "hidden" }}>{artifact.image}</div>}
-      {artifact.images && (
-        <div style={{ display: "grid", gridTemplateColumns: `repeat(${Math.min(artifact.images.length, 3)}, 1fr)`, gap: 8 }}>
-          {artifact.images.map((img, i) => (
-            <div key={i} style={{ borderRadius: 8, overflow: "hidden" }}>{img}</div>
-          ))}
-        </div>
-      )}
     </div>
+  );
+}
+
+function ArtifactCard({ artifact }) {
+  const [open, setOpen] = useState(false);
+  const hasMedia = artifact.image || artifact.images || artifact.video || artifact.url || artifact.pdf;
+
+  return (
+    <>
+      <div
+        onClick={() => hasMedia && setOpen(true)}
+        style={{
+          background: C.bg,
+          border: `1px solid ${C.border}`,
+          borderRadius: 12,
+          padding: 20,
+          cursor: hasMedia ? "pointer" : "default",
+          transition: "all 0.2s ease",
+        }}
+        onMouseEnter={(e) => {
+          if (hasMedia) {
+            e.currentTarget.style.borderColor = C.accent;
+            e.currentTarget.style.background = C.card;
+          }
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.borderColor = C.border;
+          e.currentTarget.style.background = C.bg;
+        }}
+      >
+        <div style={{ fontSize: 15, fontWeight: 600, color: C.text, marginBottom: 4 }}>
+          {artifact.title}
+        </div>
+        <div style={{ fontSize: 13, color: C.textMid, lineHeight: 1.5 }}>
+          {artifact.description}
+        </div>
+        {hasMedia && (
+          <div style={{ fontSize: 12, color: C.accent, marginTop: 8, fontWeight: 500 }}>
+            Click to view {"→"}
+          </div>
+        )}
+      </div>
+      {open && <ArtifactModal artifact={artifact} onClose={() => setOpen(false)} />}
+    </>
   );
 }
 
@@ -670,7 +736,6 @@ function CaseStudyPage({ slug, emphasize, onBack }) {
           >
             {"←"} Back to Portfolio
           </button>
-          <SegmentToggle value={depth} onChange={setDepth} />
         </div>
       </header>
 
@@ -742,6 +807,11 @@ function CaseStudyPage({ slug, emphasize, onBack }) {
           ))}
         </div>
 
+        {/* Segment Toggle */}
+        <div style={{ marginBottom: 24 }}>
+          <SegmentToggle value={depth} onChange={setDepth} />
+        </div>
+
         {/* Personalization callout */}
         <div
           style={{
@@ -789,56 +859,9 @@ function CaseStudyPage({ slug, emphasize, onBack }) {
                 }}
               >
                 <p style={{ fontSize: 14, color: C.textMid, margin: "0 0 12px 0" }}>
-                  Want more detail? Switch to Learn More or Deep Dive above.
+                  Want more detail? Switch to Deep Dive above.
                 </p>
               </div>
-            </div>
-          )}
-
-          {/* ─── LEARN MORE ─── */}
-          {depth === "learn" && (
-            <div>
-              {detail.learn.sections.map((section) => (
-                <div key={section.heading} style={{ marginBottom: 32 }}>
-                  <h2
-                    style={{
-                      fontSize: 22,
-                      fontWeight: 700,
-                      color: C.text,
-                      margin: "0 0 12px 0",
-                    }}
-                  >
-                    {section.heading}
-                  </h2>
-                  <p
-                    style={{
-                      fontSize: 15,
-                      color: C.textMid,
-                      lineHeight: 1.7,
-                      margin: 0,
-                    }}
-                  >
-                    {section.body}
-                  </p>
-                </div>
-              ))}
-              {detail.learn.artifact && (
-                <div style={{ marginTop: 40 }}>
-                  <h3
-                    style={{
-                      fontSize: 11,
-                      fontWeight: 600,
-                      color: C.textLight,
-                      textTransform: "uppercase",
-                      letterSpacing: "0.08em",
-                      margin: "0 0 12px 0",
-                    }}
-                  >
-                    Artifact
-                  </h3>
-                  <ArtifactCard artifact={detail.learn.artifact} />
-                </div>
-              )}
             </div>
           )}
 
@@ -1359,7 +1382,6 @@ function StepIndicator({ current, total }) {
 // ═══════════════════════════════════════════
 
 function WelcomePage({ onSubmit }) {
-  const [customInput, setCustomInput] = useState("");
 
   return (
     <div
@@ -1464,63 +1486,7 @@ function WelcomePage({ onSubmit }) {
           })}
         </div>
 
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: 16,
-            margin: "24px 0",
-          }}
-        >
-          <div style={{ flex: 1, height: 1, background: C.border }} />
-          <span style={{ fontSize: 14, color: C.textLight }}>or</span>
-          <div style={{ flex: 1, height: 1, background: C.border }} />
-        </div>
-
-        <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-          <input
-            type="text"
-            value={customInput}
-            onChange={(e) => setCustomInput(e.target.value)}
-            onKeyDown={(e) =>
-              e.key === "Enter" && customInput.trim() && onSubmit(customInput.trim())
-            }
-            placeholder="Type your own response..."
-            style={{
-              width: "100%",
-              padding: "16px 20px",
-              borderRadius: 12,
-              border: `2px solid ${C.border}`,
-              fontSize: 16,
-              color: C.text,
-              outline: "none",
-              boxSizing: "border-box",
-              transition: "border-color 0.2s ease",
-            }}
-            onFocus={(e) => (e.target.style.borderColor = C.accent)}
-            onBlur={(e) => (e.target.style.borderColor = C.border)}
-          />
-          <button
-            onClick={() => customInput.trim() && onSubmit(customInput.trim())}
-            disabled={!customInput.trim()}
-            style={{
-              width: "100%",
-              padding: 16,
-              borderRadius: 12,
-              border: "none",
-              background: customInput.trim() ? C.text : C.border,
-              color: customInput.trim() ? "#fff" : C.textLight,
-              fontSize: 16,
-              fontWeight: 600,
-              cursor: customInput.trim() ? "pointer" : "default",
-              transition: "all 0.2s ease",
-            }}
-          >
-            Continue
-          </button>
-        </div>
-
-        <StepIndicator current={1} total={3} />
+        <StepIndicator current={1} total={2} />
       </div>
     </div>
   );
@@ -1531,7 +1497,6 @@ function WelcomePage({ onSubmit }) {
 // ═══════════════════════════════════════════
 
 function QuestionPage({ step, responses, onSubmit, onBack }) {
-  const [customInput, setCustomInput] = useState("");
   const config = STEPS[step];
   const prevResponse = responses[responses.length - 1];
 
@@ -1671,63 +1636,7 @@ function QuestionPage({ step, responses, onSubmit, onBack }) {
           })}
         </div>
 
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: 16,
-            margin: "24px 0",
-          }}
-        >
-          <div style={{ flex: 1, height: 1, background: C.border }} />
-          <span style={{ fontSize: 14, color: C.textLight }}>or</span>
-          <div style={{ flex: 1, height: 1, background: C.border }} />
-        </div>
-
-        <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-          <input
-            type="text"
-            value={customInput}
-            onChange={(e) => setCustomInput(e.target.value)}
-            onKeyDown={(e) =>
-              e.key === "Enter" && customInput.trim() && onSubmit(customInput.trim())
-            }
-            placeholder="Type your own response..."
-            style={{
-              width: "100%",
-              padding: "16px 20px",
-              borderRadius: 12,
-              border: `2px solid ${C.border}`,
-              fontSize: 16,
-              color: C.text,
-              outline: "none",
-              boxSizing: "border-box",
-              transition: "border-color 0.2s ease",
-            }}
-            onFocus={(e) => (e.target.style.borderColor = C.accent)}
-            onBlur={(e) => (e.target.style.borderColor = C.border)}
-          />
-          <button
-            onClick={() => customInput.trim() && onSubmit(customInput.trim())}
-            disabled={!customInput.trim()}
-            style={{
-              width: "100%",
-              padding: 16,
-              borderRadius: 12,
-              border: "none",
-              background: customInput.trim() ? C.text : C.border,
-              color: customInput.trim() ? "#fff" : C.textLight,
-              fontSize: 16,
-              fontWeight: 600,
-              cursor: customInput.trim() ? "pointer" : "default",
-              transition: "all 0.2s ease",
-            }}
-          >
-            Continue
-          </button>
-        </div>
-
-        <StepIndicator current={step + 1} total={3} />
+        <StepIndicator current={step + 1} total={2} />
       </div>
     </div>
   );
@@ -1977,7 +1886,8 @@ function PortfolioPage({ responses, onStartOver, onOpenCaseStudy, onOpenAbout })
 
   const featuredSlug = content.projectOrder[0];
   const featuredProject = PROJECTS[featuredSlug];
-  const remainingProjects = content.projectOrder.slice(1);
+  const canonicalOrder = ["diagnose", "strategize", "build", "design"];
+  const remainingProjects = canonicalOrder.filter((s) => s !== featuredSlug);
 
   return (
     <div
@@ -2085,7 +1995,7 @@ function PortfolioPage({ responses, onStartOver, onOpenCaseStudy, onOpenAbout })
             style={{
               fontSize: 15,
               color: C.textMid,
-              margin: 0,
+              margin: "0 0 32px 0",
               maxWidth: 640,
               lineHeight: 1.65,
             }}
@@ -2098,111 +2008,39 @@ function PortfolioPage({ responses, onStartOver, onOpenCaseStudy, onOpenAbout })
             shipped 40+ production-ready deliverables in a single quarter using
             AI-assisted development.
           </p>
-        </section>
-
-        {/* Featured Case Study (single) */}
-        <section style={{ marginBottom: 48 }}>
-          <h2
-            style={{
-              fontSize: 28,
-              fontWeight: 700,
-              color: C.text,
-              margin: "0 0 24px 0",
-            }}
-          >
-            Featured Work
-          </h2>
-          <ProjectCard
-            slug={featuredSlug}
-            project={featuredProject}
-            emphasize={content.emphasize}
-            gradient={gradientColors[0]}
-            onClick={() => onOpenCaseStudy(featuredSlug)}
-          />
-        </section>
-
-        {/* Capabilities */}
-        <section
-          style={{
-            borderTop: `1px solid ${C.border}`,
-            paddingTop: 48,
-            marginBottom: 48,
-          }}
-        >
-          <h2
-            style={{
-              fontSize: 28,
-              fontWeight: 700,
-              color: C.text,
-              margin: "0 0 24px 0",
-            }}
-          >
-            Capabilities
-          </h2>
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-              gap: 20,
+              gridTemplateColumns: "repeat(3, 1fr)",
+              gap: 16,
             }}
           >
-            {[
-              {
-                icon: "palette",
-                title: "Design Language & Brand",
-                desc: "Three-tier token architecture, OKLCH color systems, design language development, multi-product theming, visual identity",
-              },
-              {
-                icon: "groups",
-                title: "Leadership & Influence",
-                desc: "Cross-functional team leadership (9 contributors, 0 direct reports), executive communication, stakeholder navigation, adaptive messaging",
-              },
-              {
-                icon: "widgets",
-                title: "Design Systems",
-                desc: "Component libraries, governance, multi-product support, spec-driven architecture, framework-agnostic design",
-              },
-              {
-                icon: "smart_toy",
-                title: "AI + Design",
-                desc: "AI-assisted development workflows, machine-readable documentation, spec-driven generation across 4 frameworks",
-              },
-              {
-                icon: "bar_chart",
-                title: "Data Visualization",
-                desc: "OKLCH-based chart palettes, ag-Grid + Highcharts theming, categorical/sequential/diverging color systems",
-              },
-              {
-                icon: "brush",
-                title: "Visual Design Craft",
-                desc: "Brand systems, editorial design, digital learning, print, web, social, video, interaction design, component craft",
-              },
-            ].map((cap) => (
+            {content.capabilities.map((cap) => (
               <div
                 key={cap.title}
                 style={{
                   background: C.card,
                   borderRadius: 12,
-                  padding: 20,
+                  padding: 16,
                   border: `1px solid ${C.border}`,
                   overflow: "hidden",
                   wordBreak: "break-word",
                 }}
               >
-                <span className="material-icons-outlined" style={{ fontSize: 28, marginBottom: 8, display: "block", color: C.accent }}>{cap.icon}</span>
+                <span className="material-icons-outlined" style={{ fontSize: 22, marginBottom: 6, display: "block", color: C.accent }}>{cap.icon}</span>
                 <h3
                   style={{
-                    fontSize: 16,
+                    fontSize: 14,
                     fontWeight: 600,
                     color: C.text,
-                    margin: "0 0 6px 0",
+                    margin: "0 0 4px 0",
                   }}
                 >
                   {cap.title}
                 </h3>
                 <p
                   style={{
-                    fontSize: 14,
+                    fontSize: 12,
                     color: C.textMid,
                     lineHeight: 1.5,
                     margin: 0,
@@ -2213,6 +2051,108 @@ function PortfolioPage({ responses, onStartOver, onOpenCaseStudy, onOpenAbout })
               </div>
             ))}
           </div>
+        </section>
+
+        {/* Featured Case Study (inline) */}
+        <section
+          style={{ marginBottom: 48 }}
+        >
+          <div
+            style={{
+              fontSize: 12,
+              fontWeight: 600,
+              color: C.textLight,
+              textTransform: "uppercase",
+              letterSpacing: "0.05em",
+              marginBottom: 8,
+            }}
+          >
+            {featuredProject.series}
+          </div>
+          <h2
+            style={{
+              fontSize: 28,
+              fontWeight: 800,
+              color: C.text,
+              margin: "0 0 12px 0",
+              lineHeight: 1.2,
+            }}
+          >
+            {featuredProject.title}
+          </h2>
+          <div
+            style={{
+              display: "flex",
+              gap: 24,
+              fontSize: 14,
+              color: C.textMid,
+              marginBottom: 16,
+              flexWrap: "wrap",
+            }}
+          >
+            <span>{CASE_STUDY_DETAIL[featuredSlug].role}</span>
+            <span>{CASE_STUDY_DETAIL[featuredSlug].org}</span>
+            <span>{CASE_STUDY_DETAIL[featuredSlug].timeline}</span>
+          </div>
+          <div
+            style={{
+              display: "flex",
+              gap: 8,
+              flexWrap: "wrap",
+              marginBottom: 24,
+            }}
+          >
+            {featuredProject.tags.map((tag) => (
+              <span
+                key={tag}
+                style={{
+                  padding: "4px 12px",
+                  borderRadius: 10,
+                  background: C.warmSoft,
+                  color: "#92400E",
+                  fontSize: 12,
+                  fontWeight: 500,
+                }}
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+          <p
+            style={{
+              fontSize: 16,
+              color: C.textMid,
+              lineHeight: 1.7,
+              margin: "0 0 24px 0",
+            }}
+          >
+            {CASE_STUDY_DETAIL[featuredSlug].overview.summary}
+          </p>
+          <button
+            data-cursor-expand="View Case Study"
+            onClick={() => onOpenCaseStudy(featuredSlug)}
+            style={{
+              padding: "12px 24px",
+              borderRadius: 10,
+              border: `2px solid ${C.accent}`,
+              background: C.accentSoft,
+              color: C.accentDark,
+              fontSize: 14,
+              fontWeight: 600,
+              cursor: "pointer",
+              transition: "all 0.2s ease",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = C.accent;
+              e.currentTarget.style.color = "#fff";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = C.accentSoft;
+              e.currentTarget.style.color = C.accentDark;
+            }}
+          >
+            Read Full Case Study {"→"}
+          </button>
         </section>
 
         {/* Get to Know Me */}
@@ -2636,9 +2576,6 @@ function AboutPage({ onBack }) {
           >
             {"←"} Back to Portfolio
           </button>
-          <span style={{ fontSize: 15, fontWeight: 600, color: "#9D174D" }}>
-            Brenna Stevens
-          </span>
         </div>
       </header>
 
@@ -2712,7 +2649,7 @@ function AboutPage({ onBack }) {
               LinkedIn
             </a>
             <a
-              href="/public/BrennaStevensResume.pdf"
+              href="/Brenna Stevens Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               style={linkButtonStyle}

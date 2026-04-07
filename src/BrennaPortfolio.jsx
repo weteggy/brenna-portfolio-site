@@ -546,60 +546,35 @@ function ArtifactModal({ artifact, onClose }) {
       style={{
         position: "fixed",
         inset: 0,
-        background: "rgba(0,0,0,0.6)",
+        background: "rgba(0,0,0,0.85)",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
         zIndex: 200,
-        padding: 24,
+        padding: 40,
+        cursor: "pointer",
       }}
       onClick={onClose}
     >
       <div
         onClick={(e) => e.stopPropagation()}
         style={{
-          background: C.card,
-          borderRadius: 16,
-          padding: 24,
-          maxWidth: 720,
+          maxWidth: 900,
           width: "100%",
-          maxHeight: "85vh",
+          maxHeight: "90vh",
           overflow: "auto",
-          boxShadow: "0 20px 60px rgba(0,0,0,0.25)",
         }}
       >
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16 }}>
-          <div style={{ fontSize: 17, fontWeight: 700, color: C.text }}>{artifact.title}</div>
-          <button
-            onClick={onClose}
-            style={{
-              background: "none",
-              border: "none",
-              fontSize: 22,
-              color: C.textLight,
-              cursor: "pointer",
-              padding: 4,
-            }}
-          >
-            {"×"}
-          </button>
-        </div>
-        <div style={{ fontSize: 14, color: C.textMid, lineHeight: 1.5, marginBottom: 16 }}>
-          {artifact.description}
-          {artifact.note && (
-            <span style={{ fontStyle: "italic", marginLeft: 6 }}>({artifact.note})</span>
-          )}
-        </div>
         {artifact.video && (
-          <div style={{ borderRadius: 8, overflow: "hidden", marginBottom: 12 }}>{artifact.video}</div>
+          <div style={{ borderRadius: 8, overflow: "hidden" }}>{artifact.video}</div>
         )}
         {artifact.image && (
-          <div style={{ borderRadius: 8, overflow: "hidden", marginBottom: 12 }}>
+          <div style={{ borderRadius: 8, overflow: "hidden" }}>
             {React.cloneElement(artifact.image, { style: { width: "100%", height: "auto", display: "block" } })}
           </div>
         )}
         {artifact.images && (
-          <div style={{ display: "grid", gridTemplateColumns: `repeat(${Math.min(artifact.images.length, 3)}, 1fr)`, gap: 8, marginBottom: 12 }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
             {artifact.images.map((img, i) => (
               <div key={i} style={{ borderRadius: 8, overflow: "hidden" }}>
                 {React.cloneElement(img, { style: { width: "100%", height: "auto", display: "block" } })}
@@ -608,11 +583,33 @@ function ArtifactModal({ artifact, onClose }) {
           </div>
         )}
         {artifact.url && (
-          <a href={artifact.url} target="_blank" rel="noopener noreferrer" style={{ fontSize: 14, color: C.coral, fontWeight: 500 }}>
-            Open in new tab {"→"}
-          </a>
+          <div style={{ textAlign: "center", paddingTop: 40 }}>
+            <a
+              href={artifact.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              style={{
+                fontSize: 16,
+                color: "#fff",
+                fontWeight: 600,
+                padding: "14px 32px",
+                borderRadius: 10,
+                border: "2px solid rgba(255,255,255,0.4)",
+                background: "rgba(255,255,255,0.1)",
+                textDecoration: "none",
+                display: "inline-block",
+              }}
+            >
+              Open in new tab {"→"}
+            </a>
+          </div>
         )}
-        {artifact.pdf && <div style={{ marginTop: 8 }}>{artifact.pdf}</div>}
+        {artifact.pdf && (
+          <div style={{ textAlign: "center", paddingTop: 40 }}>
+            {artifact.pdf}
+          </div>
+        )}
       </div>
     </div>
   );

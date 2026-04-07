@@ -1264,6 +1264,8 @@ function HowItWorksModal({ onClose }) {
           maxHeight: "80vh",
           overflow: "auto",
           boxShadow: "0 20px 60px rgba(0,0,0,0.15)",
+          fontFamily:
+            '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
         }}
       >
         <div
@@ -1368,6 +1370,8 @@ function WelcomePage({ onSubmit }) {
         justifyContent: "center",
         background: C.bg,
         padding: 24,
+        fontFamily:
+          '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
       }}
     >
       <div style={{ maxWidth: 600, width: "100%", textAlign: "center" }}>
@@ -1822,6 +1826,7 @@ function CustomCursor({ dotColor = C.coral }) {
           color: "#9D174D",
           fontSize: 12,
           fontWeight: 600,
+          fontFamily: '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
           letterSpacing: "0.02em",
           opacity: hovering ? 1 : 0,
           transition: "opacity 0.25s ease 0.05s",

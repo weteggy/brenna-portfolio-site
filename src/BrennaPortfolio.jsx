@@ -1954,12 +1954,27 @@ function PortfolioPage({ responses, onStartOver, onOpenCaseStudy, onOpenAbout })
       </header>
 
       <main style={{ maxWidth: 960, margin: "0 auto", padding: "48px 24px" }}>
-        {/* Hero */}
+        {/* Featured Section — hoverable container */}
         <section
+          data-cursor-expand="View Case Study"
+          onClick={() => onOpenCaseStudy(featuredSlug)}
           style={{
-            paddingBottom: 48,
-            borderBottom: `1px solid ${C.border}`,
+            padding: 32,
+            borderRadius: 16,
+            border: `1px solid transparent`,
             marginBottom: 48,
+            cursor: "none",
+            transition: "all 0.3s ease",
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.borderColor = C.border;
+            e.currentTarget.style.boxShadow = "0 8px 32px rgba(0,0,0,0.08)";
+            e.currentTarget.style.background = C.card;
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.borderColor = "transparent";
+            e.currentTarget.style.boxShadow = "none";
+            e.currentTarget.style.background = "transparent";
           }}
         >
           <div
@@ -1988,26 +2003,71 @@ function PortfolioPage({ responses, onStartOver, onOpenCaseStudy, onOpenAbout })
           >
             {content.headline}
           </h1>
-          <p style={{ fontSize: 18, color: C.textMid, margin: "0 0 24px 0" }}>
+          <p style={{ fontSize: 18, color: C.textMid, margin: "0 0 32px 0" }}>
             {content.focus}
           </p>
+
+          {/* Case study content */}
+          <div
+            style={{
+              fontSize: 12,
+              fontWeight: 600,
+              color: C.textLight,
+              textTransform: "uppercase",
+              letterSpacing: "0.05em",
+              marginBottom: 8,
+            }}
+          >
+            {featuredProject.series}
+          </div>
+          <h2
+            style={{
+              fontSize: 24,
+              fontWeight: 700,
+              color: C.text,
+              margin: "0 0 12px 0",
+              lineHeight: 1.2,
+            }}
+          >
+            {featuredProject.title}
+          </h2>
+          <div
+            style={{
+              display: "flex",
+              gap: 8,
+              flexWrap: "wrap",
+              marginBottom: 16,
+            }}
+          >
+            {featuredProject.tags.map((tag) => (
+              <span
+                key={tag}
+                style={{
+                  padding: "4px 12px",
+                  borderRadius: 10,
+                  background: C.warmSoft,
+                  color: "#92400E",
+                  fontSize: 12,
+                  fontWeight: 500,
+                }}
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
           <p
             style={{
               fontSize: 15,
               color: C.textMid,
+              lineHeight: 1.7,
               margin: "0 0 32px 0",
               maxWidth: 640,
-              lineHeight: 1.65,
             }}
           >
-            I'm Brenna Stevens, Global Design System Lead at NielsenIQ. I
-            built a cohesive design language from scratch — a three-tier
-            token system covering color, typography, spacing, elevation, radius,
-            and motion — that unified a portfolio of enterprise products for
-            the first time. I assembled a cross-functional team of nine and
-            shipped 40+ production-ready deliverables in a single quarter using
-            AI-assisted development.
+            {CASE_STUDY_DETAIL[featuredSlug].overview.summary}
           </p>
+
+          {/* Curated Capabilities */}
           <div
             style={{
               display: "grid",
@@ -2019,7 +2079,7 @@ function PortfolioPage({ responses, onStartOver, onOpenCaseStudy, onOpenAbout })
               <div
                 key={cap.title}
                 style={{
-                  background: C.card,
+                  background: C.bg,
                   borderRadius: 12,
                   padding: 16,
                   border: `1px solid ${C.border}`,
@@ -2051,108 +2111,6 @@ function PortfolioPage({ responses, onStartOver, onOpenCaseStudy, onOpenAbout })
               </div>
             ))}
           </div>
-        </section>
-
-        {/* Featured Case Study (inline) */}
-        <section
-          style={{ marginBottom: 48 }}
-        >
-          <div
-            style={{
-              fontSize: 12,
-              fontWeight: 600,
-              color: C.textLight,
-              textTransform: "uppercase",
-              letterSpacing: "0.05em",
-              marginBottom: 8,
-            }}
-          >
-            {featuredProject.series}
-          </div>
-          <h2
-            style={{
-              fontSize: 28,
-              fontWeight: 800,
-              color: C.text,
-              margin: "0 0 12px 0",
-              lineHeight: 1.2,
-            }}
-          >
-            {featuredProject.title}
-          </h2>
-          <div
-            style={{
-              display: "flex",
-              gap: 24,
-              fontSize: 14,
-              color: C.textMid,
-              marginBottom: 16,
-              flexWrap: "wrap",
-            }}
-          >
-            <span>{CASE_STUDY_DETAIL[featuredSlug].role}</span>
-            <span>{CASE_STUDY_DETAIL[featuredSlug].org}</span>
-            <span>{CASE_STUDY_DETAIL[featuredSlug].timeline}</span>
-          </div>
-          <div
-            style={{
-              display: "flex",
-              gap: 8,
-              flexWrap: "wrap",
-              marginBottom: 24,
-            }}
-          >
-            {featuredProject.tags.map((tag) => (
-              <span
-                key={tag}
-                style={{
-                  padding: "4px 12px",
-                  borderRadius: 10,
-                  background: C.warmSoft,
-                  color: "#92400E",
-                  fontSize: 12,
-                  fontWeight: 500,
-                }}
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-          <p
-            style={{
-              fontSize: 16,
-              color: C.textMid,
-              lineHeight: 1.7,
-              margin: "0 0 24px 0",
-            }}
-          >
-            {CASE_STUDY_DETAIL[featuredSlug].overview.summary}
-          </p>
-          <button
-            data-cursor-expand="View Case Study"
-            onClick={() => onOpenCaseStudy(featuredSlug)}
-            style={{
-              padding: "12px 24px",
-              borderRadius: 10,
-              border: `2px solid ${C.accent}`,
-              background: C.accentSoft,
-              color: C.accentDark,
-              fontSize: 14,
-              fontWeight: 600,
-              cursor: "pointer",
-              transition: "all 0.2s ease",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = C.accent;
-              e.currentTarget.style.color = "#fff";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = C.accentSoft;
-              e.currentTarget.style.color = C.accentDark;
-            }}
-          >
-            Read Full Case Study {"→"}
-          </button>
         </section>
 
         {/* Get to Know Me */}

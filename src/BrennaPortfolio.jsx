@@ -228,7 +228,7 @@ const CASE_STUDY_DETAIL = {
       sections: [
         {
           heading: "The Situation",
-          body: "NielsenIQ had a component library. What it didn't have was anyone who believed a design system mattered. Components existed in Figma and a shared code repository, but they functioned more like a parts bin than a system. Hardcoded hex values lived in SCSS files, color styles in Figma were tied to individual components rather than organized by intent, and there was no shared design language connecting what a designer meant by primary surface background and what an engineer typed into code. Every product team translated on their own, and every translation introduced drift.",
+          body: "NielsenIQ had a component library. What it didn't have was anyone who believed a design system mattered.\n\nComponents existed in Figma and a shared code repository, but they functioned more like a parts bin than a system. Hardcoded hex values lived in SCSS files, pixel sizes were scattered everywhere, and typography was defined inline. Color styles in Figma were tied to individual components rather than organized by intent, which meant there was no shared design language connecting what a designer meant by 'primary surface background' and what an engineer typed into code. Every product team translated on their own, and every translation introduced drift.\n\nThe stakes were rising. The company was converging its flagship product with a newly acquired platform, a strategic priority with executive sponsorship and a real timeline. That convergence would require two product experiences, built by different teams with different conventions, to feel like one product. Without a shared design language, it would mean rebuilding every interface manually or accepting that the 'unified' platform would feel stitched together.\n\nMeanwhile, a design system lead had been hired specifically to drive this work. His contract was ending, and in the time he'd been here, adoption hadn't moved forward in any meaningful way. The org had been talking about the design system for four years, and very little had changed. By early-2025, the default assumption was that design system improvement was something that got discussed and then didn't happen.\n\nI decided to stop waiting for someone else to fix it."
         },
         {
           heading: "What I Did",
@@ -887,16 +887,19 @@ function CaseStudyPage({ slug, emphasize, onBack }) {
                   >
                     {section.heading}
                   </h2>
-                  <p
-                    style={{
-                      fontSize: 15,
-                      color: C.textMid,
-                      lineHeight: 1.7,
-                      margin: 0,
-                    }}
-                  >
-                    {section.body}
-                  </p>
+                  {section.body.split("\n\n").map((para, i) => (
+                    <p
+                      key={i}
+                      style={{
+                        fontSize: 15,
+                        color: C.textMid,
+                        lineHeight: 1.7,
+                        margin: i === 0 ? 0 : "12px 0 0 0",
+                      }}
+                    >
+                      {para}
+                    </p>
+                  ))}
                 </div>
               ))}
 
@@ -2411,7 +2414,7 @@ function PhotoCarouselWithBio() {
           }}
         >
           I'm Brenna, a Chicago-based designer currently leading the global design 
-          system at NielsenIQ. I've spendt my whole life making things by hand, from
+          system at NielsenIQ. I've spent my whole life making things by hand, from
           embroidery to crochet to digital design, and that practice has shaped how
           I approach design more than anything on my resume.
         </p>
@@ -2440,7 +2443,7 @@ function PhotoCarouselWithBio() {
           I'm also, for better or worse, intensely organized. I enjoy seeing the
           result of building something that's both beautiful and systemically sound.
           That pull between the handmade and the highly structured is what drew me
-          to design in teh first place.
+          to design in the first place.
         </p>
         <p
           style={{

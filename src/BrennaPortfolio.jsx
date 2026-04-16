@@ -158,7 +158,6 @@ function getCustomizedContent(responses) {
 
 const PROJECTS = {
   diagnose: {
-    series: "Part 1 of 3 — From Stalled to Strategic",
     title: "Diagnosing a Four-Year Design System Stall",
     description:
       "NielsenIQ's design system had been stalled for four years. While still a UX designer, I diagnosed why — connecting user complaints, rising convergence costs, and missing infrastructure into a single argument leadership hadn't heard before. I built the token architecture nobody knew was missing and got design system work into PI planning for the first time.",
@@ -171,7 +170,6 @@ const PROJECTS = {
       "First design system work prioritized in PI planning since the rebrand 4 years ago. UX Designer → Global Design System Lead in 5 months. Six token categories shipped. CPO pipeline established.",
   },
   strategize: {
-    series: "Part 2 of 3 — From Stalled to Strategic",
     title: "When the Org Couldn't Prioritize, I Built a New Path",
     description:
       "When the org's planning structure couldn't prioritize design system work, I designed an alternative: a cross-team collaboration model where multiple product teams contribute capacity to shared infrastructure. I connected the AI-readiness gap to the design system and navigated the argument to the CPO's office — securing dedicated engineering resources for the system.",
@@ -184,7 +182,6 @@ const PROJECTS = {
       "First CPO meeting on the design system. Dedicated engineering resources. V2 project greenlit. Six cross-functional contributors assembled.",
   },
   build: {
-    series: "Part 3 of 3 — From Stalled to Strategic",
     title: "40+ Deliverables in 14 Weeks — Built With AI",
     description:
       "I assembled a cross-functional team of six am currently delivering 40+ production-ready components, tokens, themes, and patterns across three parallel workstreams in 14 weeks using AI-assisted development at 2–3x velocity. I also personally built the framework-agnostic proof-of-concepts that validated our spec-driven architecture.",
@@ -197,7 +194,6 @@ const PROJECTS = {
       "40+ deliverables across components, tokens, themes, and patterns. 2–3x velocity with AI-assisted development. 5 components validated across 4 frameworks. Three-swimlane build: V2 library, MEFF reskin, data visualization.",
   },
   design: {
-    series: "Companion Piece",
     title: "But Can She Design?",
     description:
       "My broader portfolio proves I can diagnose, strategize, and build at enterprise scale — this part proves I've been designing the whole time. A visual companion spanning five organizations and ten years: brand systems as a one-person creative department, healthcare learning design, editorial design for institutional audiences, and the component craft inside an enterprise design system.",
@@ -220,65 +216,48 @@ const CASE_STUDY_DETAIL = {
     role: "UX Designer → Global Design System Lead",
     timeline: "January – December 2025",
     org: "NielsenIQ",
+    audioSrc: null,
     overview: {
       summary:
         "NielsenIQ's design system had been stalled for four years. While still a UX designer, I diagnosed why — connecting user complaints, rising convergence costs, and missing infrastructure into a single argument leadership hadn't heard before. I built the token architecture nobody knew was missing, got design system work prioritized in PI planning for the first time since our rebrand 4 years prior, and earned the lead title by doing the job before I had it.",
+      images: [
+        { src: "/foundationsslide.png", label: "The problem: a functional but fragile design system" },
+        { src: "/FoundationsRoadmap.png", label: "Foundations project roadmap" },
+        { src: "/beforeafter.png", label: "Token system: before and after" },
+      ],
     },
     learn: {
       sections: [
         {
-          heading: "The Situation",
-          body: "NielsenIQ had a component library. What it didn't have was anyone who believed a design system mattered.\n\nComponents existed in Figma and a shared code repository, but they functioned more like a parts bin than a system. Hardcoded hex values lived in SCSS files, pixel sizes were scattered everywhere, and typography was defined inline. Color styles in Figma were tied to individual components rather than organized by intent, which meant there was no shared design language connecting what a designer meant by 'primary surface background' and what an engineer typed into code. Every product team translated on their own, and every translation introduced drift.\n\nThe stakes were rising. The company was converging its flagship product with a newly acquired platform, a strategic priority with executive sponsorship and a real timeline. That convergence would require two product experiences, built by different teams with different conventions, to feel like one product. Without a shared design language, it would mean rebuilding every interface manually or accepting that the 'unified' platform would feel stitched together.\n\nMeanwhile, a design system lead had been hired specifically to drive this work. His contract was ending, and in the time he'd been here, adoption hadn't moved forward in any meaningful way. The org had been talking about the design system for four years, and very little had changed. By early-2025, the default assumption was that design system improvement was something that got discussed and then didn't happen.\n\nI decided to stop waiting for someone else to fix it."
+          heading: "Strategic context",
+          hideImage: true,
+          body: "NielsenIQ had a component library. What it didn't have was anyone who believed a design system mattered.\n\nComponents existed in Figma and a shared code repository, but they functioned more like a parts bin than a system. Hardcoded hex values lived in SCSS files, pixel sizes were scattered everywhere, and typography was defined inline. Color styles in Figma were tied to individual components rather than organized by intent, which meant there was no shared design language connecting what a designer meant by 'primary surface background' and what an engineer typed into code. Every product team translated on their own, and every translation introduced drift.\n\nUsers were telling us the products didn't work well. Complaints about usability, visual inconsistency, and disjointed aesthetics came in across the entire portfolio, the same action might use different colors, different spacing, and different interaction patterns depending on which product you were in. These weren't edge cases; they were the everyday experience. Leadership saw them as product-level problems to fix product by product or even feature by feature, and nobody was connecting the complaints to a systemic cause.\n\nThe stakes were rising. The company was converging its flagship product with a newly acquired platform, a strategic priority with executive sponsorship and a real timeline. That convergence would require two product experiences, built by different teams with different conventions, to feel like one product. Without a shared design language, it would mean rebuilding every interface manually or accepting that the 'unified' platform would feel stitched together.\n\nMeanwhile, a design system lead had been hired specifically to drive this work. His contract was ending, and in the time he'd been here, adoption hadn't moved forward in any meaningful way. The org had been talking about the design system for four years, and very little had changed. By early-2025, the default assumption was that design system improvement was something that got discussed and then didn't happen.\n\nI decided to stop waiting for someone else to fix it."
         },
         {
-          heading: "What I Did",
-          body: "I started doing diagnostic work in January 2025 — almost a year before I had the design system lead title. Rather than leading with presentations, I began having direct one-on-one conversations with the product leaders who controlled prioritization. I never pitched 'design tokens' to leadership. I led with their problems: users unhappy with inconsistency, convergence costs ballooning without shared infrastructure, teams duplicating effort. In parallel, I built a tiered token architecture covering color, typography, spacing, elevation, radius, and motion.",
+          heading: "What I saw that nobody else was connecting",
+          embed: "https://embed.figma.com/deck/A5UymswirKUpZUWtwCzcPZ?node-id=&embed-host=share",
+          body: "I started doing diagnostic work in July 2025 — five months before I had the design system lead title, while I was still technically a UX designer. What I found wasn't just a technical gap. It was a perception problem with three reinforcing causes. \n\nNobody had connected the user complaints to a root cause. Product teams were hearing feedback about usability issues and visual inconsistency, and they were treating each complaint as a product-level problem. Fix this screen. Adjust that flow. Redesign this page. Nobody had stepped back and said: these complaints are symptoms of not having shared design infrastructure. The individual fixes were reasonable if you assumed each problem was local. They were expensive and futile if you recognized the problems were structural. \n\nThe design system had no advocate who could make the value legible outside UX. Tokens, semantic layers, component APIs — these concepts don't translate into language a VP of Product or a CPO acts on. The previous lead had been hired to drive adoption, but adoption of what? A component library with no token system, no governance, no connection to the problems leadership cared about? The work had stalled because nobody was building the bridge between what a design system is and what it solves in terms that mattered to the people who controlled investment. \n\nInstitutional cynicism was the default. I wasn't just proposing a foundational project — I was proposing that a category of work the org had written off was actually the answer to problems they were actively spending money trying to solve in other ways. \n\nThe critical reframe came from mapping user complaints, product convergence costs, and the missing infrastructure together into a single argument: leadership already knew users were unhappy with inconsistency. They already knew the convergence would be complex and expensive. What they hadn't connected was that both problems had the same root cause — no shared design language — and that a design system with a proper foundation was the fix they didn't know they needed.",
         },
         {
-          heading: "What Changed",
-          body: "I got the design system prioritized in our quarterly PI planning for the first time since our company rebrand 4 years prior. The UX Director recommended me for the design system lead role when the outgoing lead's contract ended. In November 2025, I officially got the title. By that point, I had already moved the work further in less than a year than it had moved in the previous three and a half years.",
-        },
-      ],
-      artifact: {
-        title: "Project Board",
-        description:
-          "The Roadmap I built from scratch to track the design system's work for the first time, with milestones and goals mapped to the PI schedule.",
-        image: <img src="/FoundationsRoadmap.png" alt="Foundations project roadmap" />,
-      },
-    },
-    deep: {
-      modules: [
-        {
-          label: "Organizational Diagnosis",
-          body: "What I found wasn't just a technical gap. It was a perception problem with three reinforcing causes. Nobody had connected the user complaints to a root cause — product teams were treating each complaint as a product-level problem. The design system had no advocate who could make the value legible outside UX. And institutional cynicism was the default — I was proposing that a category of work the org had written off was actually the answer to problems they were actively spending money trying to solve in other ways.",
+          heading: "Earning credibility before having authority",
+          imageSrc: "/FoundationsRoadmap.png",
+          imageAlt: "Foundations project roadmap",
+          body: "I didn't wait for the title. Starting in July 2025, I began having direct conversations with the product leaders who controlled prioritization. Not presentations. Not Slack messages. One-on-one conversations where I could understand what each stakeholder cared about and connect the foundations work to those specific concerns. \n\nThis was deliberate sequencing. Proposing a multi-month foundational project to an organization that had failed to deliver one for four years required a different kind of credibility than a good project brief. I needed people to have already seen me do the work — and to trust that I understood their constraints — before I asked them to prioritize it. \n\nI never pitched 'design tokens' to leadership. I didn't even lead with 'design system.' I led with their problems: users unhappy with inconsistency, convergence costs ballooning without shared infrastructure, teams duplicating effort across the portfolio. The design system wasn't a UX initiative competing for budget. It was the infrastructure that would make their existing investments actually work.",
         },
         {
-          label: "Stakeholder Strategy",
-          body: "I didn't wait for the title. Starting early 2025, I began having direct conversations with the product leaders who controlled prioritization. This was deliberate sequencing. Proposing a multi-month foundational project to an organization that had failed to deliver one for four years required a different kind of credibility than a good project brief. I needed people to have already seen me do the work before I asked them to prioritize it.",
+          heading: "Building the token system",
+          widget: "tokenExplorer",
+          body: "The biggest technical challenge wasn't building the token system. It was changing how the entire design team thought about design decisions. \n\nThe Figma library had color styles, but they were flat — tied to specific components rather than organized by intent. A button had a color. A card had a color. There was no layer of abstraction that said 'this button and this card both use color.action.primary because they serve the same semantic purpose.' Designers picked colors from a component-level swatch. The concept of why a color was being used — rather than which color it was — didn't exist as a shared mental model. \n\nI introduced a three-tier architecture: primitive tokens define the raw palette, semantic tokens define intent (surface, text, border, action, feedback), and component tokens map semantic values to specific UI elements. The primitive layer gives you the 'what'. The semantic layer gives you the 'why'. The component layer gives you the 'where'. \n\nGetting alignment took months — not a single workshop. I ran iterative working sessions, built documentation with concrete examples from our actual components, and spent one-on-one time with designers who were struggling with the shift. The practical demonstration that sold it: when a semantic token changes, every component that references it updates automatically. When a hardcoded value changes, someone has to find and update every instance manually. That difference, shown in real Figma files, made the abstract concrete. \n\nThe cross-disciplinary work was equally important. Figma's variable system and how engineers consume tokens in code are fundamentally different mental models. The naming conventions had to work in both contexts — a designer reading a Figma variable and an engineer reading a stylesheet needed to see the same name and understand the same intent without a translation layer. I worked across both disciplines to negotiate conventions that neither side loved unconditionally but both could work with consistently. \n\nKey architecture decisions: \n\nColor — algorithmic primitive scale rather than hand-picked shades. Sub-brand theming works by overriding primitive values; the entire semantic layer recalculates. I chose scalability over artisanal color craft because the multi-product portfolio made theming a structural requirement. \n\nTypography — organized by role (heading, body, caption, label, code) rather than size. A typeface change becomes a single-token update per role, not a hunt through every component. \n\nSpacing — 4px base unit with semantic application tokens encoding which multiples to use where, removing the decision from individual designers. \n\nElevation, radius, motion — invested in these because they're what makes a multi-product platform feel like one product rather than a collection of products wearing the same color palette.",
         },
         {
-          label: "Token Architecture Decisions",
-          body: "I introduced a tiered architecture where primitive tokens define the raw palette and semantic tokens define intent. For color, we moved from an overly complex style library with hundreds of values to an easily scalable two part system, because the multi-product portfolio made theming a structural requirement. Typography is organized by role rather than size. Spacing uses a 4px base unit with semantic application tokens.",
-        },
-      ],
-      artifacts: [
-        {
-          title: "Design System Usability Survey",
-          description:
-            "The survey and readout that was run internally to validate the diagnosis with both users and stakeholders — connecting user complaints to a lack of shared infrastructure and a missing design language.",
-          image: <img src="/SUS.png" alt="System usability survey readout" />,
+          heading: "Raising the priority",
+          hideImage: true,
+          body: "The stakeholder work and the foundations project converged into two outcomes that changed the trajectory of the design system entirely. \n\nFirst, I got the design system into PI planning for the first time in the org's history. That doesn't sound dramatic on paper, but it meant the design system went from not being part of the planning conversation at all to having a seat at the table where capacity decisions were made. The foundations work created the evidence and the relationships that made it possible to argue, credibly, that design system capacity needed to be planned alongside product delivery — not because the UX team wanted it, but because the org's strategic priorities required it. \n\nSecond, the VP of Product and UX — who had seen me doing this work for months — recommended me for the design system lead role when the outgoing lead's contract ended. In December 2025, I officially got the title. By that point, I had already moved the work further in five months than it had moved in the previous three and a half years."
         },
         {
-          title: "Project Board",
-          description:
-            "The Roadmap I built from scratch to track the design system's work for the first time, with milestones and goals mapped to the PI schedule.",
-          image: <img src="/FoundationsRoadmap.png" alt="Foundations project roadmap" />,
-        },
-        {
-          title: "Before & After",
-          description:
-            "Side-by-side comparisons showing the previous color style system in Figma versus the simplified semantic token system in action.",
-          image: <img src="/Legacy vs New Tokens.png" alt="Before and after of the color token system in Figma" />,
+          heading: "What I learned and what I'd do differently",
+          hideImage: true,
+          body: "The hardest part of this chapter wasn't the token architecture. It was getting an organization to see that a design system — something they'd never valued — was the answer to problems they were already spending money trying to solve. \n\nThe only way I found to do that was to stop talking about the design system entirely and start talking about their problems. 'We need design tokens' is a statement about the design system. Your users are unhappy and your convergence will cost twice as much as it should because you don\u2019t have shared design infrastructure\u201d is a statement about problems leadership already owns. Same underlying work. Completely different receptivity. \n\nThe other lesson: introducing a new mental model takes longer than building the system it describes. The Figma variable work was the smaller effort. Getting designers to think in intent rather than component-level styles, and getting engineers to see tokens as a shared contract rather than a design team concern, took months of sustained conversation. A token system that nobody internalizes is just a more organized version of the same chaos. \n\nI did the job I wanted — not the job I had. I saw gaps nobody was addressing, took the first steps to close them, and made the work visible enough that the organization recognized it needed a lead to keep going. That's how I earned the title. And that diagnosis — the understanding of what was broken and why — is what made everything in Parts 2 and 3 possible.",
         },
       ],
     },
@@ -287,59 +266,55 @@ const CASE_STUDY_DETAIL = {
     role: "Global Design System Lead",
     timeline: "December 2025 – March 2026",
     org: "NielsenIQ",
+    audioSrc: null,
     overview: {
       summary:
         "The org's planning structure couldn't prioritize the design system — one product controlled build capacity for every product. Instead of making a better case within a broken structure, I designed around it: I partnered with a different product team, designed a spec-driven architecture that generates components across four frameworks from a single source of truth, connected the design system to the company's AI-readiness gap, and navigated the argument to the CPO.",
+      images: [
+        { label: "CPO Presentation Deck" },
+        { label: "Organizational Path Diagram" },
+        { label: "V2 Architecture Overview" },
+        { label: "Spec-Driven Component Flow" },
+      ],
     },
     learn: {
       sections: [
         {
-          heading: "The Situation",
-          body: "Having a seat at the planning table revealed a harder truth: the organizational structure made it nearly impossible for the design system to get the capacity it needed. The CUIC team — the engineering group responsible for shared components — reports into the flagship product. When the flagship needs bug fixes, the design system waits. During PI2 planning, tokens got pushed to September 2026, six months past the original target.",
+          heading: "Where part one left off",
+          hideImage: true,
+          body: "The diagnosis was complete. I'd built the token architecture, earned the lead title, and gotten design system work into PI planning for the first time. But having a seat at the planning table revealed a harder truth: the organizational structure made it nearly impossible for the design system to actually get the capacity it needed. \n\nThe CUIC team — the engineering group responsible for building shared components — reports into Discover, the flagship product. That reporting structure means one product controls the design system roadmap for every product. When Discover needs bug fixes, the design system waits. When Discover needs customization cleanup, the design system waits. This isn't a failure of intent. Everyone agreed the design system was critical. But the structure made the outcome inevitable. \n\nWith the lead title in hand and a token architecture ready for implementation, I now had a different problem: how do you serve an entire product portfolio when the only build capacity is controlled by one team that can't prioritize you?",
         },
         {
-          heading: "The Parallel Path",
-          body: "I designed a parallel path: rather than fighting for capacity within CUIC's constrained roadmap, I proposed a spec-driven component architecture generating implementations across Angular, React, Vue, and Lit from a single source of truth. I validated the approach with five proof-of-concept components across all four frameworks before committing the full team. I brought CUIC's tech lead in as an architecture advisor, changing the conversation from 'they're building something separate' to 'they're building on shared architectural decisions.'",
+          heading: "The PI planning problem",
+          hideImage: true,
+          body: "The original roadmap was clean: create tokens in code (PI4 2025, done), raise bugs and customizations in Discover (PI1 2026), apply tokens to the common component library and publish V1.0 (PI2 2026). \n\nThen PI2 planning happened. \n\nThe bug-fix capacity that was supposed to go to feature teams was allocated entirely to CUIC. They could only complete bug fixes and customization removal for half of the components. The CUIC team escalated and requested reprioritization. Product leadership acknowledged the work was critical — and denied the request. The remaining work pushed to PI3, meaning tokens wouldn't be available in the common code repository until approximately September 2026. \n\nI documented the decision and its downstream impact in a communication to stakeholders — not as a complaint, but as a risk assessment. The consequences were concrete: feature teams outside Discover couldn't consume the standard component library until September. Without access to the official library, teams would customize and override components to keep up with their own delivery timelines — reintroducing the exact inconsistencies the design system was created to eliminate. The pattern we'd worked to break in Discover would replicate across the portfolio. \n\nI raised three questions for leadership: whether we needed interim guardrails for feature teams, whether PI3 capacity could be revisited, and whether the org needed a longer-term conversation about how cross-product infrastructure gets prioritized. \n\nThe response was acknowledgment without action. Leadership agreed with the assessment but didn't change the prioritization. \n\nThis confirmed what I'd been suspecting: waiting for the existing structure to prioritize the design system was not a viable strategy. I needed a different approach entirely.",
         },
         {
-          heading: "Getting the CPO Meeting",
-          body: "In four years, the CPO had never had direct visibility into the design system. I started with the VP of Product and UX, connecting two things she was already worried about: AI-readiness and the design system's inability to support it. By the time I got into the CPO's office, the framing wasn't entirely new to him. He gave explicit approval for V2 with dedicated engineering resources.",
-        },
-      ],
-      artifact: {
-        title: "CPO Presentation",
-        description:
-          "The strategic narrative built for the executive meeting: the AI-readiness gap, side-by-side comparisons of AI output with structured versus unstructured design systems, and a specific ask for dedicated resources.",
-        video: <video src="/CPO ppt.mp4" controls width="100%" />,
-      },
-    },
-    deep: {
-      modules: [
-        {
-          label: "The PI Planning Problem",
-          body: "The original roadmap was clean. Then PI2 planning happened. The CUIC team could only complete bug fixes for half of the components. Product leadership acknowledged the work was critical — and denied the reprioritization request. I documented the decision and its downstream impact as a risk assessment. The response was acknowledgment without action, which confirmed that waiting for the existing structure to prioritize the design system was not a viable strategy.",
+          heading: "Solving the multi-product problem",
+          hideImage: true,
+          body: "The structural constraint was clear — one product controlled capacity for every product's design system needs. But I'd also been building relationships across the product org for months, and I could see resources that weren't visible from inside the CUIC bottleneck. \n\nThe MEFF team had frontend developers with available capacity and a PM willing to invest in shared infrastructure. They needed the design system as much as anyone — their product had been built rapidly with AI and was functional but not componentized. Hardcoded styles, inconsistent spacing, no design system components in use. They had motivation, capacity, and a concrete problem the design system could solve. \n\nI designed a parallel path: instead of continuing to fight for capacity within CUIC's constrained roadmap, I proposed forking CUIC's existing repository into a separate package, restyling all 39 components to V2 design specs, replacing SCSS variables with CSS custom properties carrying the full token architecture, and shipping an optional Tailwind v4 preset for teams that wanted it. Existing component logic and tests stayed intact. The MEFF team's developers would be the build engine, using AI-assisted development to handle the mechanical restyling while focusing their judgment on review, edge cases, and integration. \n\nThis wasn't just a workaround for CUIC's capacity problem. It was a fundamentally different model for how shared infrastructure could get built: cross-team collaboration where multiple products contribute capacity to a shared outcome, rather than one team owning everything and every other team waiting. \n\nThe fork decision itself was a strategic call. Building from scratch was technically appealing — a clean Tailwind-native library with no legacy to convert. But the fork preserved years of battle-tested Angular logic and test coverage. It maintained a structural relationship with CUIC that mattered politically: V2 was an evolution, not a replacement. Discover could adopt it as a package swap, not a migration to a foreign codebase. And AI-assisted restyling of existing components was significantly faster than generating new ones — all 39 components could be restyled in approximately 2.5 weeks. \n\nI brought Alexey, CUIC's tech lead, in as an architecture advisor. His involvement meant the library team's technical participation, not just silent approval. That changed the conversation from 'they forked our repo' to 'they're building on our work with our input.'",
         },
         {
-          label: "Adaptive Messaging",
-          body: "The AI framing landed with leadership because it connected to competitive anxiety, but it bounced off engineering teams. Their experience with AI coding tools was that the tools were unreliable for design fidelity. I adjusted: with engineering audiences, I stopped leading with AI and talked about the same architectural decisions framed as good engineering practice that happened to also make the system AI-consumable. The AI story was for leadership. The engineering story was about craft.",
+          heading: "The MEFF opportunity",
+          body: "MEFF's product had been built in two weeks using Claude Code. The velocity was impressive. The frontend was a mess — hardcoded styles, no componentization, no design system components in use. Rolling V2 out to MEFF wouldn't be a simple package install. The product needed a visual cleanup and systematic component swap alongside the library build. \n\nI designed this as a dual-track project: the DS library build and the MEFF product reskin running in parallel, sharing the same two developers. Sprints 1–3 were primarily library work (90/10 split). Then the ratio flipped: Sprints 4–7 were majority reskin work (80/20). \n\nThe MEFF reskin wasn't just adoption work — it was the first proof that the V2 system could integrate into a real production product. Ilya produced page-by-page reskin specs prioritized by visibility: P0 (must look right at launch), P1 (should look right), P2 (can polish later). P2 was an explicit release valve — if the timeline compressed, those pages slipped without affecting the launch story. \n\nThis sequencing only worked because I'd thought through the dependencies weeks before Sprint 1. The token architecture from Part 1 gave us the design-side specifications. The fork approach gave us the code-side starting point. The AI-assisted development model gave us the velocity to front-load the library build and leave room for the reskin. Each piece of the strategy depended on decisions I'd made months earlier.",
         },
         {
-          label: "Cross-Team Infrastructure Model",
-          body: "The V2 project wasn't just about delivering components faster. It was a proof of concept for a fundamentally different way of resourcing shared infrastructure. As long as the shared component library lived inside one product's org, it would always be subordinate to that product's needs. The V2 approach demonstrated what happens when multiple teams contribute capacity, coordinated by a design system lead who works across organizational boundaries.",
-        },
-      ],
-      artifacts: [
-        {
-          title: "CPO Presentation",
-          description:
-            "The strategic narrative built for the executive meeting: the AI-readiness gap, side-by-side comparisons of AI output with structured versus unstructured design systems, and a specific ask for dedicated resources.",
-          video: <video src="/CPO ppt.mp4" controls width="100%" />,
+          heading: "Thinking long term: Parallel solutioning as an organizational model",
+          body: "The V2 project wasn't just about delivering components faster. It was a proof of concept for a fundamentally different way of resourcing shared infrastructure at NIQ. \n\nThe CUIC bottleneck wasn't a temporary problem. As long as the shared component library lived inside one product's org, it would always be subordinate to that product's needs. No amount of advocacy within that structure would change the timeline. The V2 approach demonstrated an alternative: what happens when multiple teams contribute capacity to shared infrastructure, coordinated by a design system lead who works across organizational boundaries. \n\nIf V2 succeeded, it would create a concrete argument for changing how the org invests in shared infrastructure — not through restructuring (which is slow and political), but by demonstrating that cross-team collaboration on infrastructure produces results that single-team ownership can't. \n\nI designed the project plan with this larger argument in mind. The sprint structure, the role allocations, the stakeholder update cadence, the release valves — all of it was documented with enough rigor to be replicated. This wasn't a one-time workaround. It was a model.",
         },
         {
-          title: "V2 Project Plan",
-          description:
-            "Three parallel swimlanes across four phases and seven sprints, with sprint-by-sprint deliverables and entry/exit criteria.",
-          image: <img src="/V2 Project Plan.png" alt="V2 project timeline" />,
+          heading: "Getting the CPO meeting",
+          body: "Getting the design system in front of the CPO was, by itself, a milestone. In four years, the CPO had never had direct visibility into the design system — what it was, what state it was in, or why it mattered beyond the UX team. \n\nI didn't go directly. Going to a CPO with a two-part thesis — the org is falling behind on AI and the design system is the key to catching up — proposed by a design lead he'd never worked with, was a low-percentage play. I started with Karolina, NIQ's VP of Product and UX. She had the organizational context, the strategic awareness, and the CPO's ear. More importantly, she was already feeling the tension between velocity expectations on her teams and the AI lockdown blocking them. \n\nI connected two things she was already worried about. First: the industry was moving toward AI-assisted development and NIQ was being left behind. Second: even when the org did move on AI, the design system wasn't ready to support it. AI tools generate output based on what they can consume, and our system couldn't be consumed by AI. \n\nWhat I didn't anticipate: Karolina didn't just set up a meeting. She started using the AI-readiness framing in her own conversations with leadership. By the time I got into the CPO's office, the idea that NIQ was falling behind on AI and that the design system had a role in catching up wasn't entirely new to him. \n\nI framed the CPO conversation around two connected questions: Is the org moving fast enough on AI to stay competitive? And when we do move — what does AI need from us to actually work? \n\nI showed what a well-structured design system looks like from an AI tool's perspective: tokenized components with documented APIs, semantic metadata that describes intent. Then I showed where NIQ actually was: hardcoded values, undocumented components, no semantic layer. Even if we unlocked AI tools tomorrow, they'd have nothing structured to build on. The productivity gains everyone expected from AI would be eaten by manual cleanup. \n\nThe CPO didn't just acknowledge the point. He gave explicit approval for the MEFF team to move forward with the V2 project — a new component library with dedicated engineering resources, built with AI-assisted development, designed to be AI-consumable. A CPO greenlighting dedicated resources for a design system that a UX lead proposed was a first.",
+        },
+        {
+          heading: "Adapting the message for every room",
+          hideImage: true,
+          body: "The AI framing wasn't universally effective. It landed with leadership because it connected to competitive anxiety. It bounced off the engineering teams who would actually build on the system. \n\nWhen I used the AI-readiness argument with frontend engineers, the response was skepticism. Their experience with AI coding tools was that the tools were useful for boilerplate but unreliable for design fidelity. Telling them 'we're building the design system for AI consumption' sounded like solving a problem they didn't believe existed yet. \n\nI adjusted. With engineering audiences, I stopped leading with AI entirely. I talked about the same architectural decisions — tokens as CSS custom properties, documented component APIs, semantic naming — but framed them as good engineering practice that happened to also make the system AI-consumable. The AI story was for leadership. The engineering story was about craft. Both were true. Knowing which one to lead with in which room is the skill I developed through this work. \n\nI carried the same adaptive approach into PI planning. I stopped framing design system capacity as a request and started framing it as a dependency of a transition that was going to happen whether the org prepared for it or not. 'We need two sprints of design system work' is a request that competes with feature delivery. 'When we unlock AI tools — and we will have to — the design system is what determines whether that transition produces velocity or chaos' changes the conversation entirely.",
+        },
+        {
+          heading: "What I learned and what I'd do differently",
+          hideImage: true,
+          body: "The most useful thing I did in this chapter wasn't a deliverable. It was making visible a problem the organization couldn't see because it was happening in two separate places at once. \n\nThe AI gap was one conversation, happening in security and engineering leadership. The design system gap was a different conversation, happening in UX. Nobody was connecting them. The insight wasn't technical — it was organizational. I saw that the same infrastructure solved both problems, and I built an argument that made that connection legible to the person who could act on it. \n\nThe PI planning experience taught me something equally important: there's a difference between getting a seat at the table and getting what you need from the table. PI planning gave the design system visibility. It didn't give it capacity. The structural constraint — one product controlling shared infrastructure — was too deep for planning processes to override. That's when I stopped trying to win within the existing structure and started designing around it. \n\nThe lesson I'd apply to any infrastructure team: don't make a better case for your infrastructure on its own merits. Find the strategic pressure leadership is already feeling and show them how your infrastructure relieves it. The design system became the answer to a question leadership was starting to ask — 'how do we catch up on AI?' — rather than an initiative competing for attention. \n\nAnd when the structure can't move, build a model that proves the structure should change. The V2 project isn't just a component library. It's evidence that cross-team collaboration on shared infrastructure works — and that the design system shouldn't be owned by a single product team. The strategy chapter is what opens the door. Part 3 is about walking through it.",
         },
       ],
     },
@@ -348,55 +323,54 @@ const CASE_STUDY_DETAIL = {
     role: "Global Design System Lead",
     timeline: "January 2026 – Present",
     org: "NielsenIQ",
+    audioSrc: null,
     overview: {
       summary:
         "I personally built the framework-agnostic proof-of-concepts — the same components generated in Angular, React, Vue, and Lit from structured spec.json files, and am now leading a 6-person cross-functional team to deliver 40+ production-ready components, tokens, themes, and patterns across three parallel workstreams in 14 weeks using AI-assisted development at 2–3x velocity.",
+      images: [
+        { label: "Framework Comparison Output" },
+        { label: "Three-Swimlane Timeline" },
+        { label: "AI Development Workflow" },
+        { label: "Component Library Preview" },
+      ],
     },
     learn: {
       sections: [
         {
-          heading: "The Research That Shaped Everything",
-          body: "Before the V2 build started, I used Claude as a deep research tool to understand how AI tools actually interact with design systems. The finding was consistent: when a codebase has well-structured component APIs with semantic tokens, AI tools generate code that uses existing components correctly. When documentation is sparse, the tools invent their own implementations. This research directly shaped every V2 architecture decision.",
+          heading: "Where parts one and two left off",
+          hideImage: true,
+          body: "I'd diagnosed a four-year-old systemic problem. I'd built the token architecture. I'd navigated PI planning, designed around the structural bottleneck, framed the AI argument, and secured the CPO's approval and dedicated engineering resources for the first time in the design system's history. \n\nNow I had to prove all of it worked. And more than that — I had to prove that I personally understood AI well enough to lead this work, not just advocate for it. \n\nThis chapter is about what I built with my own hands, what I built with a team, and why both matter for where design systems are going.",
         },
         {
-          heading: "The Framework-Agnostic Proof",
-          body: "I built the proof-of-concept myself. From structured spec.json files, I used Claude Code to generate the same component in four frameworks: Angular, React, Vue, and Web Components via Lit. Five components, four frameworks, same spec files. When the spec was sufficiently structured, the AI-generated output was correct across all four frameworks — matching visual rendering, consistent API surfaces, accessibility attributes present.",
+          heading: "Using Claude for deep research",
+          body: "Before the V2 build started, I needed to understand something nobody at NIQ had investigated: how do AI tools actually interact with design systems? Not the marketing pitch. The reality. \n\I used Claude as a deep research tool — not for code generation, but for structured inquiry. I explored how LLMs consume component documentation, what makes a token system machine-readable versus just human-readable, how AI code generation tools handle styling when they have structured specs versus when they don't, and what the difference looks like in actual output. \n\nWhat I found was consistent across every tool I tested: when a codebase has well-structured component APIs with clear documentation and semantic tokens, AI tools generate code that uses existing components correctly. When documentation is sparse or absent, the tools invent their own implementations — technically functional, visually inconsistent, and disconnected from whatever design standards exist. The pattern was clear: AI tools are only as good as the structured input they can consume. \n\nThis research wasn't academic. It directly shaped the V2 architecture decisions: why CSS custom properties matter (they're readable by any tool), why semantic naming conventions matter (they encode intent, not just appearance), why component API documentation matters (it's the spec AI builds against), and why we needed to think about AI metadata as a first-class concern rather than an afterthought. \n\nThe research also gave me the language for the CPO conversation. When I showed side-by-side examples of what AI produces with structured design system input versus without it, I wasn't presenting theory. I was presenting findings from real experimentation.",
         },
         {
-          heading: "The Co-Build",
-          body: "I assembled a cross-functional team of six across three parallel swimlanes. The expected results: 40+ production-ready deliverables, an OKLCH color system generating semantic tokens and dark mode support algorithmically, sub-brand theming validated in production, and two developers producing at 2–3x normal velocity. The three-swimlane timeline would be impossible at traditional development speed.",
-        },
-      ],
-      artifact: {
-        title: "Vibe-Coded Project Hub",
-        description:
-          "The project management interface I built to onboard stakeholders.",
-        image: <img src="/v2website.png" alt="V2 project website" />,
-        url: "https://v2-project-blue.vercel.app/#"
-      },
-    },
-    deep: {
-      modules: [
-        {
-          label: "AI Deep Research",
-          body: "I explored how LLMs consume component documentation, what makes a token system machine-readable versus just human-readable, and what the difference looks like in actual generated output. These weren't theoretical conclusions — they came from watching real AI tools produce real output with varying levels of structured input. The research also gave me the language for the CPO conversation, presenting findings from hands-on experimentation rather than speculation.",
+          heading: "Uncovering how to adapt a design system for an AI-enabled future",
+          hideImage: true,
+          body: "The deeper I went, the clearer the thesis became: a design system isn't just a component library for humans anymore. It's a structured data layer that AI tools consume to generate consistent product UI. And the design systems that are built with that dual audience in mind — human developers and AI tools — are the ones that will define how products get built in the next era. \n\nThis isn't a small reframe. It changes what a design system needs to contain. Traditional design systems need components, tokens, and documentation. AI-ready design systems also need semantic metadata describing component intent, explicit composition rules, machine-readable specs that define props, variants, and valid combinations, and guidance that distinguishes what AI handles well from what requires human judgment. \n\nI built this understanding through a combination of Claude-assisted research, hands-on experimentation with AI code generation tools, and real-time observation of AI building on our system during the V2 project. Solange, our UX researcher, documented what happened as developers used Claude to restyle components: which prompts worked, where the AI hallucinated, which component patterns it handled well versus poorly. The AI consumption guide she's producing is built from empirical observation during a real production build — not theoretical speculation. \n\nThis body of research is what I brought to every executive conversation, every PI planning session, and every architecture decision. It's the foundation of NIQ's AI strategy for the design system. And it came from my own initiative — nobody asked me to research this. I saw that the industry was moving and the org wasn't keeping up, and I went deep on my own time to build the understanding that the org needed.",
         },
         {
-          label: "Leading the Co-Build",
-          body: "I assembled and am running a cross-functional team of six with radically different allocations and skill sets. Getting each person's commitment required separate conversations with their managers. I built the operational infrastructure from scratch: weekly standups, bi-weekly stakeholder updates, monthly demos, a Jira board with epics, communication templates, a decision log, component QA checklists, an AI code review protocol, and a contribution process.",
+          heading: "Building the framework-agnostic POCs",
+          body: "The research pointed to a specific technical thesis: if the design system's specs are structured correctly, AI can generate correct component implementations in any framework from the same source. Not Angular-only. Not locked to whatever the org happens to use today. Framework-agnostic. \n\nI built the proof-of-concept myself. \n\nThe POC started with component specs — structured documents defining every property, variant, state, accessibility requirement, and composition rule for a component. Not Figma screenshots. Not design briefs. Machine-readable specifications that an AI tool could consume and generate from. \n\nFrom those specs, I used Claude Code to generate the same component in four frameworks: Angular (standalone components with signal-based inputs, OnPush change detection), React (functional components with forwardRef), Vue (Composition API), and Lit (web components with light DOM rendering). Five components, four frameworks, from the same spec files. \n\nThe results validated the thesis. When the spec was sufficiently structured — when it included not just 'what this component looks like' but 'what props it accepts, what variants exist, what accessibility attributes it needs, how it composes with other components' — the AI-generated output was correct across all four frameworks. The visual rendering matched. The API surface was consistent. The accessibility attributes were present. \n\nThis wasn't a demo or a prototype. It was a working architecture that could scale. I built CLAUDE.md generation conventions (framework-specific instruction templates for each target), spec authoring guidelines (a schema reference with field-by-field documentation and complexity tiers), and a spec review workflow (Jira issue templates, PR templates with review checklists, and a communication cadence for the team). \n\nThe framework-agnostic approach matters beyond the immediate NIQ context. It means the design system isn't locked to Angular. When a team needs React or Vue or web components — or when the org eventually migrates frameworks — the same specs generate correct output in the new target. The investment in structured specs compounds instead of being thrown away.",
         },
         {
-          label: "AI Development Workflow",
-          body: "Every AI-generated PR requires human code review with a 24-hour SLA, and AI-assisted PRs that are to be flagged so reviewers know to check edge cases harder. This isn't just quality assurance — it's protecting the credibility of the approach. If V2 shipped with quality problems traceable to AI-generated code, the thesis would be undermined, and with it the case for continued investment.",
+          heading: "The data visualization POC",
+          body: "I extended the POC thinking to a domain nobody had tackled yet: data visualization. \n\nNIQ's products are data-heavy. Charts, grids, conditional formatting, and dashboard patterns are everywhere. But data visualization had no design system guidance — no token-driven chart theming, no consistent color palette across chart types, no accessibility patterns for colorblind users, no rules for when to use which chart encoding. \n\nI built a comprehensive interactive POC: an HTML-based demonstration using our actual token values, showing AG Grid tables with conditional formatting and Highcharts-style charts consuming our 28-color categorical palette. The POC included live demos, a full token reference with computed WCAG contrast ratios, human-readable design guidance organized by chart type, and — critically — an AI-consumable spec section with JSON token schemas, chart theme configurations, and machine-readable rules with severity levels and fallback behaviors. \n\nThe transparency exploration was a specific question I investigated: could we introduce alpha variants (10%, 20%, 40%, 60% opacity) of our categorical colors for use as area fills and background treatments? The answer was yes, but with constraints — transparent variants work well for decorative fills where contrast requirements don't apply to the fill itself, but the solid stroke must remain at 100% for any meaningful graphical element. \n\nThis work produced the data visualization token review that became the foundation for Solange, Ilya, and Frank's Sprint 1 tasks — including identifying that alpha stops only covered 8 of 28 colors, that hex values should convert to OKLCH for perceptual uniformity, and that sequential and divergent palettes were entirely missing.",
         },
-      ],
-      artifacts: [
         {
-          title: "Vibe-Coded Project Hub",
-          description:
-            "The project management interface I built to onboard stakeholders.",
-          image: <img src="/v2website.png" alt="V2 project website" />,
-          url: "https://v2-project-blue.vercel.app/#"
+          heading: "Co-building with the MEFF team",
+          body: "The V2 build was the execution chapter — and the proof that the strategy and the AI thesis worked in practice. \n\nI assembled and ran a cross-functional team of 9 people with radically different allocations and skill sets — none of whom reported to me. Two MEFF frontend developers at 100% dedication, Ilya at 40% running design QA and producing reskin specs, Sonia at 40% supporting QA, Frank at 80% on accessibility and documentation, Solange at 60% on pattern documentation and AI metadata, Alexey at 10% advising on fork architecture, John as decision maker, and myself at roughly 40% running the project. \n\nGetting each person's commitment required separate conversations with their managers about capacity and expectations. Every allocation was influence, not authority. The project held together because people believed the work mattered and because I'd spent months building the relationships and credibility that made them willing to commit. That distributed team model — coordination through trust rather than org chart — is something I'd argue is actually harder than managing direct reports, and it's the model that cross-product infrastructure work requires. \n\nNo dedicated project manager. No Scrum master. No dedicated QA team. I built the operational infrastructure from scratch: weekly standups, bi-weekly stakeholder updates, monthly demos, Jira board structure with 13 epics mapped to milestones, communication templates, decision log, component QA checklist, AI code review protocol, and contribution process. \n\nThe AI-assisted development model was the core enabler. Claude handled the mechanical SCSS-to-CSS conversion and visual restyling on a component-by-component basis. Developers focused their judgment on review, edge cases, and the higher-complexity work of MEFF integration. Every AI-generated PR required human code review with a 24-hour SLA. AI-assisted PRs were flagged in descriptions so reviewers knew to check edge cases harder. \n\nThis review protocol wasn't just quality assurance. It was protecting the credibility of the approach. The AI argument I'd made to the CPO claimed that structured design infrastructure would make AI-assisted development productive. If V2 shipped with quality problems traceable to AI-generated code, the thesis would be undermined — and with it, the case for continued investment. \n\nThe results: 39 production-ready Angular components, forked from CUIC, restyled to V2 design specs, with the full token architecture implemented as CSS custom properties. An optional Tailwind v4 preset for teams that want utility-class syntax. Sub-brand theming validated in production with MEFF running a distinct visual brand through a single CSS override file. The MEFF product reskinned page by page, P0 pages first, replacing hardcoded styles with V2 components and tokens. \n\nTwo developers produced at 2–3x normal velocity. The dual-track timeline — library build plus product reskin in one quarter — would have been impossible at traditional development speed.",
+        },
+        {
+          heading: "What I'm still building",
+          hideImage: true,
+          body: "The V2 library is shipped. The co-build model is proven. But the AI story is being written in real time. \n\nI'm continuing to personally build and extend the framework-agnostic system. The spec-driven architecture I proved with the POC is scaling into the production workflow — structured specs as the source of truth, with AI generating implementations against them. The CLAUDE.md conventions I wrote are what the MEFF developers use daily. \n\nThe next phase is making the system fully machine-readable: semantic metadata on every component describing AI-relevant context, an AI consumption guide documenting which patterns AI handles well and which require human intervention, and validated prompt strategies for generating compliant UI. Solange's empirical research from the V2 build — watching AI interact with the system in real time rather than studying it theoretically — is the foundation. \n\nDiscover migration is planned for Q3 2026. Other product teams begin adoption in the same quarter. Data visualization components will build on the V2 architecture. By Q4, the vision is for the design system to be positioned as the structured data layer for AI-assisted product development across the entire portfolio.",
+        },
+        {
+          heading: "What I'm learning and what I'd do differently",
+          hideImage: true,
+          body: "This chapter is where the story shifts from organizational leadership to personal technical capability — and I think both are necessary to tell. \n\nParts 1 and 2 demonstrate that I can diagnose systemic problems, build strategic arguments, navigate politics, and secure executive sponsorship. Those are the leadership competencies that design system roles require. But Part 3 demonstrates something different: that I personally understand AI deeply enough to build with it, to make architecture decisions informed by real experimentation, and to lead a team through AI-assisted development at production scale. \n\nThe framework-agnostic POC is the work I'm most proud of, because it points forward. Most design system leaders are still thinking about components as framework-specific deliverables. The spec-driven approach — where structured specifications are the source of truth and framework implementations are generated outputs — is a fundamentally different model. It means the investment in the design system compounds across frameworks and across time, rather than being locked to whatever technology the org uses today. \n\nThree things I'd approach differently. I'd establish the Claude prompting conventions and AI review protocol before Sprint 1 rather than refining them during the first sprint. I'd invest more time in the SCSS variable inventory during setup — the quality of the conversion depends on understanding every existing variable before you start. And I'd start pattern documentation earlier, because components ship fast with AI-assisted restyling but the pattern documentation that ties them into a coherent system requires design judgment that can't be automated. \n\nThe bigger reflection is about what this work reveals about the next phase of design systems leadership. The people who will define this field aren't the ones who maintain the best component libraries. They're the ones who understand that design systems are becoming the structured data layer for how products get built — by humans and by AI, together. That's the capability I've built, and it's the one I'm continuing to develop. \n\nI diagnosed the problem. I built the strategy. And then I built the thing. All three matter. But building is what proves you can do the job — not just talk about it.",
         },
       ],
     },
@@ -405,9 +379,16 @@ const CASE_STUDY_DETAIL = {
     role: "Designer → Design System Lead",
     timeline: "2018 – 2026",
     org: "5 organizations",
+    audioSrc: null,
     overview: {
       summary:
         "My broader portfolio proves I can diagnose, strategize, and build at enterprise scale — this proves I've been designing the whole time. A visual companion spanning five organizations and ten years: brand systems built as a one-person creative department, healthcare learning design where clarity is a clinical requirement, editorial design for institutional audiences, and component craft inside an enterprise design system.",
+      images: [
+        { label: "Madison Ballet Campaign" },
+        { label: "Pathway Health Learning Design" },
+        { label: "SWIB Newsletter Design" },
+        { label: "Enterprise Component Craft" },
+      ],
     },
     learn: {
       sections: [
@@ -438,47 +419,6 @@ const CASE_STUDY_DETAIL = {
         {
           label: "NielsenIQ — Component & Interaction Design",
           body: "Inside the design system is actual design work. Every token maps to a real design decision — spacing isn't arbitrary, it's a 4px system with semantic application tokens; color isn't decorative, it's a three-tier semantic hierarchy. I designed a notifications flow accounting for multiple notification types, read and unread states, bulk actions, empty states, and progressive disclosure.",
-        },
-      ],
-      artifacts: [
-        {
-          title: "Madison Ballet Campaign",
-          description:
-            "Multi-event sub-brand system across social for varied workshop series.",
-          images: [
-            <img src="/workshopposter.jpg" alt="Madison Ballet Workshop Poster" />,
-            <img src="/workshopagenda.jpg" alt="Madison Ballet Workshop Agenda" />,
-            <img src="/workshopteacher.jpg" alt="Madison Ballet Workshop Teacher page" />,
-          ],
-        },
-        {
-          title: "Pathway Health Learning Modules",
-          description:
-            "LMS design and video content for clinical and administrative healthcare audiences.",
-          url: "https://youtube.com/playlist?list=PL7OaUzWROfdNz0AK0goedR9G3TdpDe9Dy&si=nSgIx_kSB0XNeHA3",
-        },
-        {
-          title: "NielsenIQ Notifications Flow",
-          description:
-            "End-to-end interaction design for the flagship product's notification system. Password: NIQ",
-          note: "password: NIQ",
-          url: "https://www.figma.com/proto/xPkpGgEZG2LjeG97zs63w7/Notifications-Alerts-Panel?node-id=517-196193&viewport=154%2C150%2C0.03&t=OQvpMUMZkoblo3HO-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=517%3A204500&show-proto-sidebar=1&page-id=1%3A10",
-        },
-        { 
-          title: "SWIB Newsletter Design",
-          description: "Institutional newsletter design for an investment firm audience.",
-          url: "/E&I Newsletter.pdf"
-        },
-        {
-          title: "Embroidered Clothing", 
-          description: "Custom made clothing created via hand embroidery.", 
-          images: [
-            <img src="/cranes.jpeg" alt="A crane composition on a jacket" />,
-            <img src="/witchy.jpeg" alt="A witchy trio on a sweatshirt" />,
-            <img src="/stargazer.jpeg" alt="A custom shirt for a BFA art show" />,
-            <img src="/sarbear.png" alt="A bear sweatshirt" />,
-            <img src="/shakespeare.jpeg" alt="A shakespearean sweatshirt" />,
-          ],
         },
       ],
     },
@@ -669,7 +609,567 @@ function ArtifactCard({ artifact }) {
   );
 }
 
-function CaseStudyPage({ slug, emphasize, onBack }) {
+// ═══════════════════════════════════════════
+// ─── TOKEN EXPLORER ──────────────────────
+// ═══════════════════════════════════════════
+
+const TOKEN_CATEGORIES = ["Color", "Typography", "Spacing", "Radius", "Elevation"];
+
+function TokenExplorer() {
+  const [view, setView] = useState("before");
+  const [category, setCategory] = useState("Color");
+
+  const beforeColor = {
+    primitives: [
+      { name: "Neutral Tokens", swatches: ["#FFFFFF", "#F5F5F5", "#E0E0E0", "#BDBDBD", "#9E9E9E", "#757575", "#616161", "#424242", "#212121", "#000000"] },
+      { name: "Blue Tokens", swatches: ["#E3F2FD", "#BBDEFB", "#90CAF9", "#64B5F6", "#42A5F5", "#2196F3", "#1E88E5", "#1565C0", "#0D47A1"] },
+      { name: "Brand Tokens", swatches: ["#1A237E", "#283593", "#3949AB"] },
+      { name: "Error Red Tokens", swatches: ["#FFCDD2", "#EF9A9A", "#E57373", "#EF5350", "#F44336", "#E53935"] },
+      { name: "Status Color Tokens", swatches: ["#4CAF50", "#F44336", "#2196F3", "#FF9800", "#9E9E9E"] },
+      { name: "Success Green Tokens", swatches: ["#C8E6C9", "#81C784", "#4CAF50", "#388E3C"] },
+      { name: "Warning Yellow Tokens", swatches: ["#FFF9C4", "#FFF176", "#FFEE58", "#FDD835"] },
+      { name: "Active Blue Tokens", swatches: ["#BBDEFB", "#64B5F6", "#2196F3", "#1565C0"] },
+    ],
+    semantic: [
+      { name: "Background Tokens", count: 47 },
+      { name: "Border Tokens", count: 22 },
+      { name: "Text Tokens", count: 19 },
+      { name: "Icon Tokens", count: 16 },
+      { name: "Chip Tokens", count: 6 },
+      { name: "Scroll Tokens", count: 4 },
+      { name: "Link Tokens", count: 8 },
+      { name: "Spinner Tokens", count: 5 },
+    ],
+  };
+
+  const afterColor = {
+    primitives: [
+      { name: "Neutral", swatches: ["#FFFFFF", "#F8F9FA", "#E9ECEF", "#DEE2E6", "#CED4DA", "#ADB5BD", "#6C757D", "#495057", "#343A40", "#212529", "#000000"] },
+      { name: "Blue", swatches: ["#EFF6FF", "#DBEAFE", "#BFDBFE", "#93C5FD", "#60A5FA", "#3B82F6", "#2563EB", "#1D4ED8", "#1E40AF", "#1E3A8A"] },
+      { name: "Green", swatches: ["#F0FDF4", "#DCFCE7", "#BBF7D0", "#86EFAC", "#4ADE80", "#22C55E", "#16A34A", "#15803D", "#166534", "#14532D"] },
+      { name: "Red", swatches: ["#FEF2F2", "#FEE2E2", "#FECACA", "#FCA5A5", "#F87171", "#EF4444", "#DC2626", "#B91C1C", "#991B1B", "#7F1D1D"] },
+      { name: "Yellow", swatches: ["#FEFCE8", "#FEF9C3", "#FEF08A", "#FDE047", "#FACC15", "#EAB308", "#CA8A04", "#A16207", "#854D0E", "#713F12"] },
+      { name: "Purple", swatches: ["#FAF5FF", "#F3E8FF", "#E9D5FF", "#D8B4FE", "#C084FC", "#A855F7", "#9333EA", "#7E22CE", "#6B21A8", "#581C87"] },
+    ],
+    semantic: [
+      { name: "Surface", tokens: ["surface.primary", "surface.secondary", "surface.tertiary"], desc: "Background layers" },
+      { name: "Text", tokens: ["text.neutral", "text.interactive", "text.positive", "text.attention", "text.negative"], desc: "Text by intent" },
+      { name: "Fill", tokens: ["fill.neutral", "fill.interactive", "fill.positive", "fill.attention", "fill.negative"], desc: "Component fills" },
+      { name: "Stroke", tokens: ["stroke.neutral", "stroke.interactive", "stroke.positive", "stroke.attention", "stroke.negative"], desc: "Borders by intent" },
+    ],
+  };
+
+  const afterTypography = [
+    { role: "Heading", sizes: [{ name: "3xl", token: "heading-3xlarge", example: "48px / 700" }, { name: "2xl", token: "heading-2xlarge", example: "36px / 700" }, { name: "xl", token: "heading-xlarge", example: "28px / 700" }, { name: "large", token: "heading-large", example: "24px / 700" }, { name: "medium", token: "heading-medium", example: "20px / 600" }, { name: "small", token: "heading-small", example: "16px / 600" }] },
+    { role: "Body", sizes: [{ name: "large", token: "body-large", example: "18px / 400" }, { name: "medium", token: "body-medium", example: "16px / 400" }, { name: "small", token: "body-small", example: "14px / 400" }] },
+    { role: "Datastic", sizes: [{ name: "2xl", token: "datastic-2xlarge", example: "36px / mono" }, { name: "xl", token: "datastic-xlarge", example: "28px / mono" }, { name: "large", token: "datastic-large", example: "24px / mono" }, { name: "medium", token: "datastic-medium", example: "16px / mono" }, { name: "small", token: "datastic-small", example: "12px / mono" }] },
+  ];
+
+  const afterSpacing = [
+    { token: "spacing-0", value: "0px", width: 0 },
+    { token: "spacing-25", value: "1px", width: 1 },
+    { token: "spacing-50", value: "2px", width: 2 },
+    { token: "spacing-100", value: "4px", width: 4 },
+    { token: "spacing-150", value: "6px", width: 6 },
+    { token: "spacing-200", value: "8px", width: 8 },
+    { token: "spacing-300", value: "12px", width: 12 },
+    { token: "spacing-400", value: "16px", width: 16 },
+    { token: "spacing-500", value: "20px", width: 20 },
+    { token: "spacing-600", value: "24px", width: 24 },
+    { token: "spacing-800", value: "32px", width: 32 },
+    { token: "spacing-1000", value: "40px", width: 40 },
+    { token: "spacing-1200", value: "48px", width: 48 },
+    { token: "spacing-1600", value: "64px", width: 64 },
+  ];
+
+  const afterRadius = [
+    { token: "radius-drop", value: "0px", radius: 0 },
+    { token: "radius-sharp", value: "2px", radius: 2 },
+    { token: "radius-standard", value: "4px", radius: 4 },
+    { token: "radius-soft", value: "8px", radius: 8 },
+    { token: "radius-softer", value: "16px", radius: 16 },
+    { token: "radius-softest", value: "32px", radius: 32 },
+    { token: "radius-round", value: "100%", radius: "50%" },
+  ];
+
+  const afterElevation = {
+    drop: [
+      { token: "drop-shadow-0", value: "none", shadow: "none" },
+      { token: "drop-shadow-100", value: "0px 1px 0px 0px rgba(0,0,0,0.06)", shadow: "0px 1px 0px 0px rgba(0,0,0,0.06)" },
+      { token: "drop-shadow-200", value: "0px 3px 1px -1px rgba(0,0,0,0.06)", shadow: "0px 3px 1px -1px rgba(0,0,0,0.06)" },
+      { token: "drop-shadow-300", value: "0px 4px 6px -2px rgba(0,0,0,0.20)", shadow: "0px 4px 6px -2px rgba(0,0,0,0.20)" },
+      { token: "drop-shadow-400", value: "0px 8px 16px -4px rgba(0,0,0,0.22)", shadow: "0px 8px 16px -4px rgba(0,0,0,0.22)" },
+      { token: "drop-shadow-500", value: "0px 12px 20px 0.8px rgba(0,0,0,0.28)", shadow: "0px 12px 20px 0.8px rgba(0,0,0,0.28)" },
+    ],
+    inner: [
+      { token: "inner-shadow-0", value: "none", shadow: "none" },
+      { token: "inner-shadow-100", value: "inset 0px 1px 0px 0px rgba(0,0,0,0.06)", shadow: "inset 0px 1px 0px 0px rgba(0,0,0,0.06)" },
+      { token: "inner-shadow-200", value: "inset 0px 3px 1px -1px rgba(0,0,0,0.06)", shadow: "inset 0px 3px 1px -1px rgba(0,0,0,0.06)" },
+      { token: "inner-shadow-300", value: "inset 0px 4px 6px -2px rgba(0,0,0,0.20)", shadow: "inset 0px 4px 6px -2px rgba(0,0,0,0.20)" },
+      { token: "inner-shadow-400", value: "inset 0px 8px 16px -4px rgba(0,0,0,0.22)", shadow: "inset 0px 8px 16px -4px rgba(0,0,0,0.22)" },
+      { token: "inner-shadow-500", value: "inset 0px 12px 20px 0.8px rgba(0,0,0,0.28)", shadow: "inset 0px 12px 20px 0.8px rgba(0,0,0,0.28)" },
+    ],
+  };
+
+  const tabStyle = (active) => ({
+    padding: "6px 14px",
+    borderRadius: 8,
+    border: "none",
+    background: active ? C.text : "transparent",
+    color: active ? "#fff" : C.textLight,
+    fontSize: 13,
+    fontWeight: active ? 600 : 400,
+    cursor: "pointer",
+    transition: "all 0.2s ease",
+  });
+
+  const emptyState = (name) => (
+    <div style={{ padding: "48px 24px", textAlign: "center", color: C.textLight }}>
+      <span className="material-icons-outlined" style={{ fontSize: 36, display: "block", marginBottom: 8, color: C.border }}>block</span>
+      <div style={{ fontSize: 15, fontWeight: 500, marginBottom: 4, color: C.textMid }}>No {name.toLowerCase()} tokens existed</div>
+      <div style={{ fontSize: 13 }}>The legacy system had no shared {name.toLowerCase()} definitions. Each product team hardcoded their own values.</div>
+    </div>
+  );
+
+  const renderBeforeColor = () => (
+    <div>
+      <div style={{ fontSize: 11, fontWeight: 600, color: C.textLight, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 12 }}>Primitive Tokens — flat, hue-based</div>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 10, marginBottom: 24 }}>
+        {beforeColor.primitives.map((group) => (
+          <div key={group.name} style={{ background: C.bg, borderRadius: 8, padding: 10, border: `1px solid ${C.border}` }}>
+            <div style={{ fontSize: 11, fontWeight: 600, color: C.textMid, marginBottom: 6 }}>{group.name}</div>
+            <div style={{ display: "flex", gap: 3, flexWrap: "wrap" }}>
+              {group.swatches.map((c, i) => (
+                <div key={i} style={{ width: 16, height: 16, borderRadius: 4, background: c, border: "1px solid rgba(0,0,0,0.08)" }} />
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+      <div style={{ fontSize: 11, fontWeight: 600, color: C.textLight, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 12 }}>Semantic Tokens — component-tied, sprawling</div>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 8 }}>
+        {beforeColor.semantic.map((group) => (
+          <div key={group.name} style={{ background: C.bg, borderRadius: 8, padding: 10, border: `1px solid ${C.border}` }}>
+            <div style={{ fontSize: 11, fontWeight: 600, color: C.textMid }}>{group.name}</div>
+            <div style={{ fontSize: 20, fontWeight: 700, color: C.text }}>{group.count}</div>
+            <div style={{ fontSize: 10, color: C.textLight }}>flat tokens</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+
+  const renderAfterColor = () => (
+    <div>
+      <div style={{ fontSize: 11, fontWeight: 600, color: C.textLight, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 12 }}>Primitive Layer — algorithmic scales by hue</div>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 10, marginBottom: 24 }}>
+        {afterColor.primitives.map((group) => (
+          <div key={group.name} style={{ background: C.bg, borderRadius: 8, padding: 10, border: `1px solid ${C.border}` }}>
+            <div style={{ fontSize: 11, fontWeight: 600, color: C.textMid, marginBottom: 6 }}>{group.name}</div>
+            <div style={{ display: "flex", gap: 2 }}>
+              {group.swatches.map((c, i) => (
+                <div key={i} style={{ flex: 1, height: 20, background: c, borderRadius: i === 0 ? "4px 0 0 4px" : i === group.swatches.length - 1 ? "0 4px 4px 0" : 0, border: "1px solid rgba(0,0,0,0.05)" }} />
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+      <div style={{ fontSize: 11, fontWeight: 600, color: C.textLight, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 12 }}>Semantic Layer — intent-based</div>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 10 }}>
+        {afterColor.semantic.map((group) => (
+          <div key={group.name} style={{ background: C.bg, borderRadius: 8, padding: 12, border: `1px solid ${C.border}` }}>
+            <div style={{ fontSize: 13, fontWeight: 600, color: C.text, marginBottom: 2 }}>{group.name}</div>
+            <div style={{ fontSize: 11, color: C.textLight, marginBottom: 8 }}>{group.desc}</div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 3 }}>
+              {group.tokens.map((t) => (
+                <div key={t} style={{ fontSize: 11, fontFamily: "monospace", color: C.textMid, background: C.card, padding: "3px 6px", borderRadius: 4, border: `1px solid ${C.border}` }}>{t}</div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+
+  const renderAfterTypography = () => (
+    <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+      {afterTypography.map((group) => (
+        <div key={group.role}>
+          <div style={{ fontSize: 11, fontWeight: 600, color: C.textLight, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 10 }}>{group.role}</div>
+          <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+            {group.sizes.map((s) => (
+              <div key={s.name} style={{ display: "flex", alignItems: "baseline", gap: 12, padding: "6px 10px", background: C.bg, borderRadius: 6, border: `1px solid ${C.border}` }}>
+                <div style={{ fontSize: 11, fontFamily: "monospace", color: C.accent, minWidth: 130 }}>{s.token}</div>
+                <div style={{ fontSize: 12, color: C.textLight }}>{s.example}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+
+  const renderAfterSpacing = () => (
+    <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+      {afterSpacing.map((s) => (
+        <div key={s.token} style={{ display: "flex", alignItems: "center", gap: 12, padding: "6px 10px", background: C.bg, borderRadius: 6, border: `1px solid ${C.border}` }}>
+          <div style={{ fontSize: 11, fontFamily: "monospace", color: C.accent, minWidth: 110 }}>{s.token}</div>
+          <div style={{ flex: 1, height: 14, display: "flex", alignItems: "center" }}>
+            <div style={{ width: Math.max(2, s.width * 3), height: 14, background: C.accent, borderRadius: 3, transition: "width 0.3s ease" }} />
+          </div>
+          <div style={{ fontSize: 11, color: C.textLight, minWidth: 32, textAlign: "right" }}>{s.value}</div>
+        </div>
+      ))}
+    </div>
+  );
+
+  const renderAfterRadius = () => (
+    <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+      {afterRadius.map((r) => (
+        <div key={r.token} style={{ display: "flex", alignItems: "center", gap: 16, padding: "10px 12px", background: C.bg, borderRadius: 6, border: `1px solid ${C.border}` }}>
+          <div style={{ width: 44, height: 44, background: C.accent, borderRadius: r.radius, flexShrink: 0, transition: "border-radius 0.3s ease" }} />
+          <div style={{ fontSize: 11, fontFamily: "monospace", color: C.accent, minWidth: 120 }}>{r.token}</div>
+          <div style={{ fontSize: 12, color: C.textLight }}>{r.value}</div>
+        </div>
+      ))}
+    </div>
+  );
+
+  const renderShadowGroup = (label, items) => (
+    <div style={{ marginBottom: 20 }}>
+      <div style={{ fontSize: 11, fontWeight: 600, color: C.textLight, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 10 }}>{label}</div>
+      <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+        {items.map((e) => (
+          <div key={e.token} style={{ display: "flex", alignItems: "center", gap: 16, padding: "10px 12px", background: C.bg, borderRadius: 6, border: `1px solid ${C.border}` }}>
+            <div style={{ width: 44, height: 44, background: C.card, borderRadius: 8, flexShrink: 0, boxShadow: e.shadow, border: `1px solid ${C.border}` }} />
+            <div style={{ fontSize: 11, fontFamily: "monospace", color: C.accent, minWidth: 130 }}>{e.token}</div>
+            <div style={{ fontSize: 11, color: C.textLight, flex: 1, minWidth: 0, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{e.value}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+
+  const renderAfterElevation = () => (
+    <div>
+      {renderShadowGroup("Drop Shadow", afterElevation.drop)}
+      {renderShadowGroup("Inner Shadow", afterElevation.inner)}
+    </div>
+  );
+
+  const renderContent = () => {
+    if (view === "before") {
+      return category === "Color" ? renderBeforeColor() : emptyState(category);
+    }
+    switch (category) {
+      case "Color": return renderAfterColor();
+      case "Typography": return renderAfterTypography();
+      case "Spacing": return renderAfterSpacing();
+      case "Radius": return renderAfterRadius();
+      case "Elevation": return renderAfterElevation();
+      default: return null;
+    }
+  };
+
+  return (
+    <div style={{ margin: "24px 0 40px 0", borderRadius: 12, border: `1px solid ${C.border}`, overflow: "hidden", background: C.card }}>
+      {/* Header */}
+      <div style={{ padding: "16px 20px", borderBottom: `1px solid ${C.border}`, display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
+        {/* Before / After toggle */}
+        <div style={{ display: "inline-flex", background: C.bg, border: `1px solid ${C.border}`, borderRadius: 8, padding: 2, gap: 2 }}>
+          {["before", "after"].map((v) => (
+            <button
+              key={v}
+              onClick={() => setView(v)}
+              style={{
+                padding: "6px 16px",
+                borderRadius: 6,
+                border: "none",
+                background: view === v ? (v === "before" ? "#FEE2E2" : "#DCFCE7") : "transparent",
+                color: view === v ? (v === "before" ? "#991B1B" : "#166534") : C.textLight,
+                fontSize: 13,
+                fontWeight: view === v ? 600 : 400,
+                cursor: "pointer",
+                transition: "all 0.2s ease",
+              }}
+            >
+              {v === "before" ? "Before" : "After"}
+            </button>
+          ))}
+        </div>
+        {/* Category tabs */}
+        <div style={{ display: "flex", gap: 4, flexWrap: "wrap" }}>
+          {TOKEN_CATEGORIES.map((cat) => {
+            return (
+              <button
+                key={cat}
+                onClick={() => setCategory(cat)}
+                style={tabStyle(category === cat)}
+              >
+                {cat}
+              </button>
+            );
+          })}
+        </div>
+      </div>
+      {/* Content */}
+      <div style={{ padding: 20, maxHeight: 480, overflow: "auto" }}>
+        {renderContent()}
+      </div>
+    </div>
+  );
+}
+
+function AudioPlayer({ src }) {
+  const audioRef = useRef(null);
+  const [playing, setPlaying] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const [duration, setDuration] = useState(0);
+  const [currentTime, setCurrentTime] = useState(0);
+
+  const formatTime = (s) => {
+    if (!s || !isFinite(s)) return "0:00";
+    const m = Math.floor(s / 60);
+    const sec = Math.floor(s % 60);
+    return `${m}:${sec.toString().padStart(2, "0")}`;
+  };
+
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    const onTime = () => {
+      setCurrentTime(audio.currentTime);
+      setProgress(audio.duration ? (audio.currentTime / audio.duration) * 100 : 0);
+    };
+    const onMeta = () => setDuration(audio.duration);
+    const onEnd = () => { setPlaying(false); setProgress(0); setCurrentTime(0); };
+    audio.addEventListener("timeupdate", onTime);
+    audio.addEventListener("loadedmetadata", onMeta);
+    audio.addEventListener("ended", onEnd);
+    return () => {
+      audio.removeEventListener("timeupdate", onTime);
+      audio.removeEventListener("loadedmetadata", onMeta);
+      audio.removeEventListener("ended", onEnd);
+    };
+  }, [src]);
+
+  const toggle = () => {
+    if (!audioRef.current) return;
+    if (playing) {
+      audioRef.current.pause();
+    } else {
+      audioRef.current.play();
+    }
+    setPlaying(!playing);
+  };
+
+  const seek = (e) => {
+    const bar = e.currentTarget;
+    const rect = bar.getBoundingClientRect();
+    const pct = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+    if (audioRef.current && audioRef.current.duration) {
+      audioRef.current.currentTime = pct * audioRef.current.duration;
+    }
+  };
+
+  if (!src) {
+    return (
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: 8,
+          padding: "8px 16px",
+          borderRadius: 10,
+          background: C.bg,
+          border: `1px solid ${C.border}`,
+          color: C.textLight,
+          fontSize: 13,
+          fontWeight: 500,
+        }}
+      >
+        <span className="material-icons-outlined" style={{ fontSize: 18 }}>headphones</span>
+        Audio coming soon
+      </div>
+    );
+  }
+
+  return (
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        gap: 10,
+        padding: "8px 14px",
+        borderRadius: 10,
+        background: C.bg,
+        border: `1px solid ${C.border}`,
+        minWidth: 220,
+      }}
+    >
+      <audio ref={audioRef} src={src} preload="metadata" />
+      <button
+        onClick={toggle}
+        style={{
+          width: 32,
+          height: 32,
+          borderRadius: "50%",
+          border: "none",
+          background: C.accent,
+          color: "#fff",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          cursor: "pointer",
+          flexShrink: 0,
+          transition: "background 0.2s ease",
+        }}
+        onMouseEnter={(e) => (e.currentTarget.style.background = C.accentDark)}
+        onMouseLeave={(e) => (e.currentTarget.style.background = C.accent)}
+      >
+        <span className="material-icons" style={{ fontSize: 18 }}>
+          {playing ? "pause" : "play_arrow"}
+        </span>
+      </button>
+      <div style={{ flex: 1, minWidth: 0 }}>
+        <div
+          onClick={seek}
+          style={{
+            height: 4,
+            borderRadius: 2,
+            background: C.border,
+            cursor: "pointer",
+            position: "relative",
+          }}
+        >
+          <div
+            style={{
+              height: "100%",
+              borderRadius: 2,
+              background: C.accent,
+              width: `${progress}%`,
+              transition: "width 0.1s linear",
+            }}
+          />
+        </div>
+        <div style={{ display: "flex", justifyContent: "space-between", marginTop: 3 }}>
+          <span style={{ fontSize: 11, color: C.textLight }}>{formatTime(currentTime)}</span>
+          <span style={{ fontSize: 11, color: C.textLight }}>{formatTime(duration)}</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function OverviewCarousel({ images }) {
+  const [active, setActive] = useState(0);
+  const [expanded, setExpanded] = useState(false);
+
+  useEffect(() => {
+    if (!images || images.length === 0 || expanded) return;
+    const timer = setInterval(() => {
+      setActive((p) => (p + 1) % images.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [images, expanded]);
+
+  if (!images || images.length === 0) return null;
+
+  return (
+    <div>
+      <div
+        onClick={() => images[active].src && setExpanded(true)}
+        style={{
+          borderRadius: 12,
+          background: C.bg,
+          border: `1px solid ${C.border}`,
+          overflow: "hidden",
+          cursor: images[active].src ? "pointer" : "default",
+        }}
+      >
+        {images[active].src ? (
+          <img
+            src={images[active].src}
+            alt={images[active].label}
+            style={{
+              width: "100%",
+              height: "auto",
+              display: "block",
+            }}
+          />
+        ) : (
+          <div style={{ textAlign: "center", padding: 48 }}>
+            <span
+              className="material-icons-outlined"
+              style={{ fontSize: 48, color: C.border, display: "block", marginBottom: 8 }}
+            >
+              image
+            </span>
+            <div style={{ fontSize: 14, color: C.textLight, fontWeight: 500 }}>
+              {images[active].label}
+            </div>
+          </div>
+        )}
+      </div>
+      {images.length > 1 && (
+        <div
+          style={{
+            display: "flex",
+            gap: 8,
+            justifyContent: "center",
+            marginTop: 12,
+          }}
+        >
+          {images.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setActive(i)}
+              style={{
+                width: i === active ? 24 : 8,
+                height: 8,
+                borderRadius: 100,
+                border: "none",
+                background: i === active ? C.accent : C.border,
+                cursor: "pointer",
+                padding: 0,
+                transition: "all 0.3s ease",
+              }}
+            />
+          ))}
+        </div>
+      )}
+      {expanded && (
+        <div
+          onClick={() => setExpanded(false)}
+          style={{
+            position: "fixed",
+            inset: 0,
+            background: "rgba(0,0,0,0.85)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            zIndex: 200,
+            padding: 40,
+            cursor: "pointer",
+          }}
+        >
+          <img
+            src={images[active].src}
+            alt={images[active].label}
+            style={{
+              maxWidth: "90vw",
+              maxHeight: "90vh",
+              borderRadius: 8,
+              objectFit: "contain",
+            }}
+          />
+        </div>
+      )}
+    </div>
+  );
+}
+
+function CaseStudyPage({ slug, onBack }) {
   const [depth, setDepth] = useState("overview");
   const [visible, setVisible] = useState(false);
   const project = PROJECTS[slug];
@@ -684,13 +1184,6 @@ function CaseStudyPage({ slug, emphasize, onBack }) {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [depth]);
-
-  const angle =
-    emphasize === "craft"
-      ? project.craftAngle
-      : emphasize === "outcomes"
-      ? project.outcomesAngle
-      : project.leadershipAngle;
 
   return (
     <div
@@ -716,7 +1209,7 @@ function CaseStudyPage({ slug, emphasize, onBack }) {
       >
         <div
           style={{
-            maxWidth: 720,
+            maxWidth: 900,
             margin: "0 auto",
             display: "flex",
             justifyContent: "space-between",
@@ -746,7 +1239,7 @@ function CaseStudyPage({ slug, emphasize, onBack }) {
         </div>
       </header>
 
-      <main style={{ maxWidth: 720, margin: "0 auto", padding: "48px 24px" }}>
+      <main style={{ maxWidth: 900, margin: "0 auto", padding: "48px 24px" }}>
         {/* Series & Title */}
         <div
           style={{
@@ -814,59 +1307,39 @@ function CaseStudyPage({ slug, emphasize, onBack }) {
           ))}
         </div>
 
-        {/* Segment Toggle */}
-        <div style={{ marginBottom: 24 }}>
+        {/* Segment Toggle + Listen */}
+        <div style={{ marginBottom: 24, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <SegmentToggle value={depth} onChange={setDepth} />
-        </div>
-
-        {/* Personalization callout */}
-        <div
-          style={{
-            padding: "12px 16px",
-            background: C.accentSoft,
-            borderRadius: 8,
-            fontSize: 14,
-            color: C.accentDark,
-            lineHeight: 1.55,
-            marginBottom: 40,
-          }}
-        >
-          <span style={{ fontWeight: 600 }}>
-            {emphasize === "craft"
-              ? "Design lens: "
-              : emphasize === "outcomes"
-              ? "Key outcomes: "
-              : "Leadership lens: "}
-          </span>
-          {angle}
+          <AudioPlayer src={detail.audioSrc} />
         </div>
 
         <div style={{ borderTop: `1px solid ${C.border}`, paddingTop: 40 }}>
           {/* ─── OVERVIEW ─── */}
           {depth === "overview" && (
-            <div>
-              <p
-                style={{
-                  fontSize: 17,
-                  color: C.text,
-                  lineHeight: 1.7,
-                  margin: 0,
-                }}
-              >
-                {detail.overview.summary}
-              </p>
-              <div
-                style={{
-                  marginTop: 32,
-                  padding: "20px 24px",
-                  background: C.bg,
-                  border: `1px dashed ${C.border}`,
-                  borderRadius: 12,
-                  textAlign: "center",
-                }}
-              >
-                <p style={{ fontSize: 14, color: C.textMid, margin: "0 0 12px 0" }}>
-                  Want more detail? Switch to Deep Dive above.
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "3fr 2fr",
+                gap: 32,
+                alignItems: "start",
+              }}
+            >
+              <div>
+                <p
+                  style={{
+                    fontSize: 17,
+                    color: C.text,
+                    lineHeight: 1.7,
+                    margin: 0,
+                  }}
+                >
+                  {detail.overview.summary}
+                </p>
+              </div>
+              <div>
+                <OverviewCarousel images={detail.overview.images} />
+                <p style={{ fontSize: 13, color: C.textLight, textAlign: "center", marginTop: 16 }}>
+                  Want more detail? Switch to deep dive above.
                 </p>
               </div>
             </div>
@@ -875,120 +1348,97 @@ function CaseStudyPage({ slug, emphasize, onBack }) {
           {/* ─── DEEP DIVE ─── */}
           {depth === "deep" && (
             <div>
-              {detail.learn.sections.map((section) => (
-                <div key={section.heading} style={{ marginBottom: 32 }}>
-                  <h2
-                    style={{
-                      fontSize: 22,
-                      fontWeight: 700,
-                      color: C.text,
-                      margin: "0 0 12px 0",
-                    }}
-                  >
-                    {section.heading}
-                  </h2>
-                  {section.body.split("\n\n").map((para, i) => (
-                    <p
-                      key={i}
+              {detail.learn.sections.map((section, idx) => (
+                <React.Fragment key={section.heading}>
+                  <div style={{ marginBottom: 16 }}>
+                    <h2
                       style={{
-                        fontSize: 15,
-                        color: C.textMid,
-                        lineHeight: 1.7,
-                        margin: i === 0 ? 0 : "12px 0 0 0",
-                      }}
-                    >
-                      {para}
-                    </p>
-                  ))}
-                </div>
-              ))}
-
-              {/* Depth Modules */}
-              <div
-                style={{
-                  borderTop: `1px solid ${C.border}`,
-                  paddingTop: 40,
-                  marginTop: 16,
-                }}
-              >
-                <h2
-                  style={{
-                    fontSize: 11,
-                    fontWeight: 600,
-                    color: C.textLight,
-                    textTransform: "uppercase",
-                    letterSpacing: "0.08em",
-                    margin: "0 0 24px 0",
-                  }}
-                >
-                  Going Deeper
-                </h2>
-                {detail.deep.modules.map((mod) => (
-                  <div
-                    key={mod.label}
-                    style={{
-                      marginBottom: 32,
-                      padding: "24px",
-                      background: C.card,
-                      borderRadius: 12,
-                      border: `1px solid ${C.border}`,
-                    }}
-                  >
-                    <h3
-                      style={{
-                        fontSize: 18,
+                        fontSize: 22,
                         fontWeight: 700,
                         color: C.text,
                         margin: "0 0 12px 0",
                       }}
                     >
-                      {mod.label}
-                    </h3>
-                    <p
-                      style={{
-                        fontSize: 15,
-                        color: C.textMid,
-                        lineHeight: 1.7,
-                        margin: 0,
-                      }}
-                    >
-                      {mod.body}
-                    </p>
+                      {section.heading}
+                    </h2>
+                    {section.body.split("\n\n").map((para, i) => (
+                      <p
+                        key={i}
+                        style={{
+                          fontSize: 15,
+                          color: C.textMid,
+                          lineHeight: 1.7,
+                          margin: i === 0 ? 0 : "12px 0 0 0",
+                        }}
+                      >
+                        {para}
+                      </p>
+                    ))}
                   </div>
-                ))}
-              </div>
-
-              {/* All Artifacts */}
-              <div
-                style={{
-                  borderTop: `1px solid ${C.border}`,
-                  paddingTop: 40,
-                }}
-              >
-                <h2
-                  style={{
-                    fontSize: 11,
-                    fontWeight: 600,
-                    color: C.textLight,
-                    textTransform: "uppercase",
-                    letterSpacing: "0.08em",
-                    margin: "0 0 16px 0",
-                  }}
-                >
-                  Artifacts & Evidence
-                </h2>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: 12,
-                  }}
-                >
-                  {detail.deep.artifacts.map((a) => (
-                    <ArtifactCard key={a.title} artifact={a} />
-                  ))}
-                </div>
-              </div>
+                  {section.widget === "tokenExplorer" && (
+                    <TokenExplorer />
+                  )}
+                  {!section.hideImage && !section.widget && (
+                    section.embed ? (
+                      <div
+                        style={{
+                          margin: "24px 0 40px 0",
+                          aspectRatio: "16 / 9",
+                          borderRadius: 12,
+                          overflow: "hidden",
+                          border: `1px solid ${C.border}`,
+                        }}
+                      >
+                        <iframe
+                          src={section.embed}
+                          style={{ width: "100%", height: "100%", border: "none" }}
+                          allowFullScreen
+                        />
+                      </div>
+                    ) : section.imageSrc ? (
+                      <div
+                        style={{
+                          margin: "24px 0 40px 0",
+                          borderRadius: 12,
+                          overflow: "hidden",
+                          border: `1px solid ${C.border}`,
+                        }}
+                      >
+                        <img
+                          src={section.imageSrc}
+                          alt={section.imageAlt || ""}
+                          style={{ width: "100%", height: "auto", display: "block" }}
+                        />
+                      </div>
+                    ) : (
+                      <div
+                        style={{
+                          margin: "24px 0 40px 0",
+                          aspectRatio: "16 / 9",
+                          borderRadius: 12,
+                          background: C.bg,
+                          border: `1px dashed ${C.border}`,
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                        }}
+                      >
+                        <div style={{ textAlign: "center" }}>
+                          <span
+                            className="material-icons-outlined"
+                            style={{ fontSize: 48, color: C.border, display: "block", marginBottom: 4 }}
+                          >
+                            image
+                          </span>
+                          <div style={{ fontSize: 13, color: C.textLight }}>
+                            Image placeholder {idx + 1}
+                          </div>
+                        </div>
+                      </div>
+                    )
+                  )}
+                </React.Fragment>
+              ))}
             </div>
           )}
         </div>
@@ -1761,20 +2211,7 @@ function CustomCursor({ dotColor = C.coral }) {
 // ─── PORTFOLIO PAGE ───────────────────────
 // ═══════════════════════════════════════════
 
-function ProjectCard({ slug, project, emphasize, gradient, onClick }) {
-  const angle =
-    emphasize === "craft"
-      ? project.craftAngle
-      : emphasize === "outcomes"
-      ? project.outcomesAngle
-      : project.leadershipAngle;
-  const angleLabel =
-    emphasize === "craft"
-      ? "Design lens: "
-      : emphasize === "outcomes"
-      ? "Key outcomes: "
-      : "Leadership lens: ";
-
+function ProjectCard({ slug, project, gradient, onClick }) {
   return (
     <div
       data-cursor-expand="View Case Study"
@@ -1858,19 +2295,6 @@ function ProjectCard({ slug, project, emphasize, gradient, onClick }) {
           {project.description}
         </p>
 
-        <div
-          style={{
-            padding: "12px 16px",
-            background: C.accentSoft,
-            borderRadius: 8,
-            fontSize: 14,
-            color: C.accentDark,
-            lineHeight: 1.55,
-          }}
-        >
-          <span style={{ fontWeight: 600 }}>{angleLabel}</span>
-          {angle}
-        </div>
       </div>
     </div>
   );
@@ -2240,8 +2664,6 @@ function PortfolioPage({ responses, onStartOver, onOpenCaseStudy, onOpenAbout })
                 margin: "0 0 24px 0",
               }}
             >
-              The rest of the story, still framed around what you told me
-              matters most.
             </p>
             <div
               style={{
@@ -2255,7 +2677,6 @@ function PortfolioPage({ responses, onStartOver, onOpenCaseStudy, onOpenAbout })
                   key={slug}
                   slug={slug}
                   project={PROJECTS[slug]}
-                  emphasize={content.emphasize}
                   gradient={gradientColors[(idx + 1) % 4]}
                   onClick={() => onOpenCaseStudy(slug)}
                 />
@@ -2748,11 +3169,9 @@ export default function BrennaPortfolio() {
   } else if (showAbout) {
     page = <AboutPage onBack={handleCloseAbout} />;
   } else if (activeCaseStudy) {
-    const content = getCustomizedContent(responses);
     page = (
       <CaseStudyPage
         slug={activeCaseStudy}
-        emphasize={content.emphasize}
         onBack={handleCloseCaseStudy}
       />
     );

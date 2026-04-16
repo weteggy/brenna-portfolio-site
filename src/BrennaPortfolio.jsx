@@ -328,10 +328,9 @@ const CASE_STUDY_DETAIL = {
       summary:
         "I personally built the framework-agnostic proof-of-concepts — the same components generated in Angular, React, Vue, and Lit from structured spec.json files, and am now leading a 6-person cross-functional team to deliver 40+ production-ready components, tokens, themes, and patterns across three parallel workstreams in 14 weeks using AI-assisted development at 2–3x velocity.",
       images: [
-        { label: "Framework Comparison Output" },
-        { label: "Three-Swimlane Timeline" },
-        { label: "AI Development Workflow" },
-        { label: "Component Library Preview" },
+        { src: "/meff poc.png", label: "MEFF V2 proof-of-concept" },
+        { src: "/dataviscolors.png", label: "Data visualization color system" },
+        { src: "/specbuild.png", label: "Spec-driven build process" },
       ],
     },
     learn: {
@@ -352,14 +351,20 @@ const CASE_STUDY_DETAIL = {
         },
         {
           heading: "Building the framework-agnostic POCs",
+          imageSrc: "/meff poc.png",
+          imageAlt: "MEFF V2 proof-of-concept",
+          imageLink: "https://meff-v2-poc.vercel.app/",
           body: "The research pointed to a specific technical thesis: if the design system's specs are structured correctly, AI can generate correct component implementations in any framework from the same source. Not Angular-only. Not locked to whatever the org happens to use today. Framework-agnostic. \n\nI built the proof-of-concept myself. \n\nThe POC started with component specs — structured documents defining every property, variant, state, accessibility requirement, and composition rule for a component. Not Figma screenshots. Not design briefs. Machine-readable specifications that an AI tool could consume and generate from. \n\nFrom those specs, I used Claude Code to generate the same component in four frameworks: Angular (standalone components with signal-based inputs, OnPush change detection), React (functional components with forwardRef), Vue (Composition API), and Lit (web components with light DOM rendering). Five components, four frameworks, from the same spec files. \n\nThe results validated the thesis. When the spec was sufficiently structured — when it included not just 'what this component looks like' but 'what props it accepts, what variants exist, what accessibility attributes it needs, how it composes with other components' — the AI-generated output was correct across all four frameworks. The visual rendering matched. The API surface was consistent. The accessibility attributes were present. \n\nThis wasn't a demo or a prototype. It was a working architecture that could scale. I built CLAUDE.md generation conventions (framework-specific instruction templates for each target), spec authoring guidelines (a schema reference with field-by-field documentation and complexity tiers), and a spec review workflow (Jira issue templates, PR templates with review checklists, and a communication cadence for the team). \n\nThe framework-agnostic approach matters beyond the immediate NIQ context. It means the design system isn't locked to Angular. When a team needs React or Vue or web components — or when the org eventually migrates frameworks — the same specs generate correct output in the new target. The investment in structured specs compounds instead of being thrown away.",
         },
         {
           heading: "The data visualization POC",
+          widget: "dataViz",
           body: "I extended the POC thinking to a domain nobody had tackled yet: data visualization. \n\nNIQ's products are data-heavy. Charts, grids, conditional formatting, and dashboard patterns are everywhere. But data visualization had no design system guidance — no token-driven chart theming, no consistent color palette across chart types, no accessibility patterns for colorblind users, no rules for when to use which chart encoding. \n\nI built a comprehensive interactive POC: an HTML-based demonstration using our actual token values, showing AG Grid tables with conditional formatting and Highcharts-style charts consuming our 28-color categorical palette. The POC included live demos, a full token reference with computed WCAG contrast ratios, human-readable design guidance organized by chart type, and — critically — an AI-consumable spec section with JSON token schemas, chart theme configurations, and machine-readable rules with severity levels and fallback behaviors. \n\nThe transparency exploration was a specific question I investigated: could we introduce alpha variants (10%, 20%, 40%, 60% opacity) of our categorical colors for use as area fills and background treatments? The answer was yes, but with constraints — transparent variants work well for decorative fills where contrast requirements don't apply to the fill itself, but the solid stroke must remain at 100% for any meaningful graphical element. \n\nThis work produced the data visualization token review that became the foundation for Solange, Ilya, and Frank's Sprint 1 tasks — including identifying that alpha stops only covered 8 of 28 colors, that hex values should convert to OKLCH for perceptual uniformity, and that sequential and divergent palettes were entirely missing.",
         },
         {
           heading: "Co-building with the MEFF team",
+          imageSrc: "/specbuild.png",
+          imageAlt: "Spec-driven build process",
           body: "The V2 build was the execution chapter — and the proof that the strategy and the AI thesis worked in practice. \n\nI assembled and ran a cross-functional team of 9 people with radically different allocations and skill sets — none of whom reported to me. Two MEFF frontend developers at 100% dedication, Ilya at 40% running design QA and producing reskin specs, Sonia at 40% supporting QA, Frank at 80% on accessibility and documentation, Solange at 60% on pattern documentation and AI metadata, Alexey at 10% advising on fork architecture, John as decision maker, and myself at roughly 40% running the project. \n\nGetting each person's commitment required separate conversations with their managers about capacity and expectations. Every allocation was influence, not authority. The project held together because people believed the work mattered and because I'd spent months building the relationships and credibility that made them willing to commit. That distributed team model — coordination through trust rather than org chart — is something I'd argue is actually harder than managing direct reports, and it's the model that cross-product infrastructure work requires. \n\nNo dedicated project manager. No Scrum master. No dedicated QA team. I built the operational infrastructure from scratch: weekly standups, bi-weekly stakeholder updates, monthly demos, Jira board structure with 13 epics mapped to milestones, communication templates, decision log, component QA checklist, AI code review protocol, and contribution process. \n\nThe AI-assisted development model was the core enabler. Claude handled the mechanical SCSS-to-CSS conversion and visual restyling on a component-by-component basis. Developers focused their judgment on review, edge cases, and the higher-complexity work of MEFF integration. Every AI-generated PR required human code review with a 24-hour SLA. AI-assisted PRs were flagged in descriptions so reviewers knew to check edge cases harder. \n\nThis review protocol wasn't just quality assurance. It was protecting the credibility of the approach. The AI argument I'd made to the CPO claimed that structured design infrastructure would make AI-assisted development productive. If V2 shipped with quality problems traceable to AI-generated code, the thesis would be undermined — and with it, the case for continued investment. \n\nThe results: 39 production-ready Angular components, forked from CUIC, restyled to V2 design specs, with the full token architecture implemented as CSS custom properties. An optional Tailwind v4 preset for teams that want utility-class syntax. Sub-brand theming validated in production with MEFF running a distinct visual brand through a single CSS override file. The MEFF product reskinned page by page, P0 pages first, replacing hardcoded styles with V2 components and tokens. \n\nTwo developers produced at 2–3x normal velocity. The dual-track timeline — library build plus product reskin in one quarter — would have been impossible at traditional development speed.",
         },
         {
@@ -920,6 +925,264 @@ function TokenExplorer() {
   );
 }
 
+// ═══════════════════════════════════════════
+// ─── DATA VIZ WIDGET ─────────────────────
+// ═══════════════════════════════════════════
+
+const DATAVIZ_TABS = ["Color System", "Chart Patterns", "Coverage"];
+
+const CAT_COLORS = [
+  { name: "cat-1", hex: "#3B82F6" },
+  { name: "cat-2", hex: "#10B981" },
+  { name: "cat-3", hex: "#F59E0B" },
+  { name: "cat-4", hex: "#EF4444" },
+  { name: "cat-5", hex: "#8B5CF6" },
+  { name: "cat-6", hex: "#EC4899" },
+  { name: "cat-7", hex: "#06B6D4" },
+  { name: "cat-8", hex: "#F97316" },
+];
+
+const OPACITY_LEVELS = [
+  { label: "100%", alpha: 1, use: "Data encoding" },
+  { label: "60%", alpha: 0.6, use: "Supporting series" },
+  { label: "40%", alpha: 0.4, use: "Contextual overlays" },
+  { label: "20%", alpha: 0.2, use: "Area fills" },
+  { label: "10%", alpha: 0.1, use: "Ambient backgrounds" },
+];
+
+function DataVizWidget() {
+  const [tab, setTab] = useState("Color System");
+
+  const tabStyle = (active) => ({
+    padding: "6px 14px",
+    borderRadius: 8,
+    border: "none",
+    background: active ? C.text : "transparent",
+    color: active ? "#fff" : C.textLight,
+    fontSize: 13,
+    fontWeight: active ? 600 : 400,
+    cursor: "pointer",
+    transition: "all 0.2s ease",
+  });
+
+  const renderColorSystem = () => (
+    <div>
+      <div style={{ fontSize: 11, fontWeight: 600, color: C.textLight, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 16 }}>
+        Categorical Palette — 8 colors across 5 transparency tiers
+      </div>
+      <div style={{ overflowX: "auto" }}>
+        <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 12 }}>
+          <thead>
+            <tr>
+              <th style={{ textAlign: "left", padding: "6px 8px", color: C.textLight, fontWeight: 500, borderBottom: `1px solid ${C.border}` }}>Opacity</th>
+              {CAT_COLORS.map((c) => (
+                <th key={c.name} style={{ textAlign: "center", padding: "6px 4px", color: C.textLight, fontWeight: 500, borderBottom: `1px solid ${C.border}`, fontSize: 10 }}>{c.name}</th>
+              ))}
+              <th style={{ textAlign: "left", padding: "6px 8px", color: C.textLight, fontWeight: 500, borderBottom: `1px solid ${C.border}` }}>Use</th>
+            </tr>
+          </thead>
+          <tbody>
+            {OPACITY_LEVELS.map((level) => (
+              <tr key={level.label}>
+                <td style={{ padding: "8px 8px", fontWeight: 600, color: C.textMid, borderBottom: `1px solid ${C.border}` }}>{level.label}</td>
+                {CAT_COLORS.map((c) => {
+                  const r = parseInt(c.hex.slice(1, 3), 16);
+                  const g = parseInt(c.hex.slice(3, 5), 16);
+                  const b = parseInt(c.hex.slice(5, 7), 16);
+                  return (
+                    <td key={c.name} style={{ padding: "4px", borderBottom: `1px solid ${C.border}` }}>
+                      <div style={{
+                        width: "100%",
+                        height: 28,
+                        borderRadius: 4,
+                        background: `rgba(${r},${g},${b},${level.alpha})`,
+                        border: level.alpha < 0.3 ? `1px solid ${C.border}` : "none",
+                      }} />
+                    </td>
+                  );
+                })}
+                <td style={{ padding: "8px 8px", fontSize: 11, color: C.textLight, borderBottom: `1px solid ${C.border}`, whiteSpace: "nowrap" }}>{level.use}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+
+  const barData = [
+    { label: "Q1", values: [65, 45, 30, 50] },
+    { label: "Q2", values: [80, 55, 40, 35] },
+    { label: "Q3", values: [50, 70, 55, 60] },
+    { label: "Q4", values: [90, 60, 45, 75] },
+  ];
+
+  const donutSegments = [
+    { pct: 28, color: CAT_COLORS[0].hex },
+    { pct: 22, color: CAT_COLORS[1].hex },
+    { pct: 18, color: CAT_COLORS[2].hex },
+    { pct: 14, color: CAT_COLORS[3].hex },
+    { pct: 10, color: CAT_COLORS[4].hex },
+    { pct: 8, color: CAT_COLORS[5].hex },
+  ];
+
+  const renderChartPatterns = () => {
+    let donutOffset = 0;
+    const donutArcs = donutSegments.map((seg) => {
+      const start = donutOffset;
+      donutOffset += seg.pct;
+      return { ...seg, start };
+    });
+
+    return (
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+        {/* Grouped Bar */}
+        <div style={{ background: C.bg, borderRadius: 10, padding: 16, border: `1px solid ${C.border}` }}>
+          <div style={{ fontSize: 12, fontWeight: 600, color: C.textMid, marginBottom: 12 }}>Grouped Bar Chart</div>
+          <div style={{ display: "flex", gap: 12, alignItems: "flex-end", height: 120 }}>
+            {barData.map((group) => (
+              <div key={group.label} style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", gap: 4 }}>
+                <div style={{ display: "flex", gap: 2, alignItems: "flex-end", height: 100 }}>
+                  {group.values.map((v, i) => (
+                    <div key={i} style={{ width: 8, height: v, background: CAT_COLORS[i].hex, borderRadius: "2px 2px 0 0", transition: "height 0.3s ease" }} />
+                  ))}
+                </div>
+                <div style={{ fontSize: 10, color: C.textLight }}>{group.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Donut */}
+        <div style={{ background: C.bg, borderRadius: 10, padding: 16, border: `1px solid ${C.border}` }}>
+          <div style={{ fontSize: 12, fontWeight: 600, color: C.textMid, marginBottom: 12 }}>Donut Chart</div>
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <svg width="120" height="120" viewBox="0 0 120 120">
+              {donutArcs.map((arc, i) => {
+                const circumference = Math.PI * 80;
+                const dashLength = (arc.pct / 100) * circumference;
+                const dashOffset = -((arc.start / 100) * circumference);
+                return (
+                  <circle
+                    key={i}
+                    cx="60" cy="60" r="40"
+                    fill="none"
+                    stroke={arc.color}
+                    strokeWidth="16"
+                    strokeDasharray={`${dashLength} ${circumference - dashLength}`}
+                    strokeDashoffset={dashOffset}
+                    transform="rotate(-90 60 60)"
+                  />
+                );
+              })}
+              <circle cx="60" cy="60" r="28" fill={C.bg} />
+            </svg>
+          </div>
+        </div>
+
+        {/* Stacked Bar */}
+        <div style={{ background: C.bg, borderRadius: 10, padding: 16, border: `1px solid ${C.border}` }}>
+          <div style={{ fontSize: 12, fontWeight: 600, color: C.textMid, marginBottom: 12 }}>Stacked Horizontal Bar</div>
+          <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+            {["APAC", "EMEA", "LATAM", "NAM", "Global"].map((region, ri) => (
+              <div key={region}>
+                <div style={{ fontSize: 10, color: C.textLight, marginBottom: 2 }}>{region}</div>
+                <div style={{ display: "flex", height: 16, borderRadius: 4, overflow: "hidden" }}>
+                  {[35, 25, 20, 12, 8].map((w, i) => (
+                    <div key={i} style={{ width: `${w + (ri * 3 - i * 2) % 10}%`, background: CAT_COLORS[i].hex, minWidth: 4 }} />
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Line Chart */}
+        <div style={{ background: C.bg, borderRadius: 10, padding: 16, border: `1px solid ${C.border}` }}>
+          <div style={{ fontSize: 12, fontWeight: 600, color: C.textMid, marginBottom: 12 }}>Multi-Series Line Chart</div>
+          <svg width="100%" height="100" viewBox="0 0 200 100" preserveAspectRatio="none">
+            {[
+              { points: "0,70 40,55 80,60 120,35 160,40 200,20", color: CAT_COLORS[0].hex },
+              { points: "0,80 40,75 80,50 120,55 160,30 200,45", color: CAT_COLORS[1].hex },
+              { points: "0,60 40,65 80,70 120,50 160,55 200,35", color: CAT_COLORS[2].hex },
+              { points: "0,90 40,85 80,75 120,70 160,60 200,55", color: CAT_COLORS[3].hex },
+            ].map((line, i) => (
+              <polyline
+                key={i}
+                points={line.points}
+                fill="none"
+                stroke={line.color}
+                strokeWidth="2"
+                strokeDasharray={i === 3 ? "4 3" : "none"}
+              />
+            ))}
+          </svg>
+        </div>
+      </div>
+    );
+  };
+
+  const renderCoverage = () => (
+    <div>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12, marginBottom: 20 }}>
+        {[
+          { title: "Color System", desc: "OKLCH categorical palette, sequential scales, diverging gradients, semantic status colors", icon: "palette" },
+          { title: "Highcharts Theme", desc: "Chart backgrounds, axes, tooltips, series colors, legends, responsive behavior", icon: "bar_chart" },
+          { title: "ag-Grid Theme", desc: "Row styling, headers, cells, conditional formatting, interactive states", icon: "grid_on" },
+        ].map((d) => (
+          <div key={d.title} style={{ background: C.bg, borderRadius: 10, padding: 16, border: `1px solid ${C.border}` }}>
+            <span className="material-icons-outlined" style={{ fontSize: 22, color: C.accent, display: "block", marginBottom: 8 }}>{d.icon}</span>
+            <div style={{ fontSize: 14, fontWeight: 600, color: C.text, marginBottom: 4 }}>{d.title}</div>
+            <div style={{ fontSize: 12, color: C.textMid, lineHeight: 1.5 }}>{d.desc}</div>
+          </div>
+        ))}
+      </div>
+      <div style={{ fontSize: 11, fontWeight: 600, color: C.textLight, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 12 }}>Implementation Coverage</div>
+      <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+        {[
+          { feature: "Categorical palette (28 colors)", phase: "Sprint 1", status: "complete" },
+          { feature: "Alpha transparency variants", phase: "Sprint 1", status: "complete" },
+          { feature: "Sequential & diverging scales", phase: "Sprint 2", status: "complete" },
+          { feature: "OKLCH perceptual uniformity", phase: "Sprint 2", status: "complete" },
+          { feature: "Highcharts theme config", phase: "Sprint 2", status: "in-progress" },
+          { feature: "ag-Grid token integration", phase: "Sprint 3", status: "in-progress" },
+          { feature: "Accessibility (colorblind patterns)", phase: "Sprint 3", status: "planned" },
+          { feature: "Dashboard component patterns", phase: "Sprint 3", status: "planned" },
+        ].map((row) => (
+          <div key={row.feature} style={{ display: "flex", alignItems: "center", gap: 10, padding: "8px 10px", background: C.bg, borderRadius: 6, border: `1px solid ${C.border}` }}>
+            <span className="material-icons" style={{
+              fontSize: 16,
+              color: row.status === "complete" ? C.success : row.status === "in-progress" ? C.warm : C.textLight,
+            }}>
+              {row.status === "complete" ? "check_circle" : row.status === "in-progress" ? "pending" : "radio_button_unchecked"}
+            </span>
+            <div style={{ flex: 1, fontSize: 13, color: C.textMid }}>{row.feature}</div>
+            <div style={{ fontSize: 11, color: C.textLight, fontWeight: 500 }}>{row.phase}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+
+  return (
+    <div style={{ margin: "24px 0 40px 0", borderRadius: 12, border: `1px solid ${C.border}`, overflow: "hidden", background: C.card }}>
+      <div style={{ padding: "16px 20px", borderBottom: `1px solid ${C.border}`, display: "flex", alignItems: "center", gap: 12 }}>
+        <div style={{ fontSize: 14, fontWeight: 600, color: C.text, marginRight: 8 }}>Data Visualization</div>
+        <div style={{ display: "flex", gap: 4 }}>
+          {DATAVIZ_TABS.map((t) => (
+            <button key={t} onClick={() => setTab(t)} style={tabStyle(tab === t)}>{t}</button>
+          ))}
+        </div>
+      </div>
+      <div style={{ padding: 20, maxHeight: 520, overflow: "auto" }}>
+        {tab === "Color System" && renderColorSystem()}
+        {tab === "Chart Patterns" && renderChartPatterns()}
+        {tab === "Coverage" && renderCoverage()}
+      </div>
+    </div>
+  );
+}
+
 function AudioPlayer({ src }) {
   const audioRef = useRef(null);
   const [playing, setPlaying] = useState(false);
@@ -1375,9 +1638,8 @@ function CaseStudyPage({ slug, onBack }) {
                       </p>
                     ))}
                   </div>
-                  {section.widget === "tokenExplorer" && (
-                    <TokenExplorer />
-                  )}
+                  {section.widget === "tokenExplorer" && <TokenExplorer />}
+                  {section.widget === "dataViz" && <DataVizWidget />}
                   {!section.hideImage && !section.widget && (
                     section.embed ? (
                       <div
@@ -1396,19 +1658,53 @@ function CaseStudyPage({ slug, onBack }) {
                         />
                       </div>
                     ) : section.imageSrc ? (
-                      <div
-                        style={{
-                          margin: "24px 0 40px 0",
-                          borderRadius: 12,
-                          overflow: "hidden",
-                          border: `1px solid ${C.border}`,
-                        }}
-                      >
-                        <img
-                          src={section.imageSrc}
-                          alt={section.imageAlt || ""}
-                          style={{ width: "100%", height: "auto", display: "block" }}
-                        />
+                      <div style={{ margin: "24px 0 40px 0" }}>
+                        <div
+                          style={{
+                            borderRadius: 12,
+                            overflow: "hidden",
+                            border: `1px solid ${C.border}`,
+                          }}
+                        >
+                          <img
+                            src={section.imageSrc}
+                            alt={section.imageAlt || ""}
+                            style={{ width: "100%", height: "auto", display: "block" }}
+                          />
+                        </div>
+                        {section.imageLink && (
+                          <div style={{ marginTop: 12, textAlign: "center" }}>
+                            <a
+                              href={section.imageLink}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              style={{
+                                display: "inline-flex",
+                                alignItems: "center",
+                                gap: 6,
+                                padding: "10px 20px",
+                                borderRadius: 8,
+                                border: `2px solid ${C.accent}`,
+                                background: C.accentSoft,
+                                color: C.accentDark,
+                                fontSize: 14,
+                                fontWeight: 600,
+                                textDecoration: "none",
+                                transition: "all 0.2s ease",
+                              }}
+                              onMouseEnter={(e) => {
+                                e.currentTarget.style.background = C.accent;
+                                e.currentTarget.style.color = "#fff";
+                              }}
+                              onMouseLeave={(e) => {
+                                e.currentTarget.style.background = C.accentSoft;
+                                e.currentTarget.style.color = C.accentDark;
+                              }}
+                            >
+                              View the POC {"→"}
+                            </a>
+                          </div>
+                        )}
                       </div>
                     ) : (
                       <div

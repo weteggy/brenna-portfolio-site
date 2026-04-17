@@ -271,10 +271,8 @@ const CASE_STUDY_DETAIL = {
       summary:
         "The org's planning structure couldn't prioritize the design system — one product controlled build capacity for every product. Instead of making a better case within a broken structure, I designed around it: I partnered with a different product team, designed a spec-driven architecture that generates components across four frameworks from a single source of truth, connected the design system to the company's AI-readiness gap, and navigated the argument to the CPO.",
       images: [
-        { label: "CPO Presentation Deck" },
-        { label: "Organizational Path Diagram" },
-        { label: "V2 Architecture Overview" },
-        { label: "Spec-Driven Component Flow" },
+        { src: "/cpo ppt.png", label: "CPO presentation deck" },
+        { src: "/v2 project board.png", label: "V2 project board" },
       ],
     },
     learn: {
@@ -296,14 +294,18 @@ const CASE_STUDY_DETAIL = {
         },
         {
           heading: "The MEFF opportunity",
+          widget: "projectBoard",
           body: "MEFF's product had been built in two weeks using Claude Code. The velocity was impressive. The frontend was a mess — hardcoded styles, no componentization, no design system components in use. Rolling V2 out to MEFF wouldn't be a simple package install. The product needed a visual cleanup and systematic component swap alongside the library build. \n\nI designed this as a dual-track project: the DS library build and the MEFF product reskin running in parallel, sharing the same two developers. Sprints 1–3 were primarily library work (90/10 split). Then the ratio flipped: Sprints 4–7 were majority reskin work (80/20). \n\nThe MEFF reskin wasn't just adoption work — it was the first proof that the V2 system could integrate into a real production product. Ilya produced page-by-page reskin specs prioritized by visibility: P0 (must look right at launch), P1 (should look right), P2 (can polish later). P2 was an explicit release valve — if the timeline compressed, those pages slipped without affecting the launch story. \n\nThis sequencing only worked because I'd thought through the dependencies weeks before Sprint 1. The token architecture from Part 1 gave us the design-side specifications. The fork approach gave us the code-side starting point. The AI-assisted development model gave us the velocity to front-load the library build and leave room for the reskin. Each piece of the strategy depended on decisions I'd made months earlier.",
         },
         {
           heading: "Thinking long term: Parallel solutioning as an organizational model",
+          hideImage: true,
           body: "The V2 project wasn't just about delivering components faster. It was a proof of concept for a fundamentally different way of resourcing shared infrastructure at NIQ. \n\nThe CUIC bottleneck wasn't a temporary problem. As long as the shared component library lived inside one product's org, it would always be subordinate to that product's needs. No amount of advocacy within that structure would change the timeline. The V2 approach demonstrated an alternative: what happens when multiple teams contribute capacity to shared infrastructure, coordinated by a design system lead who works across organizational boundaries. \n\nIf V2 succeeded, it would create a concrete argument for changing how the org invests in shared infrastructure — not through restructuring (which is slow and political), but by demonstrating that cross-team collaboration on infrastructure produces results that single-team ownership can't. \n\nI designed the project plan with this larger argument in mind. The sprint structure, the role allocations, the stakeholder update cadence, the release valves — all of it was documented with enough rigor to be replicated. This wasn't a one-time workaround. It was a model.",
         },
         {
           heading: "Getting the CPO meeting",
+          imageSrc: "/CPO ppt.gif",
+          imageAlt: "CPO presentation deck",
           body: "Getting the design system in front of the CPO was, by itself, a milestone. In four years, the CPO had never had direct visibility into the design system — what it was, what state it was in, or why it mattered beyond the UX team. \n\nI didn't go directly. Going to a CPO with a two-part thesis — the org is falling behind on AI and the design system is the key to catching up — proposed by a design lead he'd never worked with, was a low-percentage play. I started with Karolina, NIQ's VP of Product and UX. She had the organizational context, the strategic awareness, and the CPO's ear. More importantly, she was already feeling the tension between velocity expectations on her teams and the AI lockdown blocking them. \n\nI connected two things she was already worried about. First: the industry was moving toward AI-assisted development and NIQ was being left behind. Second: even when the org did move on AI, the design system wasn't ready to support it. AI tools generate output based on what they can consume, and our system couldn't be consumed by AI. \n\nWhat I didn't anticipate: Karolina didn't just set up a meeting. She started using the AI-readiness framing in her own conversations with leadership. By the time I got into the CPO's office, the idea that NIQ was falling behind on AI and that the design system had a role in catching up wasn't entirely new to him. \n\nI framed the CPO conversation around two connected questions: Is the org moving fast enough on AI to stay competitive? And when we do move — what does AI need from us to actually work? \n\nI showed what a well-structured design system looks like from an AI tool's perspective: tokenized components with documented APIs, semantic metadata that describes intent. Then I showed where NIQ actually was: hardcoded values, undocumented components, no semantic layer. Even if we unlocked AI tools tomorrow, they'd have nothing structured to build on. The productivity gains everyone expected from AI would be eaten by manual cleanup. \n\nThe CPO didn't just acknowledge the point. He gave explicit approval for the MEFF team to move forward with the V2 project — a new component library with dedicated engineering resources, built with AI-assisted development, designed to be AI-consumable. A CPO greenlighting dedicated resources for a design system that a UX lead proposed was a first.",
         },
         {
@@ -949,6 +951,240 @@ const OPACITY_LEVELS = [
   { label: "20%", alpha: 0.2, use: "Area fills" },
   { label: "10%", alpha: 0.1, use: "Ambient backgrounds" },
 ];
+
+// ═══════════════════════════════════════════
+// ─── PROJECT BOARD WIDGET ────────────────
+// ═══════════════════════════════════════════
+
+const TASK_TYPES = {
+  library: { label: "Library Build", color: "#DBEAFE" },
+  ai: { label: "AI Generation", color: "#C7D2FE" },
+  design: { label: "UX / Design", color: "#FECDD3" },
+  tokens: { label: "Tokens / Theming", color: "#FED7AA" },
+  process: { label: "Process / Ops", color: "#FEF08A" },
+  patterns: { label: "Patterns / Style", color: "#BBF7D0" },
+  qa: { label: "QA / Validation", color: "#A7F3D0" },
+  docs: { label: "Docs / Match", color: "#99F6E4" },
+  advisory: { label: "Advisory", color: "#E5E7EB" },
+  release: { label: "Release", color: "#1E1B2E", textColor: "#fff" },
+};
+
+const BOARD_DATA = {
+  process: [
+    "Design spec review",
+    "CLAUDE.md generation",
+    "Component generation",
+    "Code review",
+    "QA validation",
+    "Pattern documentation",
+    "Release",
+  ],
+  swimlanes: [
+    {
+      name: "V2 Library",
+      sprints: [
+        {
+          label: "Sprint 1",
+          tasks: [
+            { text: "Document specs, setup generation pipeline", type: "process" },
+            { text: "CLAUDE.md generation conventions", type: "ai" },
+            { text: "Spec review: Button, Input, Badge, Tooltip", type: "design" },
+            { text: "Create DS token system in Figma", type: "tokens" },
+            { text: "Formalize spec authoring guidelines", type: "process" },
+            { text: "Establish spec review PR templates", type: "process" },
+          ],
+        },
+        {
+          label: "Sprint 2",
+          tasks: [
+            { text: "Set up framework-agnostic generation model", type: "ai" },
+            { text: "Build spec-to-CSS custom property pipeline", type: "ai" },
+            { text: "Generate spec files for batch 1 components", type: "library" },
+            { text: "Adaptive generation: React + Vue targets", type: "ai" },
+            { text: "Code reviews (Batch 1/2)", type: "qa" },
+          ],
+        },
+        {
+          label: "Sprint 3",
+          tasks: [
+            { text: "Process topic structures via CLAUDE.md", type: "ai" },
+            { text: "Responsiveness validation", type: "qa" },
+            { text: "Generate spec files for batch 2 components", type: "library" },
+            { text: "Publish specs as V2 CSS tokens", type: "tokens" },
+          ],
+        },
+        {
+          label: "Sprint 4",
+          tasks: [
+            { text: "Spec refinement + pattern alignment", type: "patterns" },
+            { text: "Component-to-token validation review", type: "qa" },
+            { text: "Publish specs V2 Batch 2", type: "library" },
+          ],
+        },
+        {
+          label: "Sprint 5",
+          tasks: [
+            { text: "Full spec audit MEFF + V2 libs", type: "qa" },
+            { text: "Fix spec gaps from full-stack validation", type: "library" },
+            { text: "Create audit: spec-to-code adherence review", type: "qa" },
+          ],
+        },
+        {
+          label: "Sprint 6",
+          tasks: [
+            { text: "Retrospective + next phase planning", type: "process" },
+            { text: "Publish V2 specs (V2.0 final)", type: "release" },
+          ],
+        },
+      ],
+    },
+    {
+      name: "Data Viz",
+      sprints: [
+        {
+          label: "Sprint 1",
+          tasks: [
+            { text: "Align identity, alpha stops, color palette generation", type: "tokens" },
+            { text: "Review POC data viz token/OKLCH values", type: "design" },
+          ],
+        },
+        {
+          label: "Sprint 2",
+          tasks: [
+            { text: "Finalize full palette + chart type inventory", type: "tokens" },
+            { text: "Highcharts base theme config/SCSS vars", type: "library" },
+          ],
+        },
+        {
+          label: "Sprint 3",
+          tasks: [
+            { text: "Validate Highcharts + AG Grid theme against real product data", type: "qa" },
+            { text: "Chart pattern guidelines: bar, line, area, donut", type: "patterns" },
+          ],
+        },
+        {
+          label: "Sprint 4",
+          tasks: [
+            { text: "AG metadata: chart config, map token types + configs", type: "library" },
+            { text: "AG validation: AG Grid theme refinements from test", type: "qa" },
+          ],
+        },
+        {
+          label: "Sprint 5",
+          tasks: [
+            { text: "Cross-product validation: test configs from metadata", type: "qa" },
+            { text: "Data viz documentation: AI-first design patterns", type: "docs" },
+          ],
+        },
+        {
+          label: "Sprint 6",
+          tasks: [
+            { text: "Final validation: AI token configs from metadata", type: "qa" },
+            { text: "Data viz unified + AG Grid token documentation publish", type: "release" },
+          ],
+        },
+      ],
+    },
+  ],
+};
+
+function ProjectBoardWidget() {
+  const [activeSprint, setActiveSprint] = useState(0);
+
+  return (
+    <div style={{ margin: "24px 0 40px 0", borderRadius: 12, border: `1px solid ${C.border}`, overflow: "hidden", background: C.card }}>
+      {/* Header */}
+      <div style={{ padding: "16px 20px", borderBottom: `1px solid ${C.border}`, display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
+        <div style={{ fontSize: 14, fontWeight: 600, color: C.text }}>V2 Project Board</div>
+        {/* Sprint selector */}
+        <div style={{ display: "flex", gap: 4 }}>
+          {BOARD_DATA.swimlanes[0].sprints.map((s, i) => (
+            <button
+              key={i}
+              onClick={() => setActiveSprint(i)}
+              style={{
+                padding: "5px 12px",
+                borderRadius: 6,
+                border: "none",
+                background: activeSprint === i ? C.text : "transparent",
+                color: activeSprint === i ? "#fff" : C.textLight,
+                fontSize: 12,
+                fontWeight: activeSprint === i ? 600 : 400,
+                cursor: "pointer",
+                transition: "all 0.2s ease",
+              }}
+            >
+              S{i + 1}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Process pipeline */}
+      <div style={{ padding: "12px 20px", borderBottom: `1px solid ${C.border}`, background: C.bg }}>
+        <div style={{ fontSize: 10, fontWeight: 600, color: C.textLight, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 8 }}>Process for every component</div>
+        <div style={{ display: "flex", gap: 4, alignItems: "center" }}>
+          {BOARD_DATA.process.map((step, i) => (
+            <React.Fragment key={step}>
+              <div style={{ padding: "4px 10px", borderRadius: 6, background: C.card, border: `1px solid ${C.border}`, fontSize: 10, color: C.textMid, fontWeight: 500, whiteSpace: "nowrap" }}>{step}</div>
+              {i < BOARD_DATA.process.length - 1 && <span style={{ color: C.border, fontSize: 10 }}>{"→"}</span>}
+            </React.Fragment>
+          ))}
+        </div>
+      </div>
+
+      {/* Swimlanes */}
+      <div style={{ padding: 20 }}>
+        {BOARD_DATA.swimlanes.map((lane) => {
+          const sprint = lane.sprints[activeSprint];
+          return (
+            <div key={lane.name} style={{ marginBottom: 20 }}>
+              <div style={{ fontSize: 13, fontWeight: 700, color: C.text, marginBottom: 10, display: "flex", alignItems: "center", gap: 8 }}>
+                <div style={{ width: 4, height: 16, borderRadius: 2, background: lane.name === "V2 Library" ? C.accent : C.warm }} />
+                {lane.name}
+                <span style={{ fontSize: 11, fontWeight: 400, color: C.textLight }}>— {sprint.label}</span>
+              </div>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", gap: 8 }}>
+                {sprint.tasks.map((task, i) => {
+                  const type = TASK_TYPES[task.type];
+                  return (
+                    <div
+                      key={i}
+                      style={{
+                        padding: "8px 10px",
+                        borderRadius: 8,
+                        background: type.color,
+                        color: type.textColor || C.text,
+                        fontSize: 12,
+                        lineHeight: 1.4,
+                        border: `1px solid rgba(0,0,0,0.06)`,
+                      }}
+                    >
+                      {task.text}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          );
+        })}
+
+        {/* Legend */}
+        <div style={{ borderTop: `1px solid ${C.border}`, paddingTop: 16, marginTop: 8 }}>
+          <div style={{ fontSize: 10, fontWeight: 600, color: C.textLight, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 8 }}>Task Types</div>
+          <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+            {Object.values(TASK_TYPES).map((type) => (
+              <div key={type.label} style={{ display: "flex", alignItems: "center", gap: 4 }}>
+                <div style={{ width: 10, height: 10, borderRadius: 3, background: type.color, border: "1px solid rgba(0,0,0,0.08)" }} />
+                <span style={{ fontSize: 10, color: C.textLight }}>{type.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 function DataVizWidget() {
   const [tab, setTab] = useState("Color System");
@@ -1640,6 +1876,7 @@ function CaseStudyPage({ slug, onBack }) {
                   </div>
                   {section.widget === "tokenExplorer" && <TokenExplorer />}
                   {section.widget === "dataViz" && <DataVizWidget />}
+                  {section.widget === "projectBoard" && <ProjectBoardWidget />}
                   {!section.hideImage && !section.widget && (
                     section.embed ? (
                       <div
